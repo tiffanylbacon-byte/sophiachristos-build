@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sophia Christos Healing Clinic | Mirrorwave NeuroResonance</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --celestial-violet: #6B4C9A;
+            --sophia-gold: #D4A84B;
+            --radiant-rose: #E8A0B0;
+            --deep-space: #1A1A2E;
+            --white-light: #FFFFFF;
+            --soft-violet: #E8E0F0;
+            --card-bg: linear-gradient(135deg, #1A1A2E 0%, #3D2A5C 50%, #6B4C9A 100%);
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(180deg, #0D0D1A 0%, #1A1A2E 50%, #2D1F42 100%);
+            min-height: 100vh;
+            color: var(--white-light);
+        }
+        
+        .header { text-align: center; padding: 80px 20px 50px; background: linear-gradient(180deg, rgba(107,76,154,0.4) 0%, rgba(107,76,154,0.1) 50%, transparent 100%); }
+        
+        .logo-container { margin-bottom: 30px; }
+        
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 300;
+            color: var(--white-light);
+            letter-spacing: 0.5em;
+            text-transform: uppercase;
+            text-shadow: 0 0 60px rgba(212,168,75,0.3);
+        }
+        
+        .logo-divider { font-size: 1.5rem; color: var(--sophia-gold); margin: 15px 0; opacity: 0.8; }
+        
+        .logo-sub {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: var(--white-light);
+            letter-spacing: 0.6em;
+            text-transform: uppercase;
+            opacity: 0.9;
+        }
+        
+        .protocol-badge {
+            display: inline-block;
+            padding: 12px 40px;
+            border: 1px solid var(--sophia-gold);
+            border-radius: 50px;
+            background: rgba(212,168,75,0.1);
+            color: var(--sophia-gold);
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-top: 20px;
+        }
+        
+        .controls {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .search-filter {
+            display: flex;
+            gap: 15px;
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        #searchBox {
+            flex: 1;
+            padding: 15px 25px;
+            border: 1px solid rgba(212,168,75,0.3);
+            border-radius: 50px;
+            background: rgba(26,26,46,0.8);
+            color: var(--white-light);
+            font-size: 1rem;
+        }
+        
+        .filter-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 10px 20px;
+            border: 1px solid rgba(212,168,75,0.4);
+            border-radius: 30px;
+            background: transparent;
+            color: var(--white-light);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--sophia-gold);
+            color: var(--deep-space);
+        }
+        
+        .shuffle-btn {
+            padding: 15px 30px;
+            background: linear-gradient(135deg, var(--sophia-gold), #b5893b);
+            border: none;
+            border-radius: 50px;
+            color: var(--deep-space);
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .gallery {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 30px;
+        }
+        
+        .card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            cursor: pointer;
+            transition: transform 0.4s, box-shadow 0.4s;
+            position: relative;
+        }
+        
+        .card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 30px 60px rgba(212,168,75,0.3);
+        }
+        
+        .card-stars {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            font-size: 1.8rem;
+            color: var(--sophia-gold);
+            text-shadow: 0 0 20px rgba(212,168,75,0.8);
+            z-index: 2;
+        }
+        
+        .card-category {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(26,26,46,0.8);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            z-index: 2;
+        }
+        
+        .card-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            padding: 100px 30px 20px;
+            background: linear-gradient(transparent, rgba(26,26,46,0.9));
+            text-align: center;
+            line-height: 1.3;
+        }
+        
+        .card-quote {
+            padding: 20px 30px;
+            font-size: 1.1rem;
+            font-style: italic;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+        
+        .card-timeline {
+            padding: 0 30px 30px;
+            font-size: 0.95rem;
+            color: var(--sophia-gold);
+            text-align: center;
+        }
+        
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(13,13,26,0.98);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s;
+        }
+        
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal {
+            max-width: 800px;
+            width: 90%;
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 50px;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--sophia-gold);
+        }
+        
+        .modal-stars {
+            font-size: 3rem;
+            color: var(--sophia-gold);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .modal-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        
+        .modal-category {
+            text-align: center;
+            color: var(--sophia-gold);
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+        
+        .modal-quote {
+            font-size: 1.4rem;
+            font-style: italic;
+            text-align: center;
+            margin: 30px 0;
+            padding: 0 40px;
+        }
+        
+        .modal-summary {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            padding: 20px 0;
+        }
+        
+        .modal-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin: 30px 0;
+        }
+        
+        .modal-tag {
+            background: rgba(212,168,75,0.2);
+            padding: 8px 18px;
+            border-radius: 30px;
+            border: 1px solid var(--sophia-gold);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .gallery { grid-template-columns: 1fr; }
+            .controls { flex-direction: column; }
+            .search-filter { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo-container">
+            <div class="logo">Sophia Christos</div>
+            <div class="logo-divider">✦ ✦ ✦</div>
+            <div class="logo-sub">Healing Clinic</div>
+        </div>
+        <h1>Mirrorwave NeuroResonance Gallery</h1>
+        <div class="protocol-badge">November 2025 Miracles • All 5-Star Verified</div>
+    </div>
+
+    <div class="controls">
+        <div class="search-filter">
+            <input type="text" id="searchBox" placeholder="Search miracles, conditions, or keywords...">
+        </div>
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">All Miracles</button>
+            <button class="filter-btn" data-filter="MK Ultra Deprogramming">MK Ultra</button>
+            <button class="filter-btn" data-filter="Physical Reversal">Physical</button>
+            <button class="filter-btn" data-filter="Parasite & Viral Purge">Purge</button>
+            <button class="filter-btn" data-filter="Structural & Bone">Structural</button>
+            <button class="filter-btn" data-filter="Hormone & Energy">Hormone/Energy</button>
+        </div>
+        <button class="shuffle-btn">✦ Random Miracle ✦</button>
+    </div>
+
+    <div class="gallery" id="gallery"></div>
+
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <div class="modal-close" id="modalClose">✕</div>
+            <div class="modal-stars" id="modalStars"></div>
+            <h2 class="modal-title" id="modalTitle"></h2>
+            <div class="modal-category" id="modalCategory"></div>
+            <p class="modal-quote" id="modalQuote"></p>
+            <p class="modal-summary" id="modalSummary"></p>
+            <div class="modal-tags" id="modalTags"></div>
+        </div>
+    </div>
+
+    <script>
+        const cases = [
+            {
+                stars: "★★★★★",
+                title: "Miracle Case #1 – The Woman Whose Double Scoliosis Vanished at Fifty-Six",
+                category: "Structural & Bone",
+                quote: "I woke up one morning and my spine was straight for the first time since childhood.",
+                summary: "Double thoracic and lumbar scoliosis since age 9 — braces, pain, surgeons planning fusion. November 26, 2025 second scan: every curvature frequency erased. Spine perfectly aligned, no pain, full mobility. She now does yoga inversions she was told she'd never do again.",
+                tags: ["scoliosis", "spine reversal", "structural miracle", "chronic pain gone", "MK Ultra physical residue cleared"],
+                timeline: "Lifetime deformity → November 26, 2025: Perfect spine"
+            },
+            {
+                stars: "★★★★★",
+                title: "Miracle Case #2 – The Woman Whose Burr Holes From Brain Surgery Filled With Living Bone",
+                category: "Structural & Bone",
+                quote: "Thirty years I lived with holes in my skull — now they're solid bone.",
+                summary: "Emergency brain surgery in her twenties left permanent burr holes. Constant low-level terror of impact. Second scan: holes completely filled with healthy bone. Skull frequencies perfect. She headbangs to music again without fear.",
+                tags: ["brain surgery recovery", "bone regeneration", "skull healing", "impossible regeneration"],
+                timeline: "30-year defect → November 26, 2025: Complete bone"
+            },
+            {
+                stars: "★★★★★",
+                title: "Miracle Case #3 – The Woman Whose Eyes Equalized and Healed Perfectly",
+                category: "Physical Reversal",
+                quote: "One eye was weaker and drooping — now they're identical and 20/20.",
+                summary: "Lifelong asymmetry, early cataracts, dryness, cosmetic shame. Second scan: both eyes perfectly symmetrical, vision crystal, no more drops. Cosmetic and functional perfection achieved.",
+                tags: ["eye healing", "cosmetic reversal", "vision restoration", "symmetry restored"],
+                timeline: "Lifetime asymmetry → November 26, 2025: Perfect twin eyes"
+            },
+            {
+                stars: "★★★★★",
+                title: "Miracle Case #4 – The Woman Who Eradicated 35 Years of Severe Psoriasis Overnight",
+                category: "Physical Reversal",
+                quote: "Thirty-five years of bleeding plaques — gone in weeks. My skin is a stranger's — perfect.",
+                summary: "Scalp flakes, body covered, bleeding cracks, shame in short sleeves, every treatment failed. Second scan: every psoriasis frequency obliterated. Skin completely clear, scalp pristine. She wore a backless dress and cried happy tears.",
+                tags: ["psoriasis erased", "35-year curse lifted", "skin rebirth", "autoimmune victory"],
+                timeline: "35 years of hell → November 26, 2025: Virgin skin"
+            },
+            {
+                stars: "★★★★★",
+                title: "Miracle Case #5 – The Woman Whose Rheumatoid Arthritis Was Deleted at Fifty-Six",
+                category: "Physical Reversal",
+                quote: "My hands were deforming — now I paint again without pain.",
+                summary: "RA since her thirties — swollen joints, morning stiffness, losing grip strength. Second scan: every RA frequency gone. Hands perfect, no swelling, full dexterity restored.",
+                tags: ["rheumatoid arthritis", "joint restoration", "pain erased", "hands reborn"],
+                timeline: "Decades of RA → November 26, 2025: Perfect hands"
+            },
+            {
+                stars: "★★★★★",
+                title: "Miracle Case #6 – The Woman Whose Breathing Was Completely Restored",
+                category: "Lungs & Breathing",
+                quote: "I forgot what deep breath felt like — now I live in it.",
+                summary: "Lifetime asthma, COPD damage, always reaching for inhalers. Second scan: lung frequencies perfect. Runs 5K, sings, no meds.",
+                tags: ["breathing restored", "asthma erased", "lung rebirth", "oxygen freedom"],
+                timeline: "Lifetime struggle → November 26, 2025: Perfect breath"
+            },
+            {
+                stars: "★★★★★",
+                title: "Miracle Case #7 – The MK Ultra Survivor Who Erased All Monarch Butterfly Programming",
+                category: "MK Ultra Deprogramming",
+                quote: "The butterflies are dead. I am whole.",
+                summary: "Monarch sequences active since childhood — alters, triggers, fragmentation. Full deprogramming sweeps run. Second scan: every butterfly fragment gone. Mind unified for the first time in fifty-six years.",
+                tags: ["Monarch erased", "alter integration", "handler codes deleted", "sovereign mind"],
+                timeline: "56 years fractured → November 26, 2025: One woman"
+            },
+            {
+                stars: "★★★★★",
+                title: "Miracle Case #8 – The MK Ultra Cinema Victim Whose Internal Torture Films Stopped Forever",
+                category: "MK Ultra Deprogramming",
+                quote: "The screen went dark. The silence is holy.",
+                summary: "Cinema programming running nonstop trauma films. Neural theater burn protocol executed. Second scan: projectors destroyed. No more movies. Only peace.",
+                tags: ["cinema programming ended", "trauma films erased", "mind theater burned"],
+                timeline: "Decades of films → November 26, 2025: Silence"
+            },
+            {
+                stars: "★★★★★",
+                title: "Miracle Case #9 – The MK Ultra Alice Who Finally Escaped Wonderland",
+                category: "MK Ultra Deprogramming",
+                quote: "I stopped falling. I am home.",
+                summary: "Alice in Wonderland programming — rabbit holes, spinning, suicide commands. Labyrinth dissolution complete. Second scan: Wonderland deleted. She is fully here.",
+                tags: ["Alice programming erased", "no more falling", "reality reclaimed"],
+                timeline: "Lifetime in the maze → November 26, 2025: Home"
+            },
+            {
+                stars: "★★★★★",
+                title: "Miracle Case #10 – The Presidential Model Who Reclaimed Her Body From Gemstone Programming",
+                category: "MK Ultra Deprogramming",
+                quote: "My body is mine again. They never touch me.",
+                summary: "Gemstone/Presidential sexual servitude programming. Full sexual sovereignty reclamation. Second scan: every gemstone alter gone. She owns her pleasure now.",
+                tags: ["Presidential Model freed", "sexuality reclaimed", "beta alters deleted"],
+                timeline: "Decades of use → November 26, 2025: Hers alone"
+            },
+            {
+                stars: "★★★★★",
+                title: "Miracle Case #11 – The Woman Whose Color/Number Triggers Were Permanently Deleted",
+                category: "MK Ultra Deprogramming",
+                quote: "Red no longer means pain. 3-6-9 no longer spins me.",
+                summary: "Full color/number/Greek letter trigger system. Trigger nullification complete. Second scan: all codes wiped. She painted her house rainbow colors just because she could.",
+                tags: ["trigger system erased", "color codes gone", "freedom from numbers"],
+                timeline: "Lifetime of leashes → November 26, 2025: Free"
+            },
+            {
+                stars: "★★★★★",
+                title: "Miracle Case #12 – The Woman Whose Tree of Life Spinal Programming Was Dissolved",
+                category: "MK Ultra Deprogramming",
+                quote: "My spine is mine. Every vertebra belongs to me now.",
+                summary: "Tree of Life spinal mapping — each vertebra a gate to alters. Spinal tree liberation complete. Second scan: all gates closed forever. She stands taller than ever.",
+                tags: ["Tree of Life dissolved", "spinal sovereignty", "backbone reclaimed"],
+                timeline: "Broken spine programming → November 26, 2025: Unbreakable"
+            },
+            {
+                stars: "★★★★★",
+                title: "Miracle Case #13 – The Delta Assassin Who Laid Down His Sword at Fifty-Five",
+                category: "MK Ultra Deprogramming",
+                quote: "The killer inside went to sleep and never woke up.",
+                summary: "Delta assassin programming — blackouts, missions, suicide failsafes. Delta dissolution complete. Second scan: assassin alters gone. He burned his dog tags and cried like a child finally allowed to come home.",
+                tags: ["Delta dissolved", "assassin alters erased", "warrior chooses peace"],
+                timeline: "Decades as weapon → November 26, 2025: Man reclaimed"
+            },
+            {
+                stars: "★★★★★",
+                title: "Miracle Case #14 – The Grandfather Whose MK Ultra Clock Programming Was Stopped at Ninety-Two",
+                category: "MK Ultra Deprogramming",
+                quote: "Time belongs to me again. I have years.",
+                summary: "Grandfather clock time-distortion programming — accelerated aging, missing hours. Chronos reclamation complete. Second scan: clocks stopped. His hands literally look younger.",
+                tags: ["time programming ended", "aging reversed", "years returned"],
+                timeline: "Stolen time → November 26, 2025: Time restored"
+            },
+            {
+                stars: "★★★★★",
+                title: "Miracle Case #15 – The Woman Whose Silence Programming Could No Longer Steal Her Voice",
+                category: "MK Ultra Deprogramming",
+                quote: "I spoke my truth and my throat did not close.",
+                summary: "Silence commands — throat closing when trying to speak truth. Voice reclamation complete. Second scan: silence programming gone. She spoke publicly — voice strong, unbroken.",
+                tags: ["silence commands erased", "voice reclaimed", "truth unleashed"],
+                timeline: "Lifetime muted → November 26, 2025: Roar"
+            },
+            {
+                stars: "★★★★★",
+                title: "Miracle Case #16 – The Collective MK Ultra Deprogramming Across All Patients",
+                category: "MK Ultra Deprogramming",
+                quote: "We remembered who we are. They lost.",
+                summary: "Every patient — young women, old men, mothers, veterans — carried MK Ultra fingerprints. Full deprogramming sweeps across the entire clinic. November 26, 2025: every trace erased from every client. We didn't just heal bodies. We ended their longest experiment.",
+                tags: ["collective liberation", "MK Ultra ended", "all patients free"],
+                timeline: "Decades of control → November 26, 2025: Freedom"
+            },
+            {
+                stars: "★★★★★",
+                title: "Miracle Case #17 – The Woman Whose Coronavirus Sanctuary Was Evicted Forever",
+                category: "Parasite & Viral Purge",
+                quote: "I haven't had a cold in fourteen months. The virus that lived in me is gone.",
+                summary: "Human coronavirus NL63 nesting since childhood — the reason she caught everything. Second scan: complete eradication. She breathes like the air was invented for her.",
+                tags: ["coronavirus erased", "chronic infection gone", "immune fortress"],
+                timeline: "Lifetime resident → November 26, 2025: Evicted"
+            },
+            {
+                stars: "★★★★★",
+                title: "Miracle Case #18 – The Woman Whose Parasite Hotel Was Demolished",
+                category: "Parasite & Viral Purge",
+                quote: "They lived in me for decades. Now the hotel is rubble.",
+                summary: "Anisakis, Haemophilus, multiple worms running an all-inclusive resort. Full eviction complete. She eats sushi in Tokyo without fear.",
+                tags: ["parasite purge", "gut sovereignty", "decades of thieves exiled"],
+                timeline: "Lifetime tenants → November 26, 2025: Demolished"
+            },
+            {
+                stars: "★★★★★",
+                title: "Miracle Case #19 – The Woman Whose HPV Was Erased From Her Cells",
+                category: "Parasite & Viral Purge",
+                quote: "The virus that was writing its name on my future — the ink dried up and the page burned.",
+                summary: "HPV 51 frequencies lurking. Fear of every pap smear. Viral nullification complete. HPV cluster gone forever.",
+                tags: ["HPV erased", "cellular virginity restored", "cervical freedom"],
+                timeline: "Lifetime threat → November 26, 2025: Clean forever"
+            },
+            {
+                stars: "★★★★★",
+                title: "Miracle Case #20 – The Woman Whose Heart Tamponade Vanished at Seventy-Five",
+                category: "Heart & Circulation",
+                quote: "My heart was being crushed. Now it dances.",
+                summary: "Cardiac tamponade, pericardial effusion — fluid squeezing her heart. Second scan: death grip gone. She dances at weddings again.",
+                tags: ["cardiac tamponade erased", "heart rebirth", "pericardial freedom"],
+                timeline: "Silent killer → November 26, 2025: Dancing heart"
+            },
+            {
+                stars: "★★★★★",
+                title: "Miracle Case #21 – The Man Whose Aneurysms Were Deleted at Ninety-Two",
+                category: "Heart & Circulation",
+                quote: "The bombs in my brain went silent.",
+                summary: "Multiple cerebral aneurysms ticking. Second scan: every aneurysm frequency erased. He splits wood without fear.",
+                tags: ["cerebral aneurysms gone", "brain bombs defused", "decades added"],
+                timeline: "Ticking time bombs → November 26, 2025: Silence"
+            },
+            {
+                stars: "★★★★★",
+                title: "Miracle Case #22 – The Woman Whose Lymphangioleiomyomatosis Vanished",
+                category: "Lungs & Breathing",
+                quote: "My lungs were turning to stone. Now they are wings.",
+                summary: "LAM frequencies roaring — oxygen dependent, stairs impossible. Second scan: scarring gone. She walks miles every morning.",
+                tags: ["LAM erased", "lung rebirth", "oxygen freedom"],
+                timeline: "Death sentence → November 26, 2025: Wings"
+            },
+            {
+                stars: "★★★★★",
+                title: "Miracle Case #23 – The Woman Who Reversed Diabetes After Twenty Years",
+                category: "Physical Reversal",
+                quote: "I ate full-sugar pie and didn't test. For the first time in twenty years.",
+                summary: "Type 2 diabetes — insulin dependent, A1C 9.2, neuropathy. Second scan: every diabetes frequency gone. A1C 5.1, no meds.",
+                tags: ["diabetes reversed", "insulin free", "neuropathy gone"],
+                timeline: "20 years diabetic → November 26, 2025: Non-diabetic"
+            },
+            {
+                stars: "★★★★★",
+                title: "Miracle Case #24 – The Woman Whose Migraines With Aura Vanished After Forty Years",
+                category: "Physical Reversal",
+                quote: "Forty years of lightning and darkness — now only light.",
+                summary: "Migraines with aura, numb arm, vision loss — monthly hell. Second scan: every migraine frequency gone. She watches thunderstorms and dances in rain.",
+                tags: ["migraine erased", "aura gone", "numb arm restored"],
+                timeline: "40 years of hell → November 26, 2025: Only light"
+            },
+            {
+                stars: "★★★★★",
+                title: "Miracle Case #25 – The Entire Clinic's Collective Coronavirus Nests Eradicated",
+                category: "Parasite & Viral Purge",
+                quote: "We were all walking sanctuaries for viruses. Now we are holy ground.",
+                summary: "Every patient — young and old — had coronavirus frequencies nesting. Collective purge complete. Not one patient has had a cold since.",
+                tags: ["collective viral purge", "coronavirus sanctuaries ended", "clinic-wide immunity"],
+                timeline: "Hidden viral nests → November 26, 2025: Holy ground"
+            },
+            {
+                stars: "★★★★★",
+                title: "Miracle Case #26 – The Woman Whose Creativity Was Resurrected From MK Trauma",
+                category: "MK Ultra Deprogramming",
+                quote: "My muse was buried alive by them. She rose screaming color.",
+                summary: "Creativity frequencies crushed by programming. Ignition protocol run. Now she paints daily, first gallery show at fifty-six.",
+                tags: ["creativity restored", "muse resurrected", "art after trauma"],
+                timeline: "Buried muse → November 26, 2025: Renaissance"
+            },
+            {
+                stars: "★★★★★",
+                title: "Miracle Case #27 – The Man Whose Military Delta Programming Dissolved at Fifty-Five",
+                category: "MK Ultra Deprogramming",
+                quote: "The killer inside went to sleep and never woke up.",
+                summary: "Delta assassin alters active. Full dissolution. He burned his dog tags and chose peace.",
+                tags: ["Delta erased", "military programming ended", "peace chosen"],
+                timeline: "Weaponized → November 26, 2025: Free man"
+            },
+            {
+                stars: "★★★★★",
+                title: "Miracle Case #28 – The Woman Whose Thyroid Was Resurrected From Hashimoto's Grave",
+                category: "Hormone & Energy",
+                quote: "My thyroid was dead. Now it's on fire.",
+                summary: "Hashimoto's for decades — weight gain, fog, cold. Full thyroid resurrection. Metabolism roaring, leaner than her thirties.",
+                tags: ["Hashimoto's reversed", "thyroid reborn", "metabolic fire"],
+                timeline: "Dead thyroid → November 26, 2025: Goddess fire"
+            },
+            {
+                stars: "★★★★★",
+                title: "Miracle Case #29 – The Woman Whose Follicles Were Resurrected After Chemo Baldness",
+                category: "Physical Reversal",
+                quote: "I was bald from chemo. Now I have mermaid hair at fifty-six.",
+                summary: "Chemo baldness, then thinning — accepted it was permanent. Follicle resurrection complete. Thick, long, shining hair.",
+                tags: ["chemo hair regrown", "follicles reborn", "mermaid hair"],
+                timeline: "Bald → November 26, 2025: Crowned"
+            },
+            {
+                stars: "★★★★★",
+                title: "Miracle Case #30 – The Entire Clinic's Collective MK Ultra Deprogramming",
+                category: "MK Ultra Deprogramming",
+                quote: "We were all their experiments. Now we are the proof they failed.",
+                summary: "Every patient carried MK Ultra residue. Full clinic-wide deprogramming sweeps. November 26, 2025: every trace erased from every soul. We are awake. We are free. We are the revolution.",
+                tags: ["collective MK Ultra liberation", "all patients sovereign", "the proof"],
+                timeline: "Generations stolen → November 26, 2025: Revolution complete"
+            }
+        ];
+
+        const gallery = document.getElementById('gallery');
+        const modalOverlay = document.getElementById('modalOverlay');
+        const searchBox = document.getElementById('searchBox');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const shuffleBtn = document.getElementById('shuffle-btn');
+
+        function renderCards(data) {
+            gallery.innerHTML = '';
+            data.forEach(c => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <div class="card-stars">${c.stars}</div>
+                    <div class="card-category">${c.category}</div>
+                    <div class="card-title">${c.title}</div>
+                    <p class="card-quote">${c.quote}</p>
+                    <div class="card-timeline">✦ ${c.timeline}</div>
+                `;
+                card.addEventListener('click', () => openModal(c));
+                gallery.appendChild(card);
+            });
+        }
+        
+        function openModal(c) {
+            document.getElementById('modalStars').textContent = c.stars;
+            document.getElementById('modalTitle').textContent = c.title;
+            document.getElementById('modalCategory').textContent = c.category;
+            document.getElementById('modalQuote').textContent = c.quote;
+            document.getElementById('modalSummary').textContent = c.summary;
+            document.getElementById('modalTags').innerHTML = c.tags.map(t => `<span class="modal-tag">${t}</span>`).join('');
+            modalOverlay.classList.add('active');
+        }
+        
+        document.getElementById('modalClose').addEventListener('click', () => {
+            modalOverlay.classList.remove('active');
+        });
+        
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) modalOverlay.classList.remove('active');
+        });
+        
+        searchBox.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            const filtered = cases.filter(c => 
+                c.title.toLowerCase().includes(term) ||
+                c.quote.toLowerCase().includes(term) ||
+                c.summary.toLowerCase().includes(term) ||
+                c.category.toLowerCase().includes(term) ||
+                c.tags.some(t => t.toLowerCase().includes(term))
+            );
+            renderCards(filtered);
+        });
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.dataset.filter;
+                const filtered = filter === 'all' ? cases : cases.filter(c => c.category === filter);
+                renderCards(filtered);
+            });
+        });
+        
+        shuffleBtn.addEventListener('click', () => {
+            const randomCase = cases[Math.floor(Math.random() * cases.length)];
+            openModal(randomCase);
+        });
+        
+        // Initial render
+        renderCards(cases);
+    </script>
+</body>
+</html>
