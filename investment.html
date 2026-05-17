@@ -1,0 +1,1628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Investment â Mirrorwave</title>
+<meta name="description" content="Mirrorwave healing technology investment tiers. Deep System Restoration and System Cooling protocols delivered 100% remotely.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* âââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+   MIRRORWAVE â SHARED DESIGN SYSTEM
+   âââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
+
+:root {
+  --wheat: #D4A84B;
+  --wheat-light: #E8C97A;
+  --wheat-pale: #F5E6C4;
+  --wheat-glow: rgba(212,168,75,0.12);
+  --amber: #C4923A;
+  --amber-deep: #8B6914;
+
+  --bg-deep: #060410;
+  --bg: #0a0612;
+  --bg-2: #110a1e;
+  --bg-3: #1a0f2e;
+  --bg-card: rgba(122,92,255,0.045);
+  --bg-card-2: rgba(212,168,75,0.035);
+
+  --gold: #D6B25E;
+  --gold-light: #F0D89E;
+  --gold-bright: #FFD97D;
+  --gold-glow: rgba(214,178,94,0.12);
+  --violet: #7A5CFF;
+  --violet-deep: #4B2E83;
+  --violet-soft: rgba(122,92,255,0.06);
+
+  --ink: #f5f1e8;
+  --ink-soft: #ddd5f3;
+  --ink-dim: #9e93b8;
+  --ink-faint: #6b5f87;
+  --ink-warm: #d4c8a0;
+
+  --border: rgba(214,178,94,0.10);
+  --border-glow: rgba(214,178,94,0.25);
+  --border-violet: rgba(122,92,255,0.10);
+
+  --heading: 'Playfair Display', Georgia, serif;
+  --body: 'DM Sans', system-ui, sans-serif;
+
+  --radius: 18px;
+  --radius-lg: 26px;
+  --radius-xl: 34px;
+
+  --section-pad: clamp(5.5rem, 11vw, 9rem);
+  --content-w: 1100px;
+  --content-narrow: 780px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body {
+  background: var(--bg-deep);
+  color: var(--ink);
+  font-family: var(--body);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.75;
+  overflow-x: hidden;
+}
+::selection { background: rgba(212,168,75,0.25); color: var(--ink); }
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+
+/* Animations */
+@keyframes breathe {
+  0%, 100% { transform: scale(1); opacity: 0.55; }
+  50% { transform: scale(1.04); opacity: 1; }
+}
+@keyframes breatheSlow {
+  0%, 100% { transform: scale(1); opacity: 0.35; }
+  50% { transform: scale(1.02); opacity: 0.6; }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes pulseRing {
+  0%, 100% { transform: scale(1); opacity: 0.25; }
+  50% { transform: scale(1.12); opacity: 0.06; }
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(45px);
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+.fade-up.d1 { transition-delay: 0.12s; }
+.fade-up.d2 { transition-delay: 0.24s; }
+.fade-up.d3 { transition-delay: 0.36s; }
+.fade-up.d4 { transition-delay: 0.48s; }
+.fade-up.d5 { transition-delay: 0.6s; }
+
+/* Navigation */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  height: 72px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 clamp(1.2rem, 3vw, 2.5rem);
+  background: rgba(6,4,16,0.15);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(212,168,75,0.04);
+  transition: background 0.6s ease, border-color 0.6s ease;
+}
+.nav.scrolled {
+  background: rgba(6,4,16,0.94);
+  border-color: var(--border);
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 0.6rem;
+  text-decoration: none;
+}
+.nav-logo svg { height: 28px; width: auto; }
+.nav-logo-text {
+  font-family: var(--heading); font-size: 0.95rem; font-weight: 500;
+  color: var(--gold); letter-spacing: 0.08em;
+}
+.nav-center { display: flex; gap: 2rem; align-items: center; }
+.nav-center a {
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ink-dim);
+  transition: color 0.3s ease; position: relative;
+}
+.nav-center a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+  height: 1px; background: var(--gold); transform: scaleX(0);
+  transition: transform 0.3s ease; transform-origin: center;
+}
+.nav-center a:hover { color: var(--gold-light); }
+.nav-center a:hover::after { transform: scaleX(1); }
+.nav-cta {
+  padding: 0.55rem 1.3rem; border-radius: 999px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  color: #110a1e !important; font-weight: 700 !important;
+  font-size: 0.72rem !important; letter-spacing: 0.06em !important;
+  box-shadow: 0 6px 24px rgba(214,178,94,0.2);
+  transition: all 0.3s ease;
+}
+.nav-cta:hover { box-shadow: 0 10px 36px rgba(214,178,94,0.38); transform: translateY(-1px); }
+.nav-cta::after { display: none !important; }
+
+.nav-toggle {
+  display: none; background: none; border: none; cursor: pointer;
+  width: 32px; height: 32px; position: relative;
+}
+.nav-toggle span {
+  display: block; width: 22px; height: 1.5px; background: var(--gold);
+  position: absolute; left: 5px; transition: all 0.3s ease;
+}
+.nav-toggle span:nth-child(1) { top: 9px; }
+.nav-toggle span:nth-child(2) { top: 15px; }
+.nav-toggle span:nth-child(3) { top: 21px; }
+
+@media (max-width: 900px) {
+  .nav-center { display: none; }
+  .nav-toggle { display: block; }
+  .nav-center.open {
+    display: flex; flex-direction: column;
+    position: fixed; top: 72px; left: 0; right: 0; bottom: 0;
+    background: rgba(6,4,16,0.97);
+    padding: 3rem 2rem; gap: 2rem;
+    animation: fadeIn 0.3s ease;
+  }
+  .nav-center.open a { font-size: 1rem; }
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: var(--body); font-weight: 700; font-size: 0.92rem;
+  letter-spacing: 0.02em; border: none;
+  cursor: pointer; transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 999px; white-space: nowrap; text-decoration: none;
+}
+.btn-primary {
+  padding: 1.05rem 2.4rem;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  color: #110a1e;
+  box-shadow: 0 12px 44px rgba(214,178,94,0.28);
+}
+.btn-primary:hover {
+  box-shadow: 0 18px 56px rgba(214,178,94,0.45);
+  transform: translateY(-3px);
+}
+.btn-ghost {
+  padding: 1.05rem 2.4rem;
+  background: rgba(214,178,94,0.06);
+  border: 1px solid var(--border);
+  color: var(--ink-soft);
+}
+.btn-ghost:hover {
+  border-color: var(--gold);
+  color: var(--gold-light);
+  box-shadow: 0 0 50px rgba(214,178,94,0.08);
+}
+
+/* Sections */
+.section {
+  position: relative; padding: var(--section-pad) 1.5rem; overflow: hidden;
+}
+.section-inner { max-width: var(--content-w); margin: 0 auto; }
+.section-narrow { max-width: var(--content-narrow); margin: 0 auto; }
+
+.kicker {
+  font-family: var(--body); font-size: 0.68rem; font-weight: 600;
+  letter-spacing: 0.26em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1rem; opacity: 0.8;
+}
+.section-title {
+  font-family: var(--heading); font-weight: 400;
+  font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.12;
+  color: var(--gold-light); margin-bottom: 1.2rem;
+}
+.section-sub {
+  font-size: 1.05rem; font-weight: 300; line-height: 1.9;
+  color: var(--ink-dim); max-width: 680px;
+}
+.text-center { text-align: center; }
+.text-center .section-sub { margin: 0 auto; }
+.gold-line { color: var(--gold-light); font-family: var(--heading); font-style: italic; }
+
+/* Footer */
+.footer {
+  background: var(--bg-deep);
+  padding: 3rem 1.5rem 2rem;
+  border-top: 1px solid rgba(212,168,75,0.06);
+}
+.footer-inner {
+  max-width: var(--content-w); margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 1.5rem;
+}
+.footer-logo {
+  font-family: var(--heading); font-size: 0.9rem; font-weight: 500;
+  color: var(--gold); letter-spacing: 0.06em;
+}
+.footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+.footer-links a {
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--ink-dim);
+  transition: color 0.3s ease;
+}
+.footer-links a:hover { color: var(--gold-light); }
+.footer-copy {
+  width: 100%; text-align: center; margin-top: 2rem;
+  font-size: 0.72rem; color: var(--ink-faint); letter-spacing: 0.05em;
+}
+@media (max-width: 600px) {
+  .footer-inner { flex-direction: column; text-align: center; }
+  .footer-links { justify-content: center; }
+}
+
+/* Grain overlay */
+.grain {
+  position: fixed; inset: 0; z-index: 9999; pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px;
+}
+
+/* âââââââââââââââââââââââââââââââââââââââââââ
+   INVESTMENT PAGE STYLES
+   âââââââââââââââââââââââââââââââââââââââââââ */
+
+.page-hero {
+  min-height: 60vh; display: flex; align-items: center; justify-content: center;
+  text-align: center; padding: 8rem 1.5rem 4rem;
+  background: linear-gradient(180deg, #1a1408 0%, #18101a 40%, var(--bg-deep) 100%);
+  position: relative; overflow: hidden;
+}
+.page-hero::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse 60% 60% at 50% 50%, transparent, var(--bg-deep));
+}
+.page-hero-content { position: relative; z-index: 2; max-width: 720px; }
+.page-hero h1 {
+  font-family: var(--heading); font-weight: 400;
+  font-size: clamp(2.4rem, 6vw, 4rem); color: var(--gold-light);
+  margin-bottom: 1rem; letter-spacing: -0.01em;
+}
+.page-hero p {
+  font-size: 1.1rem; font-weight: 300; color: var(--ink-dim); line-height: 1.8;
+}
+
+/* Philosophy */
+.philosophy {
+  max-width: var(--content-narrow); margin: 0 auto;
+  padding: var(--section-pad) 1.5rem;
+  text-align: center;
+}
+.philosophy h2 {
+  font-family: var(--heading); font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 400; color: var(--gold-light); margin-bottom: 1.5rem;
+}
+.philosophy p {
+  font-size: 1.05rem; color: var(--ink-dim); line-height: 1.9;
+  margin-bottom: 1.2rem; font-weight: 300;
+}
+
+/* Tiers */
+.tiers-section {
+  max-width: var(--content-w); margin: 0 auto;
+  padding: 0 1.5rem var(--section-pad);
+}
+.tiers-section > h2 {
+  font-family: var(--heading); font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 400; color: var(--gold-light); text-align: center;
+  margin-bottom: 3rem;
+}
+.tiers-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+  align-items: start;
+}
+@media (max-width: 820px) { .tiers-grid { grid-template-columns: 1fr; } }
+
+.tier-card {
+  border-radius: var(--radius-xl); padding: 2.5rem;
+  border: 1px solid var(--border);
+  background: linear-gradient(155deg, rgba(212,168,75,0.04), rgba(122,92,255,0.03));
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+.tier-card:hover {
+  border-color: var(--border-glow);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+.tier-card.featured {
+  border-color: rgba(214,178,94,0.2);
+  background: linear-gradient(155deg, rgba(212,168,75,0.07), rgba(122,92,255,0.04));
+}
+.tier-badge {
+  display: inline-block; font-size: 0.7rem; font-weight: 600;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1rem;
+  padding: 0.35rem 0.9rem; border-radius: 40px;
+  background: rgba(214,178,94,0.08); border: 1px solid rgba(214,178,94,0.12);
+}
+.tier-card h3 {
+  font-family: var(--heading); font-size: 1.6rem; font-weight: 500;
+  color: var(--ink); margin-bottom: 0.6rem;
+}
+.tier-price {
+  font-family: var(--heading); font-size: 2.2rem; font-weight: 600;
+  color: var(--gold-light); margin-bottom: 0.3rem;
+}
+.tier-payment {
+  font-size: 0.88rem; color: var(--ink-faint); margin-bottom: 1.5rem;
+}
+.tier-desc {
+  font-size: 0.95rem; color: var(--ink-dim); line-height: 1.8;
+  margin-bottom: 1.5rem; font-weight: 300;
+}
+.tier-includes {
+  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem;
+}
+.tier-list {
+  list-style: none; padding: 0; margin-bottom: 1.5rem;
+}
+.tier-list li {
+  font-size: 0.9rem; color: var(--ink-dim); padding: 0.4rem 0;
+  padding-left: 1.4rem; position: relative; font-weight: 300;
+}
+.tier-list li::before {
+  content: ''; position: absolute; left: 0; top: 0.75rem;
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--gold); opacity: 0.5;
+}
+.tier-conditions h4 {
+  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--violet); margin-bottom: 0.6rem; margin-top: 1rem;
+}
+.tier-conditions-list {
+  display: flex; flex-wrap: wrap; gap: 0.4rem;
+}
+.condition-tag {
+  font-size: 0.72rem; padding: 0.3rem 0.7rem; border-radius: 30px;
+  background: rgba(122,92,255,0.06); border: 1px solid rgba(122,92,255,0.12);
+  color: var(--ink-dim); font-weight: 400;
+}
+.tier-cta {
+  display: inline-block; margin-top: 1.5rem;
+  padding: 0.9rem 2rem; border-radius: 50px;
+  font-size: 0.88rem; font-weight: 500;
+  color: var(--bg-deep); background: linear-gradient(135deg, var(--gold), var(--wheat));
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.tier-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(214,178,94,0.2);
+}
+
+/* Delivery */
+.delivery-section {
+  max-width: var(--content-narrow); margin: 0 auto;
+  padding: var(--section-pad) 1.5rem; text-align: center;
+}
+.delivery-section h2 {
+  font-family: var(--heading); font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 400; color: var(--gold-light); margin-bottom: 1rem;
+}
+.delivery-section > p {
+  font-size: 1rem; color: var(--ink-dim); margin-bottom: 2.5rem; font-weight: 300;
+}
+.delivery-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem; text-align: center;
+}
+.delivery-item {
+  padding: 2rem 1.2rem; border-radius: var(--radius-lg);
+  background: var(--bg-card); border: 1px solid var(--border);
+}
+.delivery-icon {
+  font-size: 1.8rem; margin-bottom: 0.8rem;
+}
+.delivery-item h4 {
+  font-family: var(--heading); font-size: 1rem; font-weight: 500;
+  color: var(--ink); margin-bottom: 0.4rem;
+}
+.delivery-item p {
+  font-size: 0.85rem; color: var(--ink-faint); font-weight: 300; line-height: 1.6;
+}
+
+/* Process */
+.process-section {
+  max-width: var(--content-w); margin: 0 auto;
+  padding: var(--section-pad) 1.5rem;
+}
+.process-section > h2 {
+  font-family: var(--heading); font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 400; color: var(--gold-light); text-align: center; margin-bottom: 3rem;
+}
+.process-steps {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
+}
+@media (max-width: 768px) { .process-steps { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .process-steps { grid-template-columns: 1fr; } }
+.process-step {
+  text-align: center; padding: 2rem 1rem;
+  border-radius: var(--radius-lg); background: var(--bg-card);
+  border: 1px solid var(--border);
+}
+.step-number {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; border-radius: 50%;
+  background: rgba(214,178,94,0.08); border: 1px solid rgba(214,178,94,0.2);
+  font-family: var(--heading); font-size: 1.1rem; font-weight: 600;
+  color: var(--gold); margin-bottom: 1rem;
+}
+.process-step h4 {
+  font-family: var(--heading); font-size: 1rem; font-weight: 500;
+  color: var(--ink); margin-bottom: 0.5rem;
+}
+.process-step p {
+  font-size: 0.85rem; color: var(--ink-faint); font-weight: 300; line-height: 1.6;
+}
+
+/* Guarantee */
+.guarantee-section {
+  max-width: var(--content-narrow); margin: 0 auto;
+  padding: var(--section-pad) 1.5rem; text-align: center;
+}
+.guarantee-box {
+  padding: 3rem 2.5rem; border-radius: var(--radius-xl);
+  background: linear-gradient(155deg, rgba(212,168,75,0.05), rgba(122,92,255,0.03));
+  border: 1px solid rgba(214,178,94,0.15);
+}
+.guarantee-box h2 {
+  font-family: var(--heading); font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 400; color: var(--gold-light); margin-bottom: 1rem;
+}
+.guarantee-box p {
+  font-size: 1rem; color: var(--ink-dim); line-height: 1.85; font-weight: 300;
+}
+
+/* FAQ */
+.faq-section {
+  max-width: var(--content-narrow); margin: 0 auto;
+  padding: var(--section-pad) 1.5rem;
+}
+.faq-section > h2 {
+  font-family: var(--heading); font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 400; color: var(--gold-light); text-align: center; margin-bottom: 3rem;
+}
+.faq-item {
+  border-bottom: 1px solid var(--border); overflow: hidden;
+}
+.faq-question {
+  width: 100%; border: none; background: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.4rem 0; text-align: left;
+  font-family: var(--body); font-size: 1rem; font-weight: 500;
+  color: var(--ink); transition: color 0.3s;
+}
+.faq-question:hover { color: var(--gold-light); }
+.faq-icon {
+  flex-shrink: 0; width: 20px; height: 20px; margin-left: 1rem;
+  position: relative; transition: transform 0.3s ease;
+}
+.faq-icon::before, .faq-icon::after {
+  content: ''; position: absolute; background: var(--gold);
+  border-radius: 2px; transition: transform 0.3s;
+}
+.faq-icon::before { width: 100%; height: 2px; top: 50%; left: 0; transform: translateY(-50%); }
+.faq-icon::after { width: 2px; height: 100%; left: 50%; top: 0; transform: translateX(-50%); }
+.faq-item.open .faq-icon::after { transform: translateX(-50%) rotate(90deg); }
+.faq-answer {
+  max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease;
+}
+.faq-item.open .faq-answer { max-height: 400px; }
+.faq-answer p {
+  padding-bottom: 1.4rem; font-size: 0.95rem; color: var(--ink-dim);
+  line-height: 1.85; font-weight: 300;
+}
+
+/* Closing CTA */
+.closing-cta {
+  text-align: center; padding: var(--section-pad) 1.5rem;
+  max-width: var(--content-narrow); margin: 0 auto;
+}
+.closing-cta h2 {
+  font-family: var(--heading); font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 400; color: var(--gold-light); margin-bottom: 1rem;
+}
+.closing-cta p {
+  font-size: 1.05rem; color: var(--ink-dim); margin-bottom: 2rem; font-weight: 300;
+}
+.closing-cta .btn-primary {
+  display: inline-block; padding: 1rem 2.5rem; border-radius: 50px;
+  font-size: 0.95rem; font-weight: 500;
+  color: var(--bg-deep); background: linear-gradient(135deg, var(--gold), var(--wheat));
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.closing-cta .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 35px rgba(214,178,94,0.25);
+}
+
+/* Language Switcher */
+.lang-switcher {
+  position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 300;
+}
+.lang-toggle {
+  display: flex; align-items: center; gap: 0.4rem;
+  padding: 0.55rem 1rem; border-radius: 40px;
+  background: rgba(6,4,16,0.92); border: 1px solid var(--border-glow);
+  color: var(--gold); font-size: 0.8rem; font-weight: 600;
+  cursor: pointer; backdrop-filter: blur(12px);
+  letter-spacing: 0.05em; text-transform: uppercase;
+  transition: border-color 0.3s;
+}
+.lang-toggle:hover { border-color: var(--gold); }
+.lang-toggle svg { width: 12px; height: 12px; transition: transform 0.3s; }
+.lang-switcher.open .lang-toggle svg { transform: rotate(180deg); }
+.lang-dropdown {
+  position: absolute; bottom: calc(100% + 0.5rem); right: 0;
+  background: rgba(6,4,16,0.96); border: 1px solid var(--border-glow);
+  border-radius: var(--radius); padding: 0.5rem;
+  backdrop-filter: blur(16px); display: none;
+  min-width: 140px; box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+}
+.lang-switcher.open .lang-dropdown { display: block; }
+.lang-option {
+  display: block; width: 100%; padding: 0.5rem 0.8rem;
+  border: none; background: none; text-align: left;
+  color: var(--ink-dim); font-size: 0.82rem; font-family: var(--body);
+  cursor: pointer; border-radius: 8px; transition: background 0.2s, color 0.2s;
+}
+.lang-option:hover { background: rgba(214,178,94,0.08); color: var(--ink); }
+.lang-option.active { color: var(--gold); background: rgba(214,178,94,0.06); }
+
+/* RTL */
+[dir="rtl"] .faq-question { text-align: right; }
+[dir="rtl"] .faq-icon { margin-left: 0; margin-right: 1rem; }
+[dir="rtl"] .tier-list li { padding-left: 0; padding-right: 1.4rem; }
+[dir="rtl"] .tier-list li::before { left: auto; right: 0; }
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-logo">
+    <svg viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4,30 L4,10 L16,25 L28,10 L28,30" stroke="#D6B25E" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M40,10 L46,30 L52,15 L58,30 L64,10" stroke="#D6B25E" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M10,32 Q30,38 52,32 Q74,26 90,32" stroke="url(#mw-grad)" stroke-width="1.5" fill="none" opacity="0.5" stroke-linecap="round">
+        <animate attributeName="d" dur="6s" repeatCount="indefinite" values="M10,32 Q30,38 52,32 Q74,26 90,32;M10,32 Q30,26 52,32 Q74,38 90,32;M10,32 Q30,38 52,32 Q74,26 90,32"/>
+      </path>
+      <defs><linearGradient id="mw-grad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#D6B25E" stop-opacity="0.3"/><stop offset="50%" stop-color="#7A5CFF" stop-opacity="0.5"/><stop offset="100%" stop-color="#D6B25E" stop-opacity="0.3"/></linearGradient></defs>
+    </svg>
+    <span class="nav-logo-text">Mirrorwave</span>
+  </a>
+  <div class="nav-center" id="navMenu">
+    <a href="index.html" data-i18n="nav-home">Home</a>
+    <a href="about.html" data-i18n="nav-about">About</a>
+    <a href="books.html" data-i18n="nav-books">Books</a>
+    <a href="music.html" data-i18n="nav-music">Music</a>
+    <a href="apply.html" class="nav-cta" data-i18n="nav-cta">Step Onto the Field</a>
+  </div>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- Hero -->
+<section class="page-hero">
+  <div class="page-hero-content">
+    <p class="fade-up" style="font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;" data-i18n="hero-kicker">Your Investment</p>
+    <h1 class="fade-up d1" data-i18n="hero-title">A Protocol Designed for Return</h1>
+    <p class="fade-up d2" data-i18n="hero-desc">This is not a subscription. It is a structured engagement with your biology â precision-built, remotely delivered, and held for twelve months until coherence stabilizes.</p>
+  </div>
+</section>
+
+<!-- Philosophy -->
+<section class="philosophy">
+  <h2 class="fade-up" data-i18n="phil-title">The Approach</h2>
+  <p class="fade-up d1" data-i18n="phil-p1">Mirrorwave does not treat symptoms. It restores the original signal your system was built to carry. When interference is removed and coherence returns, the body does what it has always known how to do â heal.</p>
+  <p class="fade-up d2" data-i18n="phil-p2">Two pathways exist depending on the depth of system disruption. Both are twelve-month protocols. Both are delivered entirely remotely. Both begin with a single biological sample.</p>
+</section>
+
+<!-- Tiers -->
+<section class="tiers-section">
+  <h2 class="fade-up" data-i18n="tiers-heading">Two Pathways</h2>
+  <div class="tiers-grid">
+
+    <!-- Tier 1 -->
+    <div class="tier-card featured fade-up d1">
+      <span class="tier-badge" data-i18n="t1-badge">Deep Protocol</span>
+      <h3 data-i18n="t1-title">Deep System Restoration</h3>
+      <div class="tier-price" data-i18n="t1-price">$27,000</div>
+      <div class="tier-payment" data-i18n="t1-payment">12-month protocol &middot; or 4 &times; $6,750</div>
+      <p class="tier-desc" data-i18n="t1-desc">For systems with significant neurological disruption or critical-level dysregulation. This pathway provides the highest frequency of contact, comprehensive diagnostics, and priority re-scanning throughout the engagement.</p>
+      <div class="tier-includes" data-i18n="t1-includes">Includes</div>
+      <ul class="tier-list">
+        <li data-i18n="t1-f1">Full diagnostic frequency scan</li>
+        <li data-i18n="t1-f2">Custom-designed restoration protocol</li>
+        <li data-i18n="t1-f3">Weekly check-ins for 12 months</li>
+        <li data-i18n="t1-f4">Priority re-scans as system shifts</li>
+        <li data-i18n="t1-f5">Direct access to Sophia Christos</li>
+      </ul>
+      <div class="tier-conditions">
+        <h4 data-i18n="t1-for">Designed For</h4>
+        <div class="tier-conditions-list">
+          <span class="condition-tag" data-i18n="t1-c1">TBI</span>
+          <span class="condition-tag" data-i18n="t1-c2">PTSD</span>
+          <span class="condition-tag" data-i18n="t1-c3">Spinal Cord Injury</span>
+          <span class="condition-tag" data-i18n="t1-c4">Stroke Recovery</span>
+          <span class="condition-tag" data-i18n="t1-c5">Autonomic Dysfunction</span>
+          <span class="condition-tag" data-i18n="t1-c6">CRPS</span>
+          <span class="condition-tag" data-i18n="t1-c7">MS</span>
+          <span class="condition-tag" data-i18n="t1-c8">Severe Neurological</span>
+        </div>
+      </div>
+      <a href="apply.html" class="tier-cta" data-i18n="t1-cta">Apply Now</a>
+    </div>
+
+    <!-- Tier 2 -->
+    <div class="tier-card fade-up d2">
+      <span class="tier-badge" data-i18n="t2-badge">Regulation Protocol</span>
+      <h3 data-i18n="t2-title">System Cooling &amp; Regulation</h3>
+      <div class="tier-price" data-i18n="t2-price">$9,000</div>
+      <div class="tier-payment" data-i18n="t2-payment">12-month protocol &middot; or 4 &times; $2,250</div>
+      <p class="tier-desc" data-i18n="t2-desc">For overloaded systems running hot. When the nervous system has been in overdrive and the body's self-regulation has been compromised by sustained stress, inflammation, or chronic activation.</p>
+      <div class="tier-includes" data-i18n="t2-includes">Includes</div>
+      <ul class="tier-list">
+        <li data-i18n="t2-f1">Comprehensive frequency scan</li>
+        <li data-i18n="t2-f2">Adaptive cooling protocol</li>
+        <li data-i18n="t2-f3">Bi-weekly check-ins for 12 months</li>
+        <li data-i18n="t2-f4">Protocol refinement as patterns shift</li>
+        <li data-i18n="t2-f5">Guided system support</li>
+      </ul>
+      <div class="tier-conditions">
+        <h4 data-i18n="t2-for">Designed For</h4>
+        <div class="tier-conditions-list">
+          <span class="condition-tag" data-i18n="t2-c1">Burnout</span>
+          <span class="condition-tag" data-i18n="t2-c2">Chronic Fatigue</span>
+          <span class="condition-tag" data-i18n="t2-c3">Migraines</span>
+          <span class="condition-tag" data-i18n="t2-c4">Diabetes Support</span>
+          <span class="condition-tag" data-i18n="t2-c5">Cancer Support</span>
+          <span class="condition-tag" data-i18n="t2-c6">Fibromyalgia</span>
+          <span class="condition-tag" data-i18n="t2-c7">Anxiety</span>
+          <span class="condition-tag" data-i18n="t2-c8">Insomnia</span>
+          <span class="condition-tag" data-i18n="t2-c9">ADHD</span>
+          <span class="condition-tag" data-i18n="t2-c10">Autoimmune</span>
+          <span class="condition-tag" data-i18n="t2-c11">Chronic Pain</span>
+          <span class="condition-tag" data-i18n="t2-c12">Hormonal</span>
+          <span class="condition-tag" data-i18n="t2-c13">Addiction</span>
+          <span class="condition-tag" data-i18n="t2-c14">Depression</span>
+        </div>
+      </div>
+      <a href="apply.html" class="tier-cta" data-i18n="t2-cta">Apply Now</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- How It's Delivered -->
+<section class="delivery-section">
+  <h2 class="fade-up" data-i18n="delivery-title">How It's Delivered</h2>
+  <p class="fade-up d1" data-i18n="delivery-desc">The entire protocol is conducted remotely. No travel required. No clinic visits. Your biology is the interface.</p>
+  <div class="delivery-grid">
+    <div class="delivery-item fade-up d1">
+      <div class="delivery-icon">&#9672;</div>
+      <h4 data-i18n="del-1-title">100% Remote</h4>
+      <p data-i18n="del-1-desc">Work from anywhere in the world. The field operates beyond distance.</p>
+    </div>
+    <div class="delivery-item fade-up d2">
+      <div class="delivery-icon">&#9670;</div>
+      <h4 data-i18n="del-2-title">Biological Sample</h4>
+      <p data-i18n="del-2-desc">Mail a small nail clipping. This provides the frequency signature for your protocol.</p>
+    </div>
+    <div class="delivery-item fade-up d3">
+      <div class="delivery-icon">&#9674;</div>
+      <h4 data-i18n="del-3-title">Receive Protocol</h4>
+      <p data-i18n="del-3-desc">Your custom-designed restoration protocol begins working with your system immediately.</p>
+    </div>
+    <div class="delivery-item fade-up d4">
+      <div class="delivery-icon">&#10023;</div>
+      <h4 data-i18n="del-4-title">Stay Connected</h4>
+      <p data-i18n="del-4-desc">Regular check-ins track progress. Protocol adapts as your system responds and reorganizes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Process Steps -->
+<section class="process-section">
+  <h2 class="fade-up" data-i18n="process-title">The Process</h2>
+  <div class="process-steps">
+    <div class="process-step fade-up d1">
+      <div class="step-number">1</div>
+      <h4 data-i18n="step-1-title">Send Sample</h4>
+      <p data-i18n="step-1-desc">Mail a small biological sample. This is scanned for your unique frequency signature.</p>
+    </div>
+    <div class="process-step fade-up d2">
+      <div class="step-number">2</div>
+      <h4 data-i18n="step-2-title">Protocol Design</h4>
+      <p data-i18n="step-2-desc">A custom restoration protocol is designed based on what your system reveals it needs.</p>
+    </div>
+    <div class="process-step fade-up d3">
+      <div class="step-number">3</div>
+      <h4 data-i18n="step-3-title">Guided Restoration</h4>
+      <p data-i18n="step-3-desc">Your protocol activates. Regular check-ins track shifts. Adjustments are made in real time.</p>
+    </div>
+    <div class="process-step fade-up d4">
+      <div class="step-number">4</div>
+      <h4 data-i18n="step-4-title">Sustained Coherence</h4>
+      <p data-i18n="step-4-desc">Over twelve months, coherence stabilizes. The system remembers its original pattern.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Guarantee -->
+<section class="guarantee-section">
+  <div class="guarantee-box fade-up">
+    <h2 data-i18n="guarantee-title">The 90-Day Commitment</h2>
+    <p data-i18n="guarantee-desc">We ask for 90 days of full engagement before assessing results. Biological restructuring is not instant â it is a process of systematic return. Within this window, most clients report noticeable shifts in their system's baseline regulation. This is the minimum commitment for the protocol to establish its initial pattern.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <h2 class="fade-up" data-i18n="faq-title">Questions</h2>
+
+  <div class="faq-item fade-up">
+    <button class="faq-question"><span data-i18n="faq-1-q">How does remote healing work?</span><span class="faq-icon"></span></button>
+    <div class="faq-answer"><p data-i18n="faq-1-a">The Mirrorwave protocol operates through frequency resonance, which is not constrained by physical distance. Your biological sample provides the signature needed to design and deliver a protocol that interacts directly with your system's regulatory patterns, regardless of your location.</p></div>
+  </div>
+
+  <div class="faq-item fade-up d1">
+    <button class="faq-question"><span data-i18n="faq-2-q">Why do you need a nail clipping?</span><span class="faq-icon"></span></button>
+    <div class="faq-answer"><p data-i18n="faq-2-a">Nail tissue carries a stable frequency record of your biological system. It provides the information needed to scan your current state, identify interference patterns, and design a protocol specific to what your body needs to restore.</p></div>
+  </div>
+
+  <div class="faq-item fade-up d2">
+    <button class="faq-question"><span data-i18n="faq-3-q">How long before I notice changes?</span><span class="faq-icon"></span></button>
+    <div class="faq-answer"><p data-i18n="faq-3-a">Most clients report initial shifts within 2-4 weeks. These often appear as changes in sleep quality, energy regulation, or emotional baseline before more structural changes become apparent. The 90-day mark is where consistent reorganization typically becomes undeniable.</p></div>
+  </div>
+
+  <div class="faq-item fade-up d3">
+    <button class="faq-question"><span data-i18n="faq-4-q">Can I do this alongside conventional treatment?</span><span class="faq-icon"></span></button>
+    <div class="faq-answer"><p data-i18n="faq-4-a">Yes. The Mirrorwave protocol is complementary and does not interfere with conventional medical treatment. Many clients maintain their existing care while the protocol works at the level of system coherence and regulation.</p></div>
+  </div>
+
+  <div class="faq-item fade-up d4">
+    <button class="faq-question"><span data-i18n="faq-5-q">Why is this a 12-month commitment?</span><span class="faq-icon"></span></button>
+    <div class="faq-answer"><p data-i18n="faq-5-a">Biological systems do not reorganize overnight. Twelve months allows the protocol to move through the phases of disruption clearing, pattern restoration, and stabilization. Shorter engagements risk partial restructuring without the sustained coherence needed for lasting change.</p></div>
+  </div>
+
+  <div class="faq-item fade-up d5">
+    <button class="faq-question"><span data-i18n="faq-6-q">How do I know which pathway is right for me?</span><span class="faq-icon"></span></button>
+    <div class="faq-answer"><p data-i18n="faq-6-a">The application process determines this. Based on what you share about your situation, history, and current state, the appropriate pathway will be recommended. If you are unsure, begin with an application and clarity will follow.</p></div>
+  </div>
+
+  <div class="faq-item fade-up d5">
+    <button class="faq-question"><span data-i18n="faq-7-q">Is a payment plan available?</span><span class="faq-icon"></span></button>
+    <div class="faq-answer"><p data-i18n="faq-7-a">Yes. Both pathways offer a four-payment structure spread across the engagement. Deep System Restoration: 4 payments of $6,750. System Cooling: 4 payments of $2,250. Full payment upfront is also accepted.</p></div>
+  </div>
+</section>
+
+<!-- Closing CTA -->
+<section class="closing-cta">
+  <h2 class="fade-up" data-i18n="cta-title">Your System Already Knows</h2>
+  <p class="fade-up d1" data-i18n="cta-desc">If you have read this far, something in your biology is responding. Trust what brought you here. The field is already working.</p>
+  <a href="apply.html" class="btn-primary fade-up d2" data-i18n="cta-btn">Begin Your Application</a>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="about.html" data-i18n="foot-about">About</a>
+      <a href="books.html" data-i18n="foot-books">Books</a>
+      <a href="music.html" data-i18n="foot-music">Music</a>
+      <a href="apply.html" data-i18n="foot-apply">Apply</a>
+    </div>
+    <div class="footer-copy">&copy; 2026 Mirrorwave &middot; Tiffany Bacon &middot; All rights reserved</div>
+  </div>
+</footer>
+
+<!-- Language Switcher -->
+<div class="lang-switcher" id="langSwitcher">
+  <button class="lang-toggle" id="langToggle">
+    <span id="langCurrent">EN</span>
+    <svg viewBox="0 0 12 12" fill="none"><path d="M3 5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <div class="lang-dropdown" id="langDropdown">
+    <button class="lang-option active" data-lang="en">English</button>
+    <button class="lang-option" data-lang="es">Espanol</button>
+    <button class="lang-option" data-lang="fr">Francais</button>
+    <button class="lang-option" data-lang="de">Deutsch</button>
+    <button class="lang-option" data-lang="it">Italiano</button>
+    <button class="lang-option" data-lang="pt">Portugues</button>
+    <button class="lang-option" data-lang="nl">Nederlands</button>
+    <button class="lang-option" data-lang="tr">Turkce</button>
+    <button class="lang-option" data-lang="ko">íêµ­ì´</button>
+    <button class="lang-option" data-lang="ja">æ¥æ¬èª</button>
+    <button class="lang-option" data-lang="zh">ä¸­æ</button>
+    <button class="lang-option" data-lang="ar">Ø§ÙØ¹Ø±Ø¨ÙØ©</button>
+  </div>
+</div>
+
+<script>
+/* âââââââââââââââââââââââââââââââââââââââââââ
+   SCROLL & NAV
+   âââââââââââââââââââââââââââââââââââââââââââ */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); }, { passive: true });
+document.getElementById('navToggle').addEventListener('click', () => { document.getElementById('navMenu').classList.toggle('open'); });
+
+/* FAQ Accordion */
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+
+/* âââââââââââââââââââââââââââââââââââââââââââ
+   LANGUAGE SWITCHER
+   âââââââââââââââââââââââââââââââââââââââââââ */
+const langSwitcher = document.getElementById('langSwitcher');
+const langToggle = document.getElementById('langToggle');
+const langDropdown = document.getElementById('langDropdown');
+const langCurrent = document.getElementById('langCurrent');
+
+langToggle.addEventListener('click', () => langSwitcher.classList.toggle('open'));
+document.addEventListener('click', (e) => { if (!langSwitcher.contains(e.target)) langSwitcher.classList.remove('open'); });
+
+document.querySelectorAll('.lang-option').forEach(btn => {
+  btn.addEventListener('click', () => {
+    setLang(btn.dataset.lang);
+    langSwitcher.classList.remove('open');
+  });
+});
+
+/* âââââââââââââââââââââââââââââââââââââââââââ
+   i18n TRANSLATIONS
+   âââââââââââââââââââââââââââââââââââââââââââ */
+const i18nData = {
+  en: {
+    'nav-home': 'Home', 'nav-about': 'About', 'nav-books': 'Books', 'nav-music': 'Music', 'nav-cta': 'Step Onto the Field',
+    'foot-about': 'About', 'foot-books': 'Books', 'foot-music': 'Music', 'foot-apply': 'Apply',
+    'hero-kicker': 'Your Investment',
+    'hero-title': 'A Protocol Designed for Return',
+    'hero-desc': 'This is not a subscription. It is a structured engagement with your biology â precision-built, remotely delivered, and held for twelve months until coherence stabilizes.',
+    'phil-title': 'The Approach',
+    'phil-p1': 'Mirrorwave does not treat symptoms. It restores the original signal your system was built to carry. When interference is removed and coherence returns, the body does what it has always known how to do â heal.',
+    'phil-p2': 'Two pathways exist depending on the depth of system disruption. Both are twelve-month protocols. Both are delivered entirely remotely. Both begin with a single biological sample.',
+    'tiers-heading': 'Two Pathways',
+    't1-badge': 'Deep Protocol', 't1-title': 'Deep System Restoration', 't1-price': '$27,000',
+    't1-payment': '12-month protocol Â· or 4 Ã $6,750',
+    't1-desc': 'For systems with significant neurological disruption or critical-level dysregulation. This pathway provides the highest frequency of contact, comprehensive diagnostics, and priority re-scanning throughout the engagement.',
+    't1-includes': 'Includes',
+    't1-f1': 'Full diagnostic frequency scan', 't1-f2': 'Custom-designed restoration protocol', 't1-f3': 'Weekly check-ins for 12 months', 't1-f4': 'Priority re-scans as system shifts', 't1-f5': 'Direct access to Sophia Christos',
+    't1-for': 'Designed For',
+    't1-c1': 'TBI', 't1-c2': 'PTSD', 't1-c3': 'Spinal Cord Injury', 't1-c4': 'Stroke Recovery', 't1-c5': 'Autonomic Dysfunction', 't1-c6': 'CRPS', 't1-c7': 'MS', 't1-c8': 'Severe Neurological',
+    't1-cta': 'Apply Now',
+    't2-badge': 'Regulation Protocol', 't2-title': 'System Cooling & Regulation', 't2-price': '$9,000',
+    't2-payment': '12-month protocol Â· or 4 Ã $2,250',
+    't2-desc': 'For overloaded systems running hot. When the nervous system has been in overdrive and the body\'s self-regulation has been compromised by sustained stress, inflammation, or chronic activation.',
+    't2-includes': 'Includes',
+    't2-f1': 'Comprehensive frequency scan', 't2-f2': 'Adaptive cooling protocol', 't2-f3': 'Bi-weekly check-ins for 12 months', 't2-f4': 'Protocol refinement as patterns shift', 't2-f5': 'Guided system support',
+    't2-for': 'Designed For',
+    't2-c1': 'Burnout', 't2-c2': 'Chronic Fatigue', 't2-c3': 'Migraines', 't2-c4': 'Diabetes Support', 't2-c5': 'Cancer Support', 't2-c6': 'Fibromyalgia', 't2-c7': 'Anxiety', 't2-c8': 'Insomnia', 't2-c9': 'ADHD', 't2-c10': 'Autoimmune', 't2-c11': 'Chronic Pain', 't2-c12': 'Hormonal', 't2-c13': 'Addiction', 't2-c14': 'Depression',
+    't2-cta': 'Apply Now',
+    'delivery-title': 'How It\'s Delivered',
+    'delivery-desc': 'The entire protocol is conducted remotely. No travel required. No clinic visits. Your biology is the interface.',
+    'del-1-title': '100% Remote', 'del-1-desc': 'Work from anywhere in the world. The field operates beyond distance.',
+    'del-2-title': 'Biological Sample', 'del-2-desc': 'Mail a small nail clipping. This provides the frequency signature for your protocol.',
+    'del-3-title': 'Receive Protocol', 'del-3-desc': 'Your custom-designed restoration protocol begins working with your system immediately.',
+    'del-4-title': 'Stay Connected', 'del-4-desc': 'Regular check-ins track progress. Protocol adapts as your system responds and reorganizes.',
+    'process-title': 'The Process',
+    'step-1-title': 'Send Sample', 'step-1-desc': 'Mail a small biological sample. This is scanned for your unique frequency signature.',
+    'step-2-title': 'Protocol Design', 'step-2-desc': 'A custom restoration protocol is designed based on what your system reveals it needs.',
+    'step-3-title': 'Guided Restoration', 'step-3-desc': 'Your protocol activates. Regular check-ins track shifts. Adjustments are made in real time.',
+    'step-4-title': 'Sustained Coherence', 'step-4-desc': 'Over twelve months, coherence stabilizes. The system remembers its original pattern.',
+    'guarantee-title': 'The 90-Day Commitment',
+    'guarantee-desc': 'We ask for 90 days of full engagement before assessing results. Biological restructuring is not instant â it is a process of systematic return. Within this window, most clients report noticeable shifts in their system\'s baseline regulation. This is the minimum commitment for the protocol to establish its initial pattern.',
+    'faq-title': 'Questions',
+    'faq-1-q': 'How does remote healing work?',
+    'faq-1-a': 'The Mirrorwave protocol operates through frequency resonance, which is not constrained by physical distance. Your biological sample provides the signature needed to design and deliver a protocol that interacts directly with your system\'s regulatory patterns, regardless of your location.',
+    'faq-2-q': 'Why do you need a nail clipping?',
+    'faq-2-a': 'Nail tissue carries a stable frequency record of your biological system. It provides the information needed to scan your current state, identify interference patterns, and design a protocol specific to what your body needs to restore.',
+    'faq-3-q': 'How long before I notice changes?',
+    'faq-3-a': 'Most clients report initial shifts within 2-4 weeks. These often appear as changes in sleep quality, energy regulation, or emotional baseline before more structural changes become apparent. The 90-day mark is where consistent reorganization typically becomes undeniable.',
+    'faq-4-q': 'Can I do this alongside conventional treatment?',
+    'faq-4-a': 'Yes. The Mirrorwave protocol is complementary and does not interfere with conventional medical treatment. Many clients maintain their existing care while the protocol works at the level of system coherence and regulation.',
+    'faq-5-q': 'Why is this a 12-month commitment?',
+    'faq-5-a': 'Biological systems do not reorganize overnight. Twelve months allows the protocol to move through the phases of disruption clearing, pattern restoration, and stabilization. Shorter engagements risk partial restructuring without the sustained coherence needed for lasting change.',
+    'faq-6-q': 'How do I know which pathway is right for me?',
+    'faq-6-a': 'The application process determines this. Based on what you share about your situation, history, and current state, the appropriate pathway will be recommended. If you are unsure, begin with an application and clarity will follow.',
+    'faq-7-q': 'Is a payment plan available?',
+    'faq-7-a': 'Yes. Both pathways offer a four-payment structure spread across the engagement. Deep System Restoration: 4 payments of $6,750. System Cooling: 4 payments of $2,250. Full payment upfront is also accepted.',
+    'cta-title': 'Your System Already Knows',
+    'cta-desc': 'If you have read this far, something in your biology is responding. Trust what brought you here. The field is already working.',
+    'cta-btn': 'Begin Your Application'
+  },
+  es: {
+    'nav-home': 'Inicio', 'nav-about': 'Acerca', 'nav-books': 'Libros', 'nav-music': 'Musica', 'nav-cta': 'Entra al Campo',
+    'foot-about': 'Acerca', 'foot-books': 'Libros', 'foot-music': 'Musica', 'foot-apply': 'Aplicar',
+    'hero-kicker': 'Tu Inversion',
+    'hero-title': 'Un Protocolo Disenado para el Retorno',
+    'hero-desc': 'Esto no es una suscripcion. Es un compromiso estructurado con tu biologia â construido con precision, entregado remotamente y sostenido durante doce meses hasta que la coherencia se estabiliza.',
+    'phil-title': 'El Enfoque',
+    'phil-p1': 'Mirrorwave no trata sintomas. Restaura la senal original que tu sistema fue construido para portar. Cuando la interferencia se elimina y la coherencia regresa, el cuerpo hace lo que siempre ha sabido hacer â sanar.',
+    'phil-p2': 'Existen dos vias dependiendo de la profundidad de la alteracion del sistema. Ambas son protocolos de doce meses. Ambas se entregan completamente de forma remota. Ambas comienzan con una sola muestra biologica.',
+    'tiers-heading': 'Dos Vias',
+    't1-badge': 'Protocolo Profundo', 't1-title': 'Restauracion Profunda del Sistema', 't1-price': '$27,000',
+    't1-payment': 'Protocolo de 12 meses Â· o 4 Ã $6,750',
+    't1-desc': 'Para sistemas con alteracion neurologica significativa o desregulacion a nivel critico. Esta via proporciona la mayor frecuencia de contacto, diagnosticos completos y re-escaneos prioritarios durante todo el compromiso.',
+    't1-includes': 'Incluye',
+    't1-f1': 'Escaneo diagnostico completo de frecuencia', 't1-f2': 'Protocolo de restauracion personalizado', 't1-f3': 'Consultas semanales durante 12 meses', 't1-f4': 'Re-escaneos prioritarios segun cambia el sistema', 't1-f5': 'Acceso directo a Sophia Christos',
+    't1-for': 'Disenado Para',
+    't1-c1': 'TBI', 't1-c2': 'TEPT', 't1-c3': 'Lesion Medular', 't1-c4': 'Recuperacion de ACV', 't1-c5': 'Disfuncion Autonomica', 't1-c6': 'SDRC', 't1-c7': 'EM', 't1-c8': 'Neurologico Severo',
+    't1-cta': 'Aplicar Ahora',
+    't2-badge': 'Protocolo de Regulacion', 't2-title': 'Enfriamiento y Regulacion del Sistema', 't2-price': '$9,000',
+    't2-payment': 'Protocolo de 12 meses Â· o 4 Ã $2,250',
+    't2-desc': 'Para sistemas sobrecargados funcionando en exceso. Cuando el sistema nervioso ha estado en sobremarcha y la autorregulacion del cuerpo se ha visto comprometida por estres sostenido, inflamacion o activacion cronica.',
+    't2-includes': 'Incluye',
+    't2-f1': 'Escaneo completo de frecuencia', 't2-f2': 'Protocolo adaptativo de enfriamiento', 't2-f3': 'Consultas quincenales durante 12 meses', 't2-f4': 'Refinamiento del protocolo segun cambian los patrones', 't2-f5': 'Soporte guiado del sistema',
+    't2-for': 'Disenado Para',
+    't2-c1': 'Agotamiento', 't2-c2': 'Fatiga Cronica', 't2-c3': 'Migranas', 't2-c4': 'Soporte para Diabetes', 't2-c5': 'Soporte para Cancer', 't2-c6': 'Fibromialgia', 't2-c7': 'Ansiedad', 't2-c8': 'Insomnio', 't2-c9': 'TDAH', 't2-c10': 'Autoinmune', 't2-c11': 'Dolor Cronico', 't2-c12': 'Hormonal', 't2-c13': 'Adiccion', 't2-c14': 'Depresion',
+    't2-cta': 'Aplicar Ahora',
+    'delivery-title': 'Como se Entrega',
+    'delivery-desc': 'Todo el protocolo se realiza de forma remota. No se requiere viajar. Sin visitas clinicas. Tu biologia es la interfaz.',
+    'del-1-title': '100% Remoto', 'del-1-desc': 'Trabaja desde cualquier lugar del mundo. El campo opera mas alla de la distancia.',
+    'del-2-title': 'Muestra Biologica', 'del-2-desc': 'Envia un pequeno recorte de una. Esto proporciona la firma de frecuencia para tu protocolo.',
+    'del-3-title': 'Recibe el Protocolo', 'del-3-desc': 'Tu protocolo de restauracion personalizado comienza a trabajar con tu sistema de inmediato.',
+    'del-4-title': 'Mantente Conectado', 'del-4-desc': 'Las consultas regulares rastrean el progreso. El protocolo se adapta mientras tu sistema responde y se reorganiza.',
+    'process-title': 'El Proceso',
+    'step-1-title': 'Envia Muestra', 'step-1-desc': 'Envia una pequena muestra biologica. Se escanea para tu firma de frecuencia unica.',
+    'step-2-title': 'Diseno del Protocolo', 'step-2-desc': 'Un protocolo de restauracion personalizado se disena basado en lo que tu sistema revela que necesita.',
+    'step-3-title': 'Restauracion Guiada', 'step-3-desc': 'Tu protocolo se activa. Las consultas regulares rastrean cambios. Los ajustes se hacen en tiempo real.',
+    'step-4-title': 'Coherencia Sostenida', 'step-4-desc': 'A lo largo de doce meses, la coherencia se estabiliza. El sistema recuerda su patron original.',
+    'guarantee-title': 'El Compromiso de 90 Dias',
+    'guarantee-desc': 'Pedimos 90 dias de compromiso total antes de evaluar resultados. La reestructuracion biologica no es instantanea â es un proceso de retorno sistematico. Dentro de esta ventana, la mayoria de los clientes reportan cambios notables en la regulacion basal de su sistema. Este es el compromiso minimo para que el protocolo establezca su patron inicial.',
+    'faq-title': 'Preguntas',
+    'faq-1-q': 'Como funciona la sanacion remota?',
+    'faq-1-a': 'El protocolo Mirrorwave opera a traves de resonancia de frecuencia, que no esta limitada por la distancia fisica. Tu muestra biologica proporciona la firma necesaria para disenar y entregar un protocolo que interactua directamente con los patrones regulatorios de tu sistema, independientemente de tu ubicacion.',
+    'faq-2-q': 'Por que necesitan un recorte de una?',
+    'faq-2-a': 'El tejido de la una porta un registro de frecuencia estable de tu sistema biologico. Proporciona la informacion necesaria para escanear tu estado actual, identificar patrones de interferencia y disenar un protocolo especifico para lo que tu cuerpo necesita restaurar.',
+    'faq-3-q': 'Cuanto tiempo antes de notar cambios?',
+    'faq-3-a': 'La mayoria de los clientes reportan cambios iniciales dentro de 2-4 semanas. Estos a menudo aparecen como cambios en la calidad del sueno, regulacion energetica o linea base emocional antes de que cambios mas estructurales se vuelvan aparentes. La marca de 90 dias es donde la reorganizacion consistente tipicamente se vuelve innegable.',
+    'faq-4-q': 'Puedo hacer esto junto con tratamiento convencional?',
+    'faq-4-a': 'Si. El protocolo Mirrorwave es complementario y no interfiere con el tratamiento medico convencional. Muchos clientes mantienen su atencion existente mientras el protocolo trabaja a nivel de coherencia y regulacion del sistema.',
+    'faq-5-q': 'Por que es un compromiso de 12 meses?',
+    'faq-5-a': 'Los sistemas biologicos no se reorganizan de la noche a la manana. Doce meses permiten que el protocolo atraviese las fases de limpieza de la alteracion, restauracion de patrones y estabilizacion. Compromisos mas cortos arriesgan una reestructuracion parcial sin la coherencia sostenida necesaria para un cambio duradero.',
+    'faq-6-q': 'Como se cual via es la adecuada para mi?',
+    'faq-6-a': 'El proceso de aplicacion lo determina. Basado en lo que compartas sobre tu situacion, historia y estado actual, se recomendara la via apropiada. Si no estas seguro, comienza con una aplicacion y la claridad seguira.',
+    'faq-7-q': 'Hay plan de pago disponible?',
+    'faq-7-a': 'Si. Ambas vias ofrecen una estructura de cuatro pagos distribuidos durante el compromiso. Restauracion Profunda del Sistema: 4 pagos de $6,750. Enfriamiento del Sistema: 4 pagos de $2,250. Tambien se acepta el pago completo por adelantado.',
+    'cta-title': 'Tu Sistema Ya Sabe',
+    'cta-desc': 'Si has leido hasta aqui, algo en tu biologia esta respondiendo. Confia en lo que te trajo aqui. El campo ya esta trabajando.',
+    'cta-btn': 'Comienza Tu Aplicacion'
+  },
+  fr: {
+    'nav-home': 'Accueil', 'nav-about': 'A propos', 'nav-books': 'Livres', 'nav-music': 'Musique', 'nav-cta': 'Entrez dans le Champ',
+    'foot-about': 'A propos', 'foot-books': 'Livres', 'foot-music': 'Musique', 'foot-apply': 'Postuler',
+    'hero-kicker': 'Votre Investissement',
+    'hero-title': 'Un Protocole Concu pour le Retour',
+    'hero-desc': 'Ceci n\'est pas un abonnement. C\'est un engagement structure avec votre biologie â construit avec precision, delivre a distance, et maintenu pendant douze mois jusqu\'a ce que la coherence se stabilise.',
+    'phil-title': 'L\'Approche',
+    'phil-p1': 'Mirrorwave ne traite pas les symptomes. Il restaure le signal original que votre systeme a ete construit pour porter. Quand l\'interference est supprimee et la coherence revient, le corps fait ce qu\'il a toujours su faire â guerir.',
+    'phil-p2': 'Deux voies existent selon la profondeur de la perturbation du systeme. Les deux sont des protocoles de douze mois. Les deux sont delivres entierement a distance. Les deux commencent par un seul echantillon biologique.',
+    'tiers-heading': 'Deux Voies',
+    't1-badge': 'Protocole Profond', 't1-title': 'Restauration Profonde du Systeme', 't1-price': '$27,000',
+    't1-payment': 'Protocole de 12 mois Â· ou 4 Ã $6,750',
+    't1-desc': 'Pour les systemes avec une perturbation neurologique significative ou une dysregulation de niveau critique. Cette voie fournit la frequence de contact la plus elevee, des diagnostics complets et des re-scans prioritaires tout au long de l\'engagement.',
+    't1-includes': 'Comprend',
+    't1-f1': 'Scan diagnostique complet de frequence', 't1-f2': 'Protocole de restauration personnalise', 't1-f3': 'Consultations hebdomadaires pendant 12 mois', 't1-f4': 'Re-scans prioritaires selon l\'evolution du systeme', 't1-f5': 'Acces direct a Sophia Christos',
+    't1-for': 'Concu Pour',
+    't1-c1': 'TCC', 't1-c2': 'TSPT', 't1-c3': 'Lesion Medullaire', 't1-c4': 'Recuperation d\'AVC', 't1-c5': 'Dysfonction Autonome', 't1-c6': 'SDRC', 't1-c7': 'SEP', 't1-c8': 'Neurologique Severe',
+    't1-cta': 'Postuler Maintenant',
+    't2-badge': 'Protocole de Regulation', 't2-title': 'Refroidissement et Regulation du Systeme', 't2-price': '$9,000',
+    't2-payment': 'Protocole de 12 mois Â· ou 4 Ã $2,250',
+    't2-desc': 'Pour les systemes surcharges en surchauffe. Quand le systeme nerveux est en surregime et que l\'autoregulation du corps a ete compromise par un stress soutenu, une inflammation ou une activation chronique.',
+    't2-includes': 'Comprend',
+    't2-f1': 'Scan complet de frequence', 't2-f2': 'Protocole adaptatif de refroidissement', 't2-f3': 'Consultations bimensuelles pendant 12 mois', 't2-f4': 'Raffinement du protocole selon l\'evolution des schemas', 't2-f5': 'Accompagnement guide du systeme',
+    't2-for': 'Concu Pour',
+    't2-c1': 'Epuisement', 't2-c2': 'Fatigue Chronique', 't2-c3': 'Migraines', 't2-c4': 'Soutien Diabete', 't2-c5': 'Soutien Cancer', 't2-c6': 'Fibromyalgie', 't2-c7': 'Anxiete', 't2-c8': 'Insomnie', 't2-c9': 'TDAH', 't2-c10': 'Auto-immun', 't2-c11': 'Douleur Chronique', 't2-c12': 'Hormonal', 't2-c13': 'Addiction', 't2-c14': 'Depression',
+    't2-cta': 'Postuler Maintenant',
+    'delivery-title': 'Comment C\'est Delivre',
+    'delivery-desc': 'L\'ensemble du protocole est conduit a distance. Aucun deplacement requis. Aucune visite clinique. Votre biologie est l\'interface.',
+    'del-1-title': '100% A Distance', 'del-1-desc': 'Travaillez depuis n\'importe ou dans le monde. Le champ opere au-dela de la distance.',
+    'del-2-title': 'Echantillon Biologique', 'del-2-desc': 'Envoyez un petit morceau d\'ongle. Cela fournit la signature de frequence pour votre protocole.',
+    'del-3-title': 'Recevoir le Protocole', 'del-3-desc': 'Votre protocole de restauration personnalise commence a travailler avec votre systeme immediatement.',
+    'del-4-title': 'Rester Connecte', 'del-4-desc': 'Des consultations regulieres suivent les progres. Le protocole s\'adapte a mesure que votre systeme repond et se reorganise.',
+    'process-title': 'Le Processus',
+    'step-1-title': 'Envoyer l\'Echantillon', 'step-1-desc': 'Envoyez un petit echantillon biologique. Il est scanne pour votre signature de frequence unique.',
+    'step-2-title': 'Conception du Protocole', 'step-2-desc': 'Un protocole de restauration personnalise est concu selon ce que votre systeme revele avoir besoin.',
+    'step-3-title': 'Restauration Guidee', 'step-3-desc': 'Votre protocole s\'active. Les consultations regulieres suivent les changements. Les ajustements sont faits en temps reel.',
+    'step-4-title': 'Coherence Soutenue', 'step-4-desc': 'Sur douze mois, la coherence se stabilise. Le systeme se souvient de son schema original.',
+    'guarantee-title': 'L\'Engagement de 90 Jours',
+    'guarantee-desc': 'Nous demandons 90 jours d\'engagement complet avant d\'evaluer les resultats. La restructuration biologique n\'est pas instantanee â c\'est un processus de retour systematique. Dans cette fenetre, la plupart des clients rapportent des changements notables dans la regulation de base de leur systeme. C\'est l\'engagement minimum pour que le protocole etablisse son schema initial.',
+    'faq-title': 'Questions',
+    'faq-1-q': 'Comment fonctionne la guerison a distance ?',
+    'faq-1-a': 'Le protocole Mirrorwave opere par resonance de frequence, qui n\'est pas limitee par la distance physique. Votre echantillon biologique fournit la signature necessaire pour concevoir et delivrer un protocole qui interagit directement avec les schemas regulatoires de votre systeme, quelle que soit votre localisation.',
+    'faq-2-q': 'Pourquoi avez-vous besoin d\'un morceau d\'ongle ?',
+    'faq-2-a': 'Le tissu de l\'ongle porte un enregistrement de frequence stable de votre systeme biologique. Il fournit l\'information necessaire pour scanner votre etat actuel, identifier les schemas d\'interference et concevoir un protocole specifique a ce que votre corps a besoin de restaurer.',
+    'faq-3-q': 'Combien de temps avant de remarquer des changements ?',
+    'faq-3-a': 'La plupart des clients rapportent des changements initiaux dans les 2-4 semaines. Ceux-ci apparaissent souvent comme des modifications de la qualite du sommeil, de la regulation energetique ou de la ligne de base emotionnelle avant que des changements plus structurels ne deviennent apparents. La marque des 90 jours est ou la reorganisation coherente devient typiquement indeniable.',
+    'faq-4-q': 'Puis-je faire cela en parallele d\'un traitement conventionnel ?',
+    'faq-4-a': 'Oui. Le protocole Mirrorwave est complementaire et n\'interfere pas avec le traitement medical conventionnel. De nombreux clients maintiennent leurs soins existants tandis que le protocole travaille au niveau de la coherence et de la regulation du systeme.',
+    'faq-5-q': 'Pourquoi est-ce un engagement de 12 mois ?',
+    'faq-5-a': 'Les systemes biologiques ne se reorganisent pas du jour au lendemain. Douze mois permettent au protocole de traverser les phases de nettoyage des perturbations, de restauration des schemas et de stabilisation. Des engagements plus courts risquent une restructuration partielle sans la coherence soutenue necessaire pour un changement durable.',
+    'faq-6-q': 'Comment savoir quelle voie me convient ?',
+    'faq-6-a': 'Le processus de candidature le determine. Selon ce que vous partagez sur votre situation, votre historique et votre etat actuel, la voie appropriee sera recommandee. Si vous n\'etes pas sur, commencez par une candidature et la clarte suivra.',
+    'faq-7-q': 'Un plan de paiement est-il disponible ?',
+    'faq-7-a': 'Oui. Les deux voies offrent une structure de quatre paiements repartis sur l\'engagement. Restauration Profonde du Systeme : 4 paiements de $6,750. Refroidissement du Systeme : 4 paiements de $2,250. Le paiement integral d\'avance est egalement accepte.',
+    'cta-title': 'Votre Systeme Sait Deja',
+    'cta-desc': 'Si vous avez lu jusqu\'ici, quelque chose dans votre biologie repond. Faites confiance a ce qui vous a amene ici. Le champ est deja en action.',
+    'cta-btn': 'Commencer Votre Candidature'
+  },
+  de: {
+    'nav-home': 'Start', 'nav-about': 'Uber uns', 'nav-books': 'Bucher', 'nav-music': 'Musik', 'nav-cta': 'Betreten Sie das Feld',
+    'foot-about': 'Uber uns', 'foot-books': 'Bucher', 'foot-music': 'Musik', 'foot-apply': 'Bewerben',
+    'hero-kicker': 'Ihre Investition',
+    'hero-title': 'Ein Protokoll fur die Ruckkehr',
+    'hero-desc': 'Dies ist kein Abonnement. Es ist eine strukturierte Auseinandersetzung mit Ihrer Biologie â prazisionsgebaut, ferngeliefert und uber zwolf Monate gehalten, bis sich Koharenz stabilisiert.',
+    'phil-title': 'Der Ansatz',
+    'phil-p1': 'Mirrorwave behandelt keine Symptome. Es stellt das ursprungliche Signal wieder her, das Ihr System zu tragen gebaut wurde. Wenn Interferenz entfernt wird und Koharenz zuruckkehrt, tut der Korper, was er immer wusste â heilen.',
+    'phil-p2': 'Zwei Wege existieren je nach Tiefe der Systemstorung. Beide sind Zwolf-Monats-Protokolle. Beide werden vollstandig ferngeliefert. Beide beginnen mit einer einzigen biologischen Probe.',
+    'tiers-heading': 'Zwei Wege',
+    't1-badge': 'Tiefenprotokoll', 't1-title': 'Tiefe Systemrestauration', 't1-price': '$27.000',
+    't1-payment': '12-Monats-Protokoll Â· oder 4 Ã $6.750',
+    't1-desc': 'Fur Systeme mit signifikanter neurologischer Storung oder kritischer Dysregulation. Dieser Weg bietet die hochste Kontaktfrequenz, umfassende Diagnostik und prioritare Nachscans wahrend des gesamten Engagements.',
+    't1-includes': 'Beinhaltet',
+    't1-f1': 'Vollstandiger diagnostischer Frequenzscan', 't1-f2': 'Individuell gestaltetes Restaurationsprotokoll', 't1-f3': 'Wochentliche Check-ins uber 12 Monate', 't1-f4': 'Prioritare Nachscans bei Systemveranderungen', 't1-f5': 'Direkter Zugang zu Sophia Christos',
+    't1-for': 'Entwickelt Fur',
+    't1-c1': 'SHT', 't1-c2': 'PTBS', 't1-c3': 'Ruckenmarksverletzung', 't1-c4': 'Schlaganfall-Erholung', 't1-c5': 'Autonome Dysfunktion', 't1-c6': 'CRPS', 't1-c7': 'MS', 't1-c8': 'Schwere Neurologie',
+    't1-cta': 'Jetzt Bewerben',
+    't2-badge': 'Regulationsprotokoll', 't2-title': 'Systemkuhlung und Regulation', 't2-price': '$9.000',
+    't2-payment': '12-Monats-Protokoll Â· oder 4 Ã $2.250',
+    't2-desc': 'Fur uberlastete Systeme im Uberhitzungsmodus. Wenn das Nervensystem im Uberdrive war und die Selbstregulation des Korpers durch anhaltenden Stress, Entzundung oder chronische Aktivierung beeintrachtigt wurde.',
+    't2-includes': 'Beinhaltet',
+    't2-f1': 'Umfassender Frequenzscan', 't2-f2': 'Adaptives Kuhlungsprotokoll', 't2-f3': 'Zweiwochentliche Check-ins uber 12 Monate', 't2-f4': 'Protokollverfeinerung bei Musterwechseln', 't2-f5': 'Gefuhrte Systemunterstutzung',
+    't2-for': 'Entwickelt Fur',
+    't2-c1': 'Burnout', 't2-c2': 'Chronische Mudigkeit', 't2-c3': 'Migrane', 't2-c4': 'Diabetes-Unterstutzung', 't2-c5': 'Krebs-Unterstutzung', 't2-c6': 'Fibromyalgie', 't2-c7': 'Angst', 't2-c8': 'Schlaflosigkeit', 't2-c9': 'ADHS', 't2-c10': 'Autoimmun', 't2-c11': 'Chronische Schmerzen', 't2-c12': 'Hormonal', 't2-c13': 'Sucht', 't2-c14': 'Depression',
+    't2-cta': 'Jetzt Bewerben',
+    'delivery-title': 'Wie Es Geliefert Wird',
+    'delivery-desc': 'Das gesamte Protokoll wird ferngesteuert durchgefuhrt. Keine Reisen erforderlich. Keine Klinikbesuche. Ihre Biologie ist die Schnittstelle.',
+    'del-1-title': '100% Ferngesteuert', 'del-1-desc': 'Arbeiten Sie von uberall auf der Welt. Das Feld operiert jenseits der Distanz.',
+    'del-2-title': 'Biologische Probe', 'del-2-desc': 'Senden Sie einen kleinen Nagelschnitt. Dies liefert die Frequenzsignatur fur Ihr Protokoll.',
+    'del-3-title': 'Protokoll Empfangen', 'del-3-desc': 'Ihr individuell gestaltetes Restaurationsprotokoll beginnt sofort mit Ihrem System zu arbeiten.',
+    'del-4-title': 'Verbunden Bleiben', 'del-4-desc': 'Regelmassige Check-ins verfolgen den Fortschritt. Das Protokoll passt sich an, wahrend Ihr System reagiert und sich reorganisiert.',
+    'process-title': 'Der Prozess',
+    'step-1-title': 'Probe Senden', 'step-1-desc': 'Senden Sie eine kleine biologische Probe. Diese wird auf Ihre einzigartige Frequenzsignatur gescannt.',
+    'step-2-title': 'Protokolldesign', 'step-2-desc': 'Ein individuelles Restaurationsprotokoll wird basierend auf dem entworfen, was Ihr System als benotigt offenbart.',
+    'step-3-title': 'Gefuhrte Restauration', 'step-3-desc': 'Ihr Protokoll aktiviert sich. Regelmassige Check-ins verfolgen Veranderungen. Anpassungen werden in Echtzeit vorgenommen.',
+    'step-4-title': 'Nachhaltige Koharenz', 'step-4-desc': 'Uber zwolf Monate stabilisiert sich die Koharenz. Das System erinnert sich an sein ursprungliches Muster.',
+    'guarantee-title': 'Die 90-Tage-Verpflichtung',
+    'guarantee-desc': 'Wir bitten um 90 Tage volles Engagement vor der Bewertung der Ergebnisse. Biologische Umstrukturierung ist nicht sofortig â es ist ein Prozess der systematischen Ruckkehr. Innerhalb dieses Fensters berichten die meisten Klienten von spurbaren Veranderungen in der Basisregulation ihres Systems. Dies ist die Mindestverpflichtung, damit das Protokoll sein anfangliches Muster etablieren kann.',
+    'faq-title': 'Fragen',
+    'faq-1-q': 'Wie funktioniert Fernheilung?',
+    'faq-1-a': 'Das Mirrorwave-Protokoll operiert durch Frequenzresonanz, die nicht durch physische Distanz eingeschrankt ist. Ihre biologische Probe liefert die Signatur, die benotigt wird, um ein Protokoll zu entwerfen und zu liefern, das direkt mit den regulatorischen Mustern Ihres Systems interagiert, unabhangig von Ihrem Standort.',
+    'faq-2-q': 'Warum benotigen Sie einen Nagelschnitt?',
+    'faq-2-a': 'Nagelgewebe tragt einen stabilen Frequenzrekord Ihres biologischen Systems. Es liefert die Information, die benotigt wird, um Ihren aktuellen Zustand zu scannen, Interferenzmuster zu identifizieren und ein Protokoll zu entwerfen, das spezifisch fur das ist, was Ihr Korper wiederherstellen muss.',
+    'faq-3-q': 'Wie lange bis ich Veranderungen bemerke?',
+    'faq-3-a': 'Die meisten Klienten berichten uber anfangliche Veranderungen innerhalb von 2-4 Wochen. Diese erscheinen oft als Veranderungen der Schlafqualitat, Energieregulation oder emotionalen Basislinie, bevor strukturellere Veranderungen offensichtlich werden. Die 90-Tage-Marke ist, wo konsistente Reorganisation typischerweise undenibar wird.',
+    'faq-4-q': 'Kann ich dies neben konventioneller Behandlung machen?',
+    'faq-4-a': 'Ja. Das Mirrorwave-Protokoll ist komplementar und interferiert nicht mit konventioneller medizinischer Behandlung. Viele Klienten behalten ihre bestehende Versorgung bei, wahrend das Protokoll auf der Ebene der Systemkoharenz und -regulation arbeitet.',
+    'faq-5-q': 'Warum ist dies eine 12-monatige Verpflichtung?',
+    'faq-5-a': 'Biologische Systeme reorganisieren sich nicht uber Nacht. Zwolf Monate ermoglichen dem Protokoll, die Phasen der Storungsbereinigung, Musterwiederherstellung und Stabilisierung zu durchlaufen. Kurzere Engagements riskieren eine partielle Umstrukturierung ohne die nachhaltige Koharenz, die fur dauerhafte Veranderung notig ist.',
+    'faq-6-q': 'Wie weiss ich, welcher Weg der richtige fur mich ist?',
+    'faq-6-a': 'Der Bewerbungsprozess bestimmt dies. Basierend auf dem, was Sie uber Ihre Situation, Geschichte und aktuellen Zustand teilen, wird der geeignete Weg empfohlen. Wenn Sie unsicher sind, beginnen Sie mit einer Bewerbung und Klarheit wird folgen.',
+    'faq-7-q': 'Ist ein Zahlungsplan verfugbar?',
+    'faq-7-a': 'Ja. Beide Wege bieten eine Vier-Zahlungs-Struktur, verteilt uber das Engagement. Tiefe Systemrestauration: 4 Zahlungen von $6.750. Systemkuhlung: 4 Zahlungen von $2.250. Vollstandige Vorauszahlung wird ebenfalls akzeptiert.',
+    'cta-title': 'Ihr System Weiss Bereits',
+    'cta-desc': 'Wenn Sie bis hierher gelesen haben, reagiert etwas in Ihrer Biologie. Vertrauen Sie dem, was Sie hierher gebracht hat. Das Feld arbeitet bereits.',
+    'cta-btn': 'Starten Sie Ihre Bewerbung'
+  },
+  it: {
+    'nav-home': 'Home', 'nav-about': 'Chi Siamo', 'nav-books': 'Libri', 'nav-music': 'Musica', 'nav-cta': 'Entra nel Campo',
+    'foot-about': 'Chi Siamo', 'foot-books': 'Libri', 'foot-music': 'Musica', 'foot-apply': 'Candidatura',
+    'hero-kicker': 'Il Tuo Investimento',
+    'hero-title': 'Un Protocollo Progettato per il Ritorno',
+    'hero-desc': 'Questo non e un abbonamento. E un impegno strutturato con la tua biologia â costruito con precisione, erogato a distanza e mantenuto per dodici mesi fino alla stabilizzazione della coerenza.',
+    'phil-title': 'L\'Approccio',
+    'phil-p1': 'Mirrorwave non tratta i sintomi. Ripristina il segnale originale che il tuo sistema e stato costruito per portare. Quando l\'interferenza viene rimossa e la coerenza ritorna, il corpo fa cio che ha sempre saputo fare â guarire.',
+    'phil-p2': 'Esistono due percorsi a seconda della profondita della perturbazione del sistema. Entrambi sono protocolli di dodici mesi. Entrambi vengono erogati interamente a distanza. Entrambi iniziano con un singolo campione biologico.',
+    'tiers-heading': 'Due Percorsi',
+    't1-badge': 'Protocollo Profondo', 't1-title': 'Restaurazione Profonda del Sistema', 't1-price': '$27.000',
+    't1-payment': 'Protocollo di 12 mesi Â· o 4 Ã $6.750',
+    't1-desc': 'Per sistemi con significativa perturbazione neurologica o disregolazione a livello critico. Questo percorso fornisce la piu alta frequenza di contatto, diagnostica completa e ri-scansioni prioritarie durante tutto l\'impegno.',
+    't1-includes': 'Include',
+    't1-f1': 'Scansione diagnostica completa di frequenza', 't1-f2': 'Protocollo di restaurazione personalizzato', 't1-f3': 'Check-in settimanali per 12 mesi', 't1-f4': 'Ri-scansioni prioritarie al variare del sistema', 't1-f5': 'Accesso diretto a Sophia Christos',
+    't1-for': 'Progettato Per',
+    't1-c1': 'TBI', 't1-c2': 'PTSD', 't1-c3': 'Lesione Midollare', 't1-c4': 'Recupero Ictus', 't1-c5': 'Disfunzione Autonomica', 't1-c6': 'CRPS', 't1-c7': 'SM', 't1-c8': 'Neurologico Severo',
+    't1-cta': 'Candidati Ora',
+    't2-badge': 'Protocollo di Regolazione', 't2-title': 'Raffreddamento e Regolazione del Sistema', 't2-price': '$9.000',
+    't2-payment': 'Protocollo di 12 mesi Â· o 4 Ã $2.250',
+    't2-desc': 'Per sistemi sovraccarichi in surriscaldamento. Quando il sistema nervoso e stato in sovraccarico e l\'autoregolazione del corpo e stata compromessa da stress sostenuto, infiammazione o attivazione cronica.',
+    't2-includes': 'Include',
+    't2-f1': 'Scansione completa di frequenza', 't2-f2': 'Protocollo adattivo di raffreddamento', 't2-f3': 'Check-in bisettimanali per 12 mesi', 't2-f4': 'Raffinamento del protocollo al variare dei pattern', 't2-f5': 'Supporto guidato del sistema',
+    't2-for': 'Progettato Per',
+    't2-c1': 'Burnout', 't2-c2': 'Affaticamento Cronico', 't2-c3': 'Emicranie', 't2-c4': 'Supporto Diabete', 't2-c5': 'Supporto Cancro', 't2-c6': 'Fibromialgia', 't2-c7': 'Ansia', 't2-c8': 'Insonnia', 't2-c9': 'ADHD', 't2-c10': 'Autoimmune', 't2-c11': 'Dolore Cronico', 't2-c12': 'Ormonale', 't2-c13': 'Dipendenza', 't2-c14': 'Depressione',
+    't2-cta': 'Candidati Ora',
+    'delivery-title': 'Come Viene Erogato',
+    'delivery-desc': 'L\'intero protocollo e condotto a distanza. Nessun viaggio richiesto. Nessuna visita clinica. La tua biologia e l\'interfaccia.',
+    'del-1-title': '100% A Distanza', 'del-1-desc': 'Lavora da qualsiasi parte del mondo. Il campo opera oltre la distanza.',
+    'del-2-title': 'Campione Biologico', 'del-2-desc': 'Invia un piccolo ritaglio di unghia. Questo fornisce la firma di frequenza per il tuo protocollo.',
+    'del-3-title': 'Ricevi il Protocollo', 'del-3-desc': 'Il tuo protocollo di restaurazione personalizzato inizia a lavorare con il tuo sistema immediatamente.',
+    'del-4-title': 'Resta Connesso', 'del-4-desc': 'Check-in regolari monitorano i progressi. Il protocollo si adatta man mano che il tuo sistema risponde e si riorganizza.',
+    'process-title': 'Il Processo',
+    'step-1-title': 'Invia Campione', 'step-1-desc': 'Invia un piccolo campione biologico. Viene scansionato per la tua firma di frequenza unica.',
+    'step-2-title': 'Progettazione Protocollo', 'step-2-desc': 'Un protocollo di restaurazione personalizzato viene progettato in base a cio che il tuo sistema rivela di necessitare.',
+    'step-3-title': 'Restaurazione Guidata', 'step-3-desc': 'Il tuo protocollo si attiva. Check-in regolari monitorano i cambiamenti. Gli aggiustamenti vengono fatti in tempo reale.',
+    'step-4-title': 'Coerenza Sostenuta', 'step-4-desc': 'Nell\'arco di dodici mesi, la coerenza si stabilizza. Il sistema ricorda il suo pattern originale.',
+    'guarantee-title': 'L\'Impegno di 90 Giorni',
+    'guarantee-desc': 'Chiediamo 90 giorni di pieno impegno prima di valutare i risultati. La ristrutturazione biologica non e istantanea â e un processo di ritorno sistematico. All\'interno di questa finestra, la maggior parte dei clienti riporta cambiamenti notevoli nella regolazione di base del loro sistema. Questo e l\'impegno minimo perche il protocollo stabilisca il suo pattern iniziale.',
+    'faq-title': 'Domande',
+    'faq-1-q': 'Come funziona la guarigione a distanza?',
+    'faq-1-a': 'Il protocollo Mirrorwave opera attraverso la risonanza di frequenza, che non e limitata dalla distanza fisica. Il tuo campione biologico fornisce la firma necessaria per progettare ed erogare un protocollo che interagisce direttamente con i pattern regolatori del tuo sistema, indipendentemente dalla tua posizione.',
+    'faq-2-q': 'Perche serve un ritaglio di unghia?',
+    'faq-2-a': 'Il tessuto dell\'unghia porta un registro di frequenza stabile del tuo sistema biologico. Fornisce l\'informazione necessaria per scansionare il tuo stato attuale, identificare i pattern di interferenza e progettare un protocollo specifico per cio che il tuo corpo ha bisogno di ripristinare.',
+    'faq-3-q': 'Quanto tempo prima di notare cambiamenti?',
+    'faq-3-a': 'La maggior parte dei clienti riporta cambiamenti iniziali entro 2-4 settimane. Questi appaiono spesso come variazioni nella qualita del sonno, regolazione energetica o baseline emotiva prima che cambiamenti piu strutturali diventino apparenti. Il traguardo dei 90 giorni e dove la riorganizzazione consistente diventa tipicamente innegabile.',
+    'faq-4-q': 'Posso farlo insieme al trattamento convenzionale?',
+    'faq-4-a': 'Si. Il protocollo Mirrorwave e complementare e non interferisce con il trattamento medico convenzionale. Molti clienti mantengono le loro cure esistenti mentre il protocollo lavora a livello di coerenza e regolazione del sistema.',
+    'faq-5-q': 'Perche e un impegno di 12 mesi?',
+    'faq-5-a': 'I sistemi biologici non si riorganizzano dall\'oggi al domani. Dodici mesi permettono al protocollo di attraversare le fasi di eliminazione della perturbazione, restaurazione dei pattern e stabilizzazione. Impegni piu brevi rischiano una ristrutturazione parziale senza la coerenza sostenuta necessaria per un cambiamento duraturo.',
+    'faq-6-q': 'Come faccio a sapere quale percorso e giusto per me?',
+    'faq-6-a': 'Il processo di candidatura lo determina. In base a cio che condividi sulla tua situazione, storia e stato attuale, verra raccomandato il percorso appropriato. Se non sei sicuro, inizia con una candidatura e la chiarezza seguira.',
+    'faq-7-q': 'E disponibile un piano di pagamento?',
+    'faq-7-a': 'Si. Entrambi i percorsi offrono una struttura a quattro pagamenti distribuiti durante l\'impegno. Restaurazione Profonda del Sistema: 4 pagamenti di $6.750. Raffreddamento del Sistema: 4 pagamenti di $2.250. E accettato anche il pagamento completo anticipato.',
+    'cta-title': 'Il Tuo Sistema Sa Gia',
+    'cta-desc': 'Se hai letto fin qui, qualcosa nella tua biologia sta rispondendo. Fidati di cio che ti ha portato qui. Il campo sta gia lavorando.',
+    'cta-btn': 'Inizia la Tua Candidatura'
+  },
+  pt: {
+    'nav-home': 'Inicio', 'nav-about': 'Sobre', 'nav-books': 'Livros', 'nav-music': 'Musica', 'nav-cta': 'Entre no Campo',
+    'foot-about': 'Sobre', 'foot-books': 'Livros', 'foot-music': 'Musica', 'foot-apply': 'Candidatar',
+    'hero-kicker': 'Seu Investimento',
+    'hero-title': 'Um Protocolo Projetado para o Retorno',
+    'hero-desc': 'Isto nao e uma assinatura. E um engajamento estruturado com sua biologia â construido com precisao, entregue remotamente e mantido por doze meses ate que a coerencia se estabilize.',
+    'phil-title': 'A Abordagem',
+    'phil-p1': 'Mirrorwave nao trata sintomas. Restaura o sinal original que seu sistema foi construido para carregar. Quando a interferencia e removida e a coerencia retorna, o corpo faz o que sempre soube fazer â curar.',
+    'phil-p2': 'Dois caminhos existem dependendo da profundidade da perturbacao do sistema. Ambos sao protocolos de doze meses. Ambos sao entregues inteiramente de forma remota. Ambos comecam com uma unica amostra biologica.',
+    'tiers-heading': 'Dois Caminhos',
+    't1-badge': 'Protocolo Profundo', 't1-title': 'Restauracao Profunda do Sistema', 't1-price': '$27.000',
+    't1-payment': 'Protocolo de 12 meses Â· ou 4 Ã $6.750',
+    't1-desc': 'Para sistemas com perturbacao neurologica significativa ou desregulacao de nivel critico. Este caminho fornece a maior frequencia de contato, diagnosticos abrangentes e re-varreduras prioritarias durante todo o engajamento.',
+    't1-includes': 'Inclui',
+    't1-f1': 'Varredura diagnostica completa de frequencia', 't1-f2': 'Protocolo de restauracao personalizado', 't1-f3': 'Check-ins semanais por 12 meses', 't1-f4': 'Re-varreduras prioritarias conforme o sistema muda', 't1-f5': 'Acesso direto a Sophia Christos',
+    't1-for': 'Projetado Para',
+    't1-c1': 'TCE', 't1-c2': 'TEPT', 't1-c3': 'Lesao Medular', 't1-c4': 'Recuperacao de AVC', 't1-c5': 'Disfuncao Autonomica', 't1-c6': 'SDRC', 't1-c7': 'EM', 't1-c8': 'Neurologico Severo',
+    't1-cta': 'Candidatar Agora',
+    't2-badge': 'Protocolo de Regulacao', 't2-title': 'Resfriamento e Regulacao do Sistema', 't2-price': '$9.000',
+    't2-payment': 'Protocolo de 12 meses Â· ou 4 Ã $2.250',
+    't2-desc': 'Para sistemas sobrecarregados em superaquecimento. Quando o sistema nervoso esteve em sobrecarga e a autorregulacao do corpo foi comprometida por estresse sustentado, inflamacao ou ativacao cronica.',
+    't2-includes': 'Inclui',
+    't2-f1': 'Varredura completa de frequencia', 't2-f2': 'Protocolo adaptativo de resfriamento', 't2-f3': 'Check-ins quinzenais por 12 meses', 't2-f4': 'Refinamento do protocolo conforme os padroes mudam', 't2-f5': 'Suporte guiado do sistema',
+    't2-for': 'Projetado Para',
+    't2-c1': 'Burnout', 't2-c2': 'Fadiga Cronica', 't2-c3': 'Enxaquecas', 't2-c4': 'Suporte Diabetes', 't2-c5': 'Suporte Cancer', 't2-c6': 'Fibromialgia', 't2-c7': 'Ansiedade', 't2-c8': 'Insonia', 't2-c9': 'TDAH', 't2-c10': 'Autoimune', 't2-c11': 'Dor Cronica', 't2-c12': 'Hormonal', 't2-c13': 'Dependencia', 't2-c14': 'Depressao',
+    't2-cta': 'Candidatar Agora',
+    'delivery-title': 'Como e Entregue',
+    'delivery-desc': 'Todo o protocolo e conduzido remotamente. Sem necessidade de viagem. Sem visitas clinicas. Sua biologia e a interface.',
+    'del-1-title': '100% Remoto', 'del-1-desc': 'Trabalhe de qualquer lugar do mundo. O campo opera alem da distancia.',
+    'del-2-title': 'Amostra Biologica', 'del-2-desc': 'Envie um pequeno corte de unha. Isso fornece a assinatura de frequencia para seu protocolo.',
+    'del-3-title': 'Receba o Protocolo', 'del-3-desc': 'Seu protocolo de restauracao personalizado comeca a trabalhar com seu sistema imediatamente.',
+    'del-4-title': 'Permaneca Conectado', 'del-4-desc': 'Check-ins regulares acompanham o progresso. O protocolo se adapta conforme seu sistema responde e se reorganiza.',
+    'process-title': 'O Processo',
+    'step-1-title': 'Enviar Amostra', 'step-1-desc': 'Envie uma pequena amostra biologica. Ela e escaneada para sua assinatura de frequencia unica.',
+    'step-2-title': 'Design do Protocolo', 'step-2-desc': 'Um protocolo de restauracao personalizado e projetado com base no que seu sistema revela precisar.',
+    'step-3-title': 'Restauracao Guiada', 'step-3-desc': 'Seu protocolo se ativa. Check-ins regulares acompanham mudancas. Ajustes sao feitos em tempo real.',
+    'step-4-title': 'Coerencia Sustentada', 'step-4-desc': 'Ao longo de doze meses, a coerencia se estabiliza. O sistema lembra seu padrao original.',
+    'guarantee-title': 'O Compromisso de 90 Dias',
+    'guarantee-desc': 'Pedimos 90 dias de engajamento total antes de avaliar resultados. A reestruturacao biologica nao e instantanea â e um processo de retorno sistematico. Dentro desta janela, a maioria dos clientes relata mudancas perceptiveis na regulacao basal de seu sistema. Este e o compromisso minimo para o protocolo estabelecer seu padrao inicial.',
+    'faq-title': 'Perguntas',
+    'faq-1-q': 'Como funciona a cura remota?',
+    'faq-1-a': 'O protocolo Mirrorwave opera atraves de ressonancia de frequencia, que nao e limitada pela distancia fisica. Sua amostra biologica fornece a assinatura necessaria para projetar e entregar um protocolo que interage diretamente com os padroes regulatorios do seu sistema, independentemente da sua localizacao.',
+    'faq-2-q': 'Por que voces precisam de um corte de unha?',
+    'faq-2-a': 'O tecido da unha carrega um registro de frequencia estavel do seu sistema biologico. Fornece a informacao necessaria para escanear seu estado atual, identificar padroes de interferencia e projetar um protocolo especifico para o que seu corpo precisa restaurar.',
+    'faq-3-q': 'Quanto tempo ate notar mudancas?',
+    'faq-3-a': 'A maioria dos clientes relata mudancas iniciais dentro de 2-4 semanas. Estas frequentemente aparecem como alteracoes na qualidade do sono, regulacao energetica ou linha de base emocional antes que mudancas mais estruturais se tornem aparentes. A marca de 90 dias e onde a reorganizacao consistente tipicamente se torna inegavel.',
+    'faq-4-q': 'Posso fazer isso junto com tratamento convencional?',
+    'faq-4-a': 'Sim. O protocolo Mirrorwave e complementar e nao interfere com tratamento medico convencional. Muitos clientes mantem seus cuidados existentes enquanto o protocolo trabalha no nivel de coerencia e regulacao do sistema.',
+    'faq-5-q': 'Por que e um compromisso de 12 meses?',
+    'faq-5-a': 'Sistemas biologicos nao se reorganizam da noite para o dia. Doze meses permitem que o protocolo percorra as fases de limpeza de perturbacao, restauracao de padroes e estabilizacao. Engajamentos mais curtos arriscam reestruturacao parcial sem a coerencia sustentada necessaria para mudanca duradoura.',
+    'faq-6-q': 'Como sei qual caminho e certo para mim?',
+    'faq-6-a': 'O processo de candidatura determina isso. Com base no que voce compartilha sobre sua situacao, historico e estado atual, o caminho apropriado sera recomendado. Se nao tem certeza, comece com uma candidatura e a clareza seguira.',
+    'faq-7-q': 'Plano de pagamento esta disponivel?',
+    'faq-7-a': 'Sim. Ambos os caminhos oferecem uma estrutura de quatro pagamentos distribuidos ao longo do engajamento. Restauracao Profunda do Sistema: 4 pagamentos de $6.750. Resfriamento do Sistema: 4 pagamentos de $2.250. Pagamento integral antecipado tambem e aceito.',
+    'cta-title': 'Seu Sistema Ja Sabe',
+    'cta-desc': 'Se voce leu ate aqui, algo em sua biologia esta respondendo. Confie no que te trouxe aqui. O campo ja esta trabalhando.',
+    'cta-btn': 'Comece Sua Candidatura'
+  },
+  nl: {
+    'nav-home': 'Home', 'nav-about': 'Over Ons', 'nav-books': 'Boeken', 'nav-music': 'Muziek', 'nav-cta': 'Betreed het Veld',
+    'foot-about': 'Over Ons', 'foot-books': 'Boeken', 'foot-music': 'Muziek', 'foot-apply': 'Aanmelden',
+    'hero-kicker': 'Uw Investering',
+    'hero-title': 'Een Protocol Ontworpen voor Terugkeer',
+    'hero-desc': 'Dit is geen abonnement. Het is een gestructureerde betrokkenheid met uw biologie â met precisie gebouwd, op afstand geleverd, en twaalf maanden aangehouden tot coherentie stabiliseert.',
+    'phil-title': 'De Aanpak',
+    'phil-p1': 'Mirrorwave behandelt geen symptomen. Het herstelt het oorspronkelijke signaal dat uw systeem gebouwd was om te dragen. Wanneer interferentie wordt verwijderd en coherentie terugkeert, doet het lichaam wat het altijd al wist â genezen.',
+    'phil-p2': 'Twee paden bestaan afhankelijk van de diepte van systeemverstoring. Beide zijn twaalfmaandse protocollen. Beide worden volledig op afstand geleverd. Beide beginnen met een enkel biologisch monster.',
+    'tiers-heading': 'Twee Paden',
+    't1-badge': 'Diep Protocol', 't1-title': 'Diepe Systeemrestauratie', 't1-price': '$27.000',
+    't1-payment': '12-maanden protocol Â· of 4 Ã $6.750',
+    't1-desc': 'Voor systemen met significante neurologische verstoring of kritieke dysregulatie. Dit pad biedt de hoogste contactfrequentie, uitgebreide diagnostiek en prioritaire herscans gedurende het hele engagement.',
+    't1-includes': 'Bevat',
+    't1-f1': 'Volledige diagnostische frequentiescan', 't1-f2': 'Op maat ontworpen restauratieprotocol', 't1-f3': 'Wekelijkse check-ins gedurende 12 maanden', 't1-f4': 'Prioritaire herscans bij systeemveranderingen', 't1-f5': 'Directe toegang tot Sophia Christos',
+    't1-for': 'Ontworpen Voor',
+    't1-c1': 'THL', 't1-c2': 'PTSS', 't1-c3': 'Ruggenmerletsel', 't1-c4': 'Beroerte-herstel', 't1-c5': 'Autonome Dysfunctie', 't1-c6': 'CRPS', 't1-c7': 'MS', 't1-c8': 'Ernstig Neurologisch',
+    't1-cta': 'Nu Aanmelden',
+    't2-badge': 'Regulatieprotocol', 't2-title': 'Systeemkoeling en Regulatie', 't2-price': '$9.000',
+    't2-payment': '12-maanden protocol Â· of 4 Ã $2.250',
+    't2-desc': 'Voor overbelaste systemen die oververhit raken. Wanneer het zenuwstelsel in overdrive is geweest en de zelfregulatie van het lichaam is aangetast door aanhoudende stress, ontsteking of chronische activering.',
+    't2-includes': 'Bevat',
+    't2-f1': 'Uitgebreide frequentiescan', 't2-f2': 'Adaptief koelingsprotocol', 't2-f3': 'Tweewekelijkse check-ins gedurende 12 maanden', 't2-f4': 'Protocolverfijning bij patroonveranderingen', 't2-f5': 'Begeleide systeemondersteuning',
+    't2-for': 'Ontworpen Voor',
+    't2-c1': 'Burn-out', 't2-c2': 'Chronische Vermoeidheid', 't2-c3': 'Migraine', 't2-c4': 'Diabetes Ondersteuning', 't2-c5': 'Kanker Ondersteuning', 't2-c6': 'Fibromyalgie', 't2-c7': 'Angst', 't2-c8': 'Slapeloosheid', 't2-c9': 'ADHD', 't2-c10': 'Auto-immuun', 't2-c11': 'Chronische Pijn', 't2-c12': 'Hormonaal', 't2-c13': 'Verslaving', 't2-c14': 'Depressie',
+    't2-cta': 'Nu Aanmelden',
+    'delivery-title': 'Hoe Het Wordt Geleverd',
+    'delivery-desc': 'Het volledige protocol wordt op afstand uitgevoerd. Geen reizen vereist. Geen kliniekbezoeken. Uw biologie is de interface.',
+    'del-1-title': '100% Op Afstand', 'del-1-desc': 'Werk vanuit overal ter wereld. Het veld opereert voorbij afstand.',
+    'del-2-title': 'Biologisch Monster', 'del-2-desc': 'Stuur een klein nagelknipsel op. Dit levert de frequentiehandtekening voor uw protocol.',
+    'del-3-title': 'Ontvang Protocol', 'del-3-desc': 'Uw op maat ontworpen restauratieprotocol begint onmiddellijk met uw systeem te werken.',
+    'del-4-title': 'Blijf Verbonden', 'del-4-desc': 'Regelmatige check-ins volgen de voortgang. Het protocol past zich aan naarmate uw systeem reageert en reorganiseert.',
+    'process-title': 'Het Proces',
+    'step-1-title': 'Monster Versturen', 'step-1-desc': 'Stuur een klein biologisch monster op. Dit wordt gescand voor uw unieke frequentiehandtekening.',
+    'step-2-title': 'Protocolontwerp', 'step-2-desc': 'Een op maat gemaakt restauratieprotocol wordt ontworpen op basis van wat uw systeem onthult nodig te hebben.',
+    'step-3-title': 'Begeleide Restauratie', 'step-3-desc': 'Uw protocol wordt geactiveerd. Regelmatige check-ins volgen verschuivingen. Aanpassingen worden in realtime gemaakt.',
+    'step-4-title': 'Duurzame Coherentie', 'step-4-desc': 'Gedurende twaalf maanden stabiliseert de coherentie. Het systeem herinnert zich zijn oorspronkelijke patroon.',
+    'guarantee-title': 'De 90-Dagen Toezegging',
+    'guarantee-desc': 'We vragen 90 dagen volledige betrokkenheid voordat we resultaten beoordelen. Biologische herstructurering is niet onmiddellijk â het is een proces van systematische terugkeer. Binnen dit venster melden de meeste clienten merkbare verschuivingen in de basisregulatie van hun systeem. Dit is de minimale toezegging voor het protocol om zijn initiele patroon te vestigen.',
+    'faq-title': 'Vragen',
+    'faq-1-q': 'Hoe werkt genezing op afstand?',
+    'faq-1-a': 'Het Mirrorwave-protocol opereert via frequentieresonantie, die niet beperkt wordt door fysieke afstand. Uw biologisch monster levert de handtekening die nodig is om een protocol te ontwerpen en te leveren dat direct interageert met de regulatoire patronen van uw systeem, ongeacht uw locatie.',
+    'faq-2-q': 'Waarom heeft u een nagelknipsel nodig?',
+    'faq-2-a': 'Nagelweefsel draagt een stabiel frequentierecord van uw biologisch systeem. Het biedt de informatie die nodig is om uw huidige staat te scannen, interferentiepatronen te identificeren en een protocol te ontwerpen dat specifiek is voor wat uw lichaam moet herstellen.',
+    'faq-3-q': 'Hoe lang voordat ik veranderingen merk?',
+    'faq-3-a': 'De meeste clienten melden initiele verschuivingen binnen 2-4 weken. Deze verschijnen vaak als veranderingen in slaapkwaliteit, energieregulatie of emotionele basislijn voordat meer structurele veranderingen duidelijk worden. Het 90-dagen punt is waar consistente reorganisatie typisch onmiskenbaar wordt.',
+    'faq-4-q': 'Kan ik dit naast conventionele behandeling doen?',
+    'faq-4-a': 'Ja. Het Mirrorwave-protocol is complementair en interfereert niet met conventionele medische behandeling. Veel clienten behouden hun bestaande zorg terwijl het protocol werkt op het niveau van systeemcoherentie en regulatie.',
+    'faq-5-q': 'Waarom is dit een 12-maanden toezegging?',
+    'faq-5-a': 'Biologische systemen reorganiseren niet van de ene dag op de andere. Twaalf maanden stellen het protocol in staat om door de fasen van verstoringszuivering, patroonherstel en stabilisatie te gaan. Kortere engagementen riskeren gedeeltelijke herstructurering zonder de duurzame coherentie die nodig is voor blijvende verandering.',
+    'faq-6-q': 'Hoe weet ik welk pad geschikt voor mij is?',
+    'faq-6-a': 'Het aanmeldingsproces bepaalt dit. Op basis van wat u deelt over uw situatie, geschiedenis en huidige staat, wordt het geschikte pad aanbevolen. Als u onzeker bent, begin met een aanmelding en duidelijkheid zal volgen.',
+    'faq-7-q': 'Is een betalingsplan beschikbaar?',
+    'faq-7-a': 'Ja. Beide paden bieden een vier-betalingen structuur verspreid over het engagement. Diepe Systeemrestauratie: 4 betalingen van $6.750. Systeemkoeling: 4 betalingen van $2.250. Volledige vooruitbetaling wordt ook geaccepteerd.',
+    'cta-title': 'Uw Systeem Weet Het Al',
+    'cta-desc': 'Als u tot hier heeft gelezen, reageert er iets in uw biologie. Vertrouw op wat u hier bracht. Het veld is al aan het werk.',
+    'cta-btn': 'Begin Uw Aanmelding'
+  },
+  tr: {
+    'nav-home': 'Ana Sayfa', 'nav-about': 'Hakkinda', 'nav-books': 'Kitaplar', 'nav-music': 'Muzik', 'nav-cta': 'Alana Girin',
+    'foot-about': 'Hakkinda', 'foot-books': 'Kitaplar', 'foot-music': 'Muzik', 'foot-apply': 'Basvur',
+    'hero-kicker': 'Yatiriminiz',
+    'hero-title': 'Donus Icin Tasarlanmis Bir Protokol',
+    'hero-desc': 'Bu bir abonelik degil. Biyolojinizle yapilandirilmis bir anlasmadir â hassasiyetle insa edilmis, uzaktan sunulmus ve koherans stabilize olana kadar on iki ay boyunca surdurulen.',
+    'phil-title': 'Yaklasim',
+    'phil-p1': 'Mirrorwave semptomlari tedavi etmez. Sisteminizin tasimak icin insa edildigi orijinal sinyali geri yukler. Girisinim kaldirildiginda ve koherans dondugunde, vucut her zaman bildigini yapar â iyilesmek.',
+    'phil-p2': 'Sistem bozuklugunun derinligine bagli olarak iki yol vardir. Her ikisi de on iki aylik protokollerdir. Her ikisi de tamamen uzaktan sunulur. Her ikisi de tek bir biyolojik ornekle baslar.',
+    'tiers-heading': 'Iki Yol',
+    't1-badge': 'Derin Protokol', 't1-title': 'Derin Sistem Restorasyonu', 't1-price': '$27,000',
+    't1-payment': '12 aylik protokol Â· veya 4 Ã $6,750',
+    't1-desc': 'Onemli norolojik bozuklugu veya kritik duzey disregulasyonu olan sistemler icin. Bu yol en yuksek temas sikligini, kapsamli tanilamayi ve tumluk boyunca oncelikli yeniden taramalari saglar.',
+    't1-includes': 'Icerir',
+    't1-f1': 'Tam tanisal frekans taramasi', 't1-f2': 'Ozel tasarlanmis restorasyon protokolu', 't1-f3': '12 ay boyunca haftalik check-in\'ler', 't1-f4': 'Sistem degistikce oncelikli yeniden taramalar', 't1-f5': 'Sophia Christos\'a dogrudan erisim',
+    't1-for': 'Icin Tasarlandi',
+    't1-c1': 'TBY', 't1-c2': 'TSSB', 't1-c3': 'Omurilik Yaralanmasi', 't1-c4': 'Inme Iyilesmesi', 't1-c5': 'Otonom Disfonksiyon', 't1-c6': 'KRBS', 't1-c7': 'MS', 't1-c8': 'Agir Norolojik',
+    't1-cta': 'Simdi Basvurun',
+    't2-badge': 'Regulasyon Protokolu', 't2-title': 'Sistem Sogutma ve Regulasyonu', 't2-price': '$9,000',
+    't2-payment': '12 aylik protokol Â· veya 4 Ã $2,250',
+    't2-desc': 'Asiri yuklenmis ve asiri isinen sistemler icin. Sinir sistemi asiri calismada oldugundan ve vucudun oz-regulasyonu surdurulen stres, iltihap veya kronik aktivasyon tarafindan tehlikeye atildiginda.',
+    't2-includes': 'Icerir',
+    't2-f1': 'Kapsamli frekans taramasi', 't2-f2': 'Adaptif sogutma protokolu', 't2-f3': '12 ay boyunca iki haftalik check-in\'ler', 't2-f4': 'Desenler degistikce protokol iyilestirmesi', 't2-f5': 'Rehberli sistem destegi',
+    't2-for': 'Icin Tasarlandi',
+    't2-c1': 'Tukenmislik', 't2-c2': 'Kronik Yorgunluk', 't2-c3': 'Migren', 't2-c4': 'Diyabet Destegi', 't2-c5': 'Kanser Destegi', 't2-c6': 'Fibromiyalji', 't2-c7': 'Kaygi', 't2-c8': 'Uykusuzluk', 't2-c9': 'DEHB', 't2-c10': 'Otoimmun', 't2-c11': 'Kronik Agri', 't2-c12': 'Hormonal', 't2-c13': 'Bagimlilik', 't2-c14': 'Depresyon',
+    't2-cta': 'Simdi Basvurun',
+    'delivery-title': 'Nasil Sunulur',
+    'delivery-desc': 'Tum protokol uzaktan yurutulur. Seyahat gerektirmez. Klinik ziyareti yok. Biyolojiniz arayuzdur.',
+    'del-1-title': '%100 Uzaktan', 'del-1-desc': 'Dunyanin herhangi bir yerinden calisin. Alan mesafenin otesinde isler.',
+    'del-2-title': 'Biyolojik Ornek', 'del-2-desc': 'Kucuk bir tirnak kesimi gonderin. Bu, protokolunuz icin frekans imzasini saglar.',
+    'del-3-title': 'Protokolu Alin', 'del-3-desc': 'Ozel tasarlanmis restorasyon protokolunuz sisteminizle hemen calismaya baslar.',
+    'del-4-title': 'Bagli Kalin', 'del-4-desc': 'Duzenli check-in\'ler ilerlemeyi izler. Protokol sisteminiz yanit verdikce ve yeniden organize oldukca uyum saglar.',
+    'process-title': 'Surec',
+    'step-1-title': 'Ornek Gonderin', 'step-1-desc': 'Kucuk bir biyolojik ornek gonderin. Benzersiz frekans imzaniz icin taranir.',
+    'step-2-title': 'Protokol Tasarimi', 'step-2-desc': 'Sisteminizin ihtiyac duydugunu ortaya koyduguna dayali ozel bir restorasyon protokolu tasarlanir.',
+    'step-3-title': 'Rehberli Restorasyon', 'step-3-desc': 'Protokolunuz aktive olur. Duzenli check-in\'ler degisimleri izler. Ayarlamalar gercek zamanli yapilir.',
+    'step-4-title': 'Surdurulen Koherans', 'step-4-desc': 'On iki ay boyunca koherans stabilize olur. Sistem orijinal desenini hatirlar.',
+    'guarantee-title': '90 Gunluk Taahhut',
+    'guarantee-desc': 'Sonuclari degerlendirmeden once 90 gun tam katilim istiyoruz. Biyolojik yeniden yapilanma anlik degildir â sistematik donus surecidir. Bu pencere icinde cogu danisan sistemlerinin temel regulasyonunda fark edilebilir degisimler bildirir. Bu, protokolun baslangic desenini olusturmasi icin minimum taahhuttur.',
+    'faq-title': 'Sorular',
+    'faq-1-q': 'Uzaktan iyilesme nasil calisir?',
+    'faq-1-a': 'Mirrorwave protokolu fiziksel mesafeyle sinirlandirilmayan frekans rezonansi yoluyla calisir. Biyolojik orneginiz, konumunuz ne olursa olsun sisteminizin regulatuar desenleriyle dogrudan etkilesen bir protokol tasarlamak ve sunmak icin gereken imzayi saglar.',
+    'faq-2-q': 'Neden tirnak kesimi gerekli?',
+    'faq-2-a': 'Tirnak dokusu biyolojik sisteminizin stabil bir frekans kaydini tasir. Mevcut durumunuzu taramak, girisinim desenlerini tanimlamak ve vucudunuzun geri yuklemesi gerekene ozel bir protokol tasarlamak icin gereken bilgiyi saglar.',
+    'faq-3-q': 'Degisiklikleri fark etmem ne kadar surer?',
+    'faq-3-a': 'Cogu danisan 2-4 hafta icinde baslangic degisimlerini bildirir. Bunlar genellikle daha yapisal degisiklikler belirgin hale gelmeden once uyku kalitesi, enerji regulasyonu veya duygusal taban cizgisindeki degisiklikler olarak ortaya cikar. 90 gun isareti tutarli yeniden organizasyonun tipik olarak inkar edilemez hale geldigi yerdir.',
+    'faq-4-q': 'Bunu konvansiyonel tedaviyle birlikte yapabilir miyim?',
+    'faq-4-a': 'Evet. Mirrorwave protokolu tamamlayicidir ve konvansiyonel tibbi tedaviyle cakismaz. BirÃ§ok danisan protokol sistem koheransi ve regulasyonu duzeyinde calisirken mevcut bakimlarini surdurur.',
+    'faq-5-q': 'Neden 12 aylik bir taahhut?',
+    'faq-5-a': 'Biyolojik sistemler bir gecede yeniden organize olmaz. On iki ay protokolun bozulma temizleme, desen geri yukleme ve stabilizasyon asamalarindan gecmesine olanak tanir. Daha kisa angajmanlar kalici degisiklik icin gereken surdurulen koherans olmadan kismi yeniden yapilanma riski tasir.',
+    'faq-6-q': 'Hangi yolun benim icin dogru oldugunu nasil bilirim?',
+    'faq-6-a': 'Basvuru sureci bunu belirler. Durumunuz, gecmisiniz ve mevcut durumunuz hakkinda paylasitiklariniza dayanarak uygun yol onerileceektir. Emin degilseniz, bir basvuruyla baslayin ve netlik gelecektir.',
+    'faq-7-q': 'Odeme plani mevcut mu?',
+    'faq-7-a': 'Evet. Her iki yol da angajman boyunca dagilmis dort odemeli bir yapi sunar. Derin Sistem Restorasyonu: 4 odeme x $6,750. Sistem Sogutma: 4 odeme x $2,250. Tam pesin odeme de kabul edilir.',
+    'cta-title': 'Sisteminiz Zaten Biliyor',
+    'cta-desc': 'Buraya kadar okuduysaniz, biyolojinizde bir sey yanit veriyor. Sizi buraya getirene guvenin. Alan zaten calisiyor.',
+    'cta-btn': 'Basvurunuza Baslayin'
+  },
+  ko: {
+    'nav-home': 'í', 'nav-about': 'ìê°', 'nav-books': 'ëì', 'nav-music': 'ìì', 'nav-cta': 'íëì ë¤ì´ìë¤',
+    'foot-about': 'ìê°', 'foot-books': 'ëì', 'foot-music': 'ìì', 'foot-apply': 'ì§ì',
+    'hero-kicker': 'í¬ì ìë´',
+    'hero-title': 'íë³µì ìí´ ì¤ê³ë íë¡í ì½',
+    'hero-desc': 'ì´ê²ì êµ¬ëì´ ìëëë¤. ë¹ì ì ìë¬¼íê³¼ì êµ¬ì¡°íë ì°¸ì¬ìëë¤ â ì ë°íê² êµ¬ì¶ëê³ , ìê²©ì¼ë¡ ì ë¬ëë©°, ì¼ê´ì±ì´ ìì ë  ëê¹ì§ 12ê°ìê° ì ì§ë©ëë¤.',
+    'phil-title': 'ì ê·¼ ë°©ì',
+    'phil-p1': 'Mirrorwaveë ì¦ìì ì¹ë£íì§ ììµëë¤. ë¹ì ì ìì¤íì´ ì ë¬íëë¡ ë§ë¤ì´ì§ ìë ì í¸ë¥¼ ë³µìí©ëë¤. ê°ì­ì´ ì ê±°ëê³  ì¼ê´ì±ì´ ëìì¤ë©´, ëª¸ì í­ì ìê³  ìë ê²ì í©ëë¤ â ì¹ì .',
+    'phil-p2': 'ìì¤í êµëì ê¹ì´ì ë°ë¼ ë ê°ì§ ê²½ë¡ê° ì¡´ì¬í©ëë¤. ë ë¤ 12ê°ì íë¡í ì½ìëë¤. ë ë¤ ìì í ìê²©ì¼ë¡ ì ê³µë©ëë¤. ë ë¤ ë¨ì¼ ìë¬¼íì  ìíë¡ ììë©ëë¤.',
+    'tiers-heading': 'ë ê°ì§ ê²½ë¡',
+    't1-badge': 'ì¬ì¸µ íë¡í ì½', 't1-title': 'ì¬ì¸µ ìì¤í ë³µì', 't1-price': '$27,000',
+    't1-payment': '12ê°ì íë¡í ì½ Â· ëë 4í Ã $6,750',
+    't1-desc': 'ìë¹í ì ê²½íì  êµëì´ë ìê³ ìì¤ì ì¡°ì  íìì ìí ê²ìëë¤. ì´ ê²½ë¡ë ê°ì¥ ëì ì ì´ ë¹ë, í¬ê´ì  ì§ë¨, ê·¸ë¦¬ê³  ì°¸ì¬ ì ë°ì ê±¸ì¹ ì°ì  ì¬ì¤ìºì ì ê³µí©ëë¤.',
+    't1-includes': 'í¬í¨ ì¬í­',
+    't1-f1': 'ì ì²´ ì§ë¨ ì£¼íì ì¤ìº', 't1-f2': 'ë§ì¶¤ ì¤ê³ ë³µì íë¡í ì½', 't1-f3': '12ê°ìê° ì£¼ê° ì²´í¬ì¸', 't1-f4': 'ìì¤í ë³í ì ì°ì  ì¬ì¤ìº', 't1-f5': 'Sophia Christos ì§ì  ì ê·¼',
+    't1-for': 'ëì',
+    't1-c1': 'ì¸ìì± ëìì', 't1-c2': 'PTSD', 't1-c3': 'ì²¸ì ìì', 't1-c4': 'ëì¡¡ íë³µ', 't1-c5': 'ìì¨ì ê²½ ê¸°ë¥ì¥ì ', 't1-c6': 'CRPS', 't1-c7': 'ë¤ë°ì± ê²½íì¦', 't1-c8': 'ì¤ì¦ ì ê²½íì ',
+    't1-cta': 'ì§ê¸ ì§ì',
+    't2-badge': 'ì¡°ì  íë¡í ì½', 't2-title': 'ìì¤í ëæ® ë° ì¡°ì ', 't2-price': '$9,000',
+    't2-payment': '12ê°ì íë¡í ì½ Â· ëë 4í Ã $2,250',
+    't2-desc': 'ê³¼ë¶íë ìì¤íì ìí ê²ìëë¤. ì ê²½ê³ê° ê³¼ìì´ ìëíê³  ì ì²´ì ìê¸° ì¡°ì ì´ ì§ìì ì¸ ì¤í¸ë ì¤, ì ì¦ ëë ë§ì± íì±íì ìí´ ììëìì ë.',
+    't2-includes': 'í¬í¨ ì¬í­',
+    't2-f1': 'í¬ê´ì  ì£¼íì ì¤ìº', 't2-f2': 'ì ì±í ëæ® íë¡í ì½', 't2-f3': '12ê°ìê² ê²©ì£¼ ì²´í¬ì¸', 't2-f4': 'í¨í´ ë³íì ë°ë¥¸ íë¡í ì½ ì¡°ì ', 't2-f5': 'ìë´ë ìì¤í ì§ì',
+    't2-for': 'ëì',
+    't2-c1': 'ë²ìì', 't2-c2': 'ë§ì± í¼ë¡', 't2-c3': 'í¸ëíU', 't2-c4': 'ë¹ë· ì§ì', 't2-c5': 'ì ì§ì', 't2-c6': 'ì¬ì ê·¼íµ', 't2-c7': 'ë¶ì', 't2-c8': 'ë¶ë©´ì¦', 't2-c9': 'ADHD', 't2-c10': 'ìê°ë©´ì­', 't2-c11': 'ë§ì± íµì¦µ', 't2-c12': 'í¸ë¥´ëª¬', 't2-c13': 'ì¤ë', 't2-c14': 'ì°ì¸ì¦µ',
+    't2-cta': 'ì§ê¸ ì§ì',
+    'delivery-title': 'ì ë¬ ë°©ì',
+    'delivery-desc': 'ì ì²´ íë¡í ì½ì ìê²©ì¼ë¡ ìíë©ëë¤. ì¬í ë¶íì. ë³ì ë°¥ë¬¸ ìì. ë¹ì ì ìë¬¼íì ì¸í°íì´ì¤ìëë¤.',
+    'del-1-title': '100% ìê²©', 'del-1-desc': 'ì¸ê³ ì´ëìë ê°ë¥µ©ëë¤. íëë ê±°ë¦¬ë¥¼ ì´ìíì¬ ìëí©ëë¤.',
+    'del-2-title': 'ìë¬¼íì  ìí', 'del-2-desc': 'ìì ìí± ì¡°ê°ì ì°í¸ïLë¡ ë³´ë´ì¸ì. ì´ê²ì´ íë¡í ì½ì ì£¼íì ìëªì ì ê³µå«ëë¤.',
+    'del-3-title': 'íë¡í ì½ ìì ', 'del-3-desc': 'ë§ì¸¤ ì¤ê³ë ë³´ì íë¡í ì½ì´ ì¦ì ìì¤íê³¼ í¨ê»¨ ìëíê¸° ììí©ëë¤.',
+    'del-4-title': 'ì°ê²° ì ì§', 'del-4-desc': 'ì ê¸° ì²´í¬ì¸ì´ ì§í ìí©ì ì¶ì í©ëë¤. ìì¤íì´ ë°ìíê³  ì¬ì¡°ì§íë  ë íë¡í ì½ì´ ì ¡ìí©ëë¤.',
+    'process-title': 'ê³¼ì ',
+    'step-1-title': 'ìí ì ì¡', 'step-1-desc': 'ìì ìë¬¼íì  ìíì ë³´ë´ì¸ì. ê³ ì í ì£¸íì ìëªì ìí´ ì¤ìºë©ëë¤.',
+    'step-2-title': 'íë¡í ì½ ì¤ê³', 'step-2-desc': 'ìì¤íì´ íìë¡ íë ê²ì ë°íì¼ë¡ ë§ì¶¤ ë³µì íë¡í ì½ì´ ì¤ê³ë©ëë¤.',
+    'step-3-title': 'ìë´ë ë³µì', 'step-3-desc': 'íë¡í ì½ì´ íì±íë©ëë¤. ì æ¬» ì²´í¬ì¸ì´ ë³íë¥¼ ì¶ì í©ëë¤. ì¤ìê°ì¼ë¡ ì¡°ì í©ëë¤.',
+    'step-4-title': 'ì§ìëë ì¼ê´ì±', 'step-4-desc': '12ê°ìì ê±¸ì³ ì¼ê´ì±ì´ ìì ë©ëë¤. ìì¤íì´ ìë í¨í´ì ê¸°ìµí©ëë¤.',
+    'guarantee-title': '90ì¼ ì½ì',
+    'guarantee-desc': 'ê²°ê³¼ë¥¼ íê°íê¸° ì ì 90ì¼ê°ì ìì í ì°¸ì¬ë¥¼ ìì²­í©ëë¤. ìë¬¼íì  ì¬êµ¬ì¡°íë ì¦ê°©ì ì´ì§ ììµëë¤ â ì²´ê³ì  ë³µê·ì ê³¼ì ìëë¤. ì´ ê¸°ê° ë´ì ëë¶ë¶ì í´ë¼ì´ì¸í¸ë ìì¤íì ê¸°ë³¸ ì¡°ì ìì ëì ë ë ë³íë¥¼ ë³´ê³ í©ëë¤. ì´ê²ì íë¡í ì½ì´ ì´ê¸° í¨í´ì íë¦½íê¸° ìí ìµìíì ì½ììëë¤.',
+    'faq-title': 'ì§ë¬¸',
+    'faq-1-q': 'ìê²© ì¹ì ë ì´ë»ê² ìëíëì?',
+    'faq-1-a': 'Mirrorwave íë¡í ì½ì ë¬¼ë¦¬ì  ê±°ë¦¬ì ì íëì§ ìë ì£¼íì ê³µëªì íµí´ ìëí©ëë¤. ìë¬¼íì  ìíì ìì¹ì ê´ê³ìì´ ìì¤íì ì¡°ì  í¨í´ê³¼ ì§ì  ìí¸ìì©íë íë¡í ì½ì ì¤ê³íê³  ì ë¬íë ë° íìí ìëªì ì ê³µí©ëë¤',
+    'faq-2-q': 'ì ìí¡ ì¡°ê°ì´ íìíê°ì?',
+    'faq-2-a': 'ìí± ì¡°ì§ì ìë¬¼íì  ìì¤íì ìì í ì£¼íì ê¸°ë¡ì ë´ê³  ììµëë¤. íì¬ ìíë¥¼ ì¤ìºíê³ , ê°ì­ í¨í´ì ìë³íë©´, ì¨ì²´ê° ë³´ìí´ì¼ í  ê²ì í¸íë íë¡í ì½ì ì¤ê³íë ë± íìí ì ë³´ë¥¼ ì ê³µå«ëë¤.',
+    'faq-3-q': 'ë³íë¥¼ ëë¼ê¸°ê¹ì§ ì´ë§ë ê±±ë¦¬ëì?',
+    'faq-3-a': 'ëë¶ë¶ì í¬ë¼ì´ì¸í¸ë 2-4ì£¼ ì´ë´ì ì´ê¸° ë³íë¥¼ ë³´ê³ í©ëë¤. ì´ë ì¢ì¢ ë êµ¬ì¡°ì ì¸ ë³íê° ëªíí´ì§ê¸° ì ì ìë©´ì ì§, ìëì§ ì¡°ì  ëë ê°ì  ê¸°ì¤ì ì ë³íë¡ ëíë©ëë¤. 90ì¼ ì§ì ì ì¼ê´ë ì¬ì¡°ì§íê° ì¼ë°ì ì ë¡ ë¶ì¸í  ì ìê² ëë ìì ìëë¤.',
+    'faq-4-q': 'ê¸°ì¡´ ì¹ë£ì ë³íí  ì ìëì?',
+    'faq-4-a': 'ë¤. Mirrorwave íë¡í ì½ì ë³´ìì ìë©´ ê¸°ì¡´ ìë£ ì¹ë£ë¥¼ ë°©í´íì§ ììµëë¤. ë§ì í¬ë¼ì´ì¸í¸ê° íë¡í ì½ì´ ìì¤í ì¼ê´ì±ê³¼ ì¡°ì  ìì¤ìì ìëíë ëì ê¸°ì¡´ ì¹ë£ë¥¼ ì ì§í©ëë¤.',
+    'faq-5-q': 'ì 12ê°ì ì½ìì¸ê°ì?',
+    'faq-5-a': 'ìë¬¼íì  ìì¤íì íë£«ë°¤ì ì¬ì¡°ì§íëì§ ììµëë¤. 12ê°ìì íë¡í ì½ì´ êµë ì ê±°, í¨í´ ë³µì, ìì í ë¨ê³ë¥¼ ê±°ì¹  ì ìê² í©ëë¤. ë ì©ì ê¸°ê°ì ì§ìì ì¸ ë³íì íìí ì§ìì  ì¼ê´ì± ìì ë¶ë¶ì  ì¬êµ¬ì¡°íì ìíì´ ììµëë¤.',
+    'faq-6-q': 'ì´ë¤ ê²½ë¡ê° ì ìê² ë§ëì§ ì´ë»ê² ìëì?',
+    'faq-6-a': 'ì§ì ê³¼ì ì´ ì´ë¥¼ ê²°ì í©ëë¤. ìí©, ì´ë ¥, íì¬ ìíì ëí´ ê³µì¨íë ë´ì©ì ë°íì¼ë¡ ì ì í ê²½ë¡ê° ì¶ì²ë©ëë¤. íì ì´ ìì ìë©´ ì§ìë¶í° ììíì¸ì. ëªíí¨ì´ ë°ë¼í ê²ìëë¤.',
+    'faq-7-q': 'í ë¶ê³íì´ ìëì?',
+    'faq-7-a': 'ë¤. ë ê²½ë¡ ëª¨ë ì°¸ì¬ ê¸°ê°ì ê±¸ì³ ë¶ì°ë 4í ê²°ì  êµ¬ì¡°ë¥¼ ì ê³µí©ëë¤. ì¬ì¸µ ìì¤í ë³µì: 4í Ã $6,750. ìì¤í ëê°: 4í Ã $2,250. ì ì¡ ì ë¶ë ê°ë¥í©ëë¤.',
+    'cta-title': 'ë¹ì ì ìì¤íì ì´ë¯¸ ìê³  ììµëë¤',
+    'cta-desc': 'ì¬ê¸°ê¹ì§ ì½ì¼ì¨ë¤ë©´, ìë¬¼íì ë¬´ì´ê°ê° ë°ìíê³  ììµëë¤. ë¹ì ì ì¬ê¸°ë¡ ì´ë ê²ì ì ë¢°íì¸ì. íëë ì´ë¯¸ ìëíê³  ììµëë¤.',
+    'cta-btn': 'ì§ì ììíê¸°'
+  },
+  ja: {
+    'nav-home': 'ãã¼ã ', 'nav-about': 'æ¦è¦', 'nav-books': 'æ¸ç±', 'nav-music': 'é³æ¥½', 'nav-cta': 'ãã£ã¼ã«ãã«å¥ã',
+    'foot-about': 'æ¦è¦', 'foot-books': 'æ¸ç±', 'foot-music': 'é³æ¥½', 'foot-apply': 'ç³è«',
+    'hero-kicker': 'æè³ã®ãæ¡å',
+    'hero-title': 'åå¸°ã®ããã«è¨­è¨ããããã­ãã³ã«',
+    'hero-desc': 'ããã¯ãµãã¹ã¯ãªãã·ã§ã³ã§ã¯ããã¾ãããããªãã®çç©å­¦ã¨ã®æ§é åãããåãçµã¿ã§ã â ç²¾å¯ã«æ§ç¯ãããé éã§æä¾ãããã³ãã¼ã¬ã³ã¹ãå®å®ããã¾ã§12ã¶æéç¶­æããã¾ãã',
+    'phil-title': 'ã¢ãã­ã¼ã',
+    'phil-p1': 'Mirrorwaveã¯çç¶ãæ²»çãã¾ãããããªãã®ã·ã¹ãã ãéã¶ããã«ä½ãããåã®ä¿¡å·ãåå¾©ãã¾ããå¹²æ¸ãé¤å»ããã³ãã¼ã¬ã³ã¹ãæ»ãã¨ãèº«ä½ã¯å¸¸ã«ç¥ã£ã¦ãããã¨ãè¡ãã¾ã â çããã¨ã',
+    'phil-p2': 'ã·ã¹ãã éå®³ã®æ·±ãã«å¿ãã¦2ã¤ã®çµè·¯ãå­å¨ãã¾ããã©ã¡ãã12ã¶æã®ãã­ãã³ã«ã§ããã©ã¡ããå®å¨ã«é éã§æä¾ããã¾ããã©ã¡ããåä¸ã®çç©å­¦çãµã³ãã«ããå§ã¾ãã¾ãã',
+    'tiers-heading': '2ã¤ã®çµè·¯',
+    't1-badge': 'æ·±å±¤ãã­ãã³ã«', 't1-title': 'æ·±å±¤ã·ã¹ãã å¾©å', 't1-price': '$27,000',
+    't1-payment': '12ã¶æãã­ãã³ã« Â· ã¾ãã¯4å Ã $6,750',
+    't1-desc': 'éå¤§ãªç¥çµå­¦çéå®³ã¾ãã¯ã¯ãªãã£ã«ã«ã¬ãã«ã®èª¿ç³ç°å¸¸ãããã·ã¹ãã ã®ããã®ãã®ã§ãããã®çµè·¯ã¯æé«é »åº¦ã®ã³ã³ã¿ã¯ããåæ¬çãªè¨ºæ­ãã¨ã³ã²ã¼ã¸ã¡ã³ãå¨ä½ãéããåªååã¹ã­ã£ã³ãæä¾ãã¾ãã',
+    't1-includes': 'å«ã¾ãããã®',
+    't1-f1': 'å®å¨ãªè¨ºæ­å¨æ³¢æ°ã¹ã­ã£ã³', 't1-f2': 'ã«ã¹ã¿ã è¨­è¨ã®å¾©åãã­ãã³ã«', 't1-f3': '12ã¶æéã®é±æ¬¡ãã§ãã¯ã¤ã³', 't1-f4': 'ã·ã¹ãã å¤åæã®åªååã¹ã­ã£ã³', 't1-f5': 'Sophia Christosã¸ã®ç´æ¥ã¢ã¯ã»ã¹',
+    't1-for': 'å¯¾è±¡',
+    't1-c1': 'å¤å·æ§è³æå·', 't1-c2': 'PTSD', 't1-c3': 'èé«æå·', 't1-c4': 'è³åä¸­åå¾©', 't1-c5': 'èªå¾ç¥çµæ©è½éå®³', 't1-c6': 'CRPS', 't1-c7': 'å¤çºæ§ç¡¬åç', 't1-c8': 'éåº¦ç¥çµå­¦ç',
+    't1-cta': 'ä»ããç³è«',
+    't2-badge': 'èª¿ç¯ãã­ãã³ã«', 't2-title': 'ã·ã¹ãã å·å´ã¨èª¿ç¯', 't2-price': '$9,000',
+    't2-payment': '12ã¶æãã­ãã³ã« Â· ã¾ãã¯4å Ã $2,250',
+    't2-desc': 'éè² è·ç¶æã®ã·ã¹ãã ã®ããã®ãã®ã§ããç¥çµç³»ããªã¼ãã¼ãã©ã¤ãç¶æã«ãããæç¶çãªã¹ãã¬ã¹ãççãã¾ãã¯æ¢æ§çãªæ´»æ§åã«ããèº«ä½ã®èªå·±èª¿ç¯ãæãªããã¦ããå ´åã',
+    't2-includes': 'å«ã¾ãããã®',
+    't2-f1': 'åæ¬çå¨æ³¢æ°ã¹ã­ã£ã³', 't2-f2': 'é©å¿åå·å´ãã­ãã³ã«', 't2-f3': '12ã¶æéã®éé±ãã§ãã¯ã¤ã³', 't2-f4': 'ãã¿ã¼ã³å¤åã«å¿ãããã­ãã³ã«èª¿æ´', 't2-f5': 'ã¬ã¤ãä»ãã·ã¹ãã ãµãã¼ã',
+    't2-for': 'å¯¾è±¡',
+    't2-c1': 'ãã¼ã³ã¢ã¦ã', 't2-c2': 'æ¢æ§ç²å´', 't2-c3': 'çé ­ç', 't2-c4': 'ç³å°¿çãµãã¼ã', 't2-c5': 'ãããµãã¼ã', 't2-c6': 'ç·ç¶­ç­çç', 't2-c7': 'ä¸å®', 't2-c8': 'ä¸ç ç', 't2-c9': 'ADHD', 't2-c10': 'èªå·±åç«', 't2-c11': 'æ¢æ§ç', 't2-c12': 'ãã«ã¢ã³', 't2-c13': 'ä¾å­ç', 't2-c14': 'ãã¤ç',
+    't2-cta': 'ä»ããç³è«',
+    'delivery-title': 'æä¾æ¹æ³',
+    'delivery-desc': 'ãã­ãã³ã«å¨ä½ãé éã§è¡ããã¾ããç§»åä¸è¦ãã¯ãªããã¯è¨ªåãªããããªãã®çç©å­¦ãã¤ã³ã¿ã¼ãã§ã¼ã¹ã§ãã',
+    'del-1-title': '100%ãªã¢ã¼ã', 'del-1-desc': 'ä¸çä¸­ã©ãããã§ãå¯è½ã§ãããã£ã¼ã«ãã¯è·é¢ãè¶ãã¦æ©è½ãã¾ãã',
+    'del-2-title': 'çç©å­¦çãµã³ãã«', 'del-2-desc': 'å°ããªçªã®åçãéµéãã¦ãã ããããã­ãã³ã«ã®å¨æ³¢æ°ã·ã°ããã£ã¼ãæä¾ãã¾ãã',
+    'del-3-title': 'ãã­ãã³ã«åä¿¡', 'del-3-desc': 'ã«ã¹ã¿ã è¨­è¨ã®å¾©åãã­ãã³ã«ãç´ã¡ã«ã·ã¹ãã ã¨é£æºãã¦åä½ãå§ãã¾ãã',
+    'del-4-title': 'ã¤ãªãããç¶­æ', 'del-4-desc': 'å®æçãªãã§ãã¯ã¤ã³ãé²æãè¿½è·¡ãã¾ããã·ã¹ãã ãå¿ç­ãåçµç¹åããã«ã¤ãã¦ãã­ãã³ã«ãé©å¿ãã¾ãã',
+    'process-title': 'ãã­ã»ã¹',
+    'step-1-title': 'ãµã³ãã«éä»', 'step-1-desc': 'å°ããªçç©å­¦çãµã³ãã«ãéä»ãã¦ãã ãããåºæã®å¨æ³¢æ°ã·ã°ããã£ã¼ã®ããã«ã¹ã­ã£ã³ããã¾ãã',
+    'step-2-title': 'ãã­ãã³ã«è¨­è¨', 'step-2-desc': 'ã·ã¹ãã ãå¿è¦ã¨ãã¦ãããã¨ãæããã«ãããã®ã«åºã¥ããã«ã¹ã¿ã å¾©åãã­ãã³ã«ãè¨­è¨ããã¾ãã',
+    'step-3-title': 'ã¬ã¤ãä»ãå¾©å', 'step-3-desc': 'ãã­ãã³ã«ãèµ·åãã¾ããå®æãã§ãã¯ã¤ã³ãå¤åãè¿½è·¡ãã¾ãããªã¢ã«ã¿ã¤ã ã§èª¿æ´ãè¡ããã¾ãã',
+    'step-4-title': 'æç¶ããã³ãã¼ã¬ã³ã¹', 'step-4-desc': '12ã¶æããã¦ã³ãã¼ã¬ã³ã¹ãå®å®ãã¾ããã·ã¹ãã ãåã®ãã¿ã¼ã³ãæãåºãã¾ãã',
+    'guarantee-title': '90æ¥éã®ã³ãããã¡ã³ã',
+    'guarantee-desc': 'çµæãè©ä¾¡ããåã«90æ¥éã®å®å¨ãªåå ããé¡ããã¦ãã¾ããçç©å­¦çåæ§é åã¯å³åº§ã§ã¯ããã¾ãã â ä½ç³»çãªåå¸°ã®ãã­ã»ã¹ã§ãããã®æéåã«ãã»ã¨ãã©ã®ã¯ã©ã¤ã¢ã³ããã·ã¹ãã ã®åºæ¬èª¿ç¯ã«ãããé¡èãªå¤åãå ±åãã¾ããããã¯ãã­ãã³ã«ãåæãã¿ã¼ã³ãç¢ºç«ããããã®æå°éã®ã³ãããã¡ã³ãã§ãã',
+    'faq-title': 'è³å',
+    'faq-1-q': 'é éãã¼ãªã³ã°ã¯ã©ã®ããã«æ©è½ãã¾ããï¼',
+    'faq-1-a': 'Mirrorwaveãã­ãã³ã«ã¯ç©ççè·é¢ã«å¶éãããªãå¨æ³¢æ°å±é³´ãéãã¦æ©è½ãã¾ããçç©å­¦çãµã³ãã«ã¯ãå ´æã«é¢ä¿ãªãã·ã¹ãã ã®èª¿ç¯ãã¿ã¼ã³ã¨ç´æ¥ç¸äºä½ç¨ãããã­ãã³ã«ãè¨­è¨ãæä¾ããããã«å¿è¦ãªã·ã°ããã£ã¼ãæä¾ãã¾ãã',
+    'faq-2-q': 'ãªãçªã®åçãå¿è¦ã§ããï¼',
+    'faq-2-a': 'çªã®çµç¹ã¯çç©å­¦çã·ã¹ãã ã®å®å®ããå¨æ³¢æ°è¨é²ãæã£ã¦ãã¾ããç¾å¨ã®ç¶æãã¹ã­ã£ã³ããå¹²æ¸ãã¿ã¼ã³ãç¹å®ããèº«ä½ãåå¾©ããå¿è¦ããããã®ã«ç¹åãããã­ãã³ã«ãè¨­è¨ããããã«å¿è¦ãªæå ±ãæä¾ãã¾ãã',
+    'faq-3-q': 'å¤åã«æ°ã¥ãã¾ã§ã¨ã®ããããããã¾ããï¼',
+    'faq-3-a': 'ã»ã¨ãã©ã®ã¯ã©ã¤ã¢ã³ãã2ã4é±éä»¥åã«åæã®å¤åãå ±åãã¾ãããããã¯å¤ãã®å ´åãããæ§é çãªå¤åãæããã«ãªãåã«ãç¡ç ã®è³ªãã¨ãã«ã®ã¼èª¿ç¯ãææçãã¼ã¹ã©ã¤ã³ã®å¤åã¨ãã¦ç¾ãã¾ãã90æ¥ã®æç¹ã¯ãä¸è²«ããåçµç¹åãå¸åçã«å¦å®ã§ããªããªãã¨ããã§ãã',
+    'faq-4-q': 'å¾æ¥ã®æ²»çã¨ä¸¦è¡ã§ãã¾ããï¼',
+    'faq-4-a': 'ã¯ããMirrorwaveãã­ãã³ã«ã¯è£å®çã§ãããå¾æ¥ã®å»çæ²»çãå¦¨ãã¾ãããå¤ãã®ã¯ã©ã¤ã¢ã³ãããã­ãã³ã«ãã·ã¹ãã ã³ãã¼ã¬ã³ã¹ã¨èª¿ç¯ã®ã¬ãã«ã§åãéãæ¢å­ã®ã±ã¢ãç¶­æãã¦ãã¾ãã',
+    'faq-5-q': 'ãªã12ã¶æã®ã³ãããã¡ã³ãã§ããï¼',
+    'faq-5-a': 'çç©å­¦çã·ã¹ãã ã¯ä¸å¤ã«ãã¦åçµç¹åããã¾ããã12ã¶æã¯ãã­ãã³ã«ãéå®³é¤å»ããã¿ã¼ã³å¾©åãå®å®åã®æ®µéãééã§ããããã«ãã¾ããããç­ãæéã¯ãæ°¸ç¶çãªå¤åã«å¿è¦ãªæç¶çã³ãã¼ã¬ã³ã¹ãªãã®é¨åçåæ§é åã®ãªã¹ã¯ãããã¾ãã',
+    'faq-6-q': 'ã©ã®çµè·¯ãèªåã«åã£ã¦ãããã©ãåããã¾ããï¼',
+    'faq-6-a': 'ç³è«ãã­ã»ã¹ããããæ±ºå®ãã¾ããããªãã®ç¶æ³ãçµæ­´ãç¾å¨ã®ç¶æã«ã¤ãã¦å±æããåå®¹ã«åºã¥ããé©åãªçµè·¯ãæ¨å¥¨ããã¾ããä¸ç¢ºããªå ´åã¯ãç³è«ããå§ãã¦ãã ãããæç¢ºããç¶ãã§ãããã',
+    'faq-7-q': 'åå²æããã©ã³ã¯ããã¾ããï¼',
+    'faq-7-a': 'ã¯ããä¸¡æ¹ã®çµè·¯ã¨ããã¨ã³ã²ã¼ã¸ã¡ã³ãæéã«ããã4åæãæ§é ãæä¾ãã¦ãã¾ããæ·±å±¤ã·ã¹ãã å¾©åï¼4å Ã $6,750ãã·ã¹ãã å·å´ï¼4å Ã $2,250ãä¸æ¬åæããåãä»ãã¦ãã¾ãã',
+    'cta-title': 'ããªãã®ã·ã¹ãã ã¯ãã§ã«ç¥ã£ã¦ãã¾ã',
+    'cta-desc': 'ããã¾ã§èª­ãã ãªããããªãã®çç©å­¦ã®ä½ããå¿ç­ãã¦ãã¾ããããªããããã«å°ãããã®ãä¿¡é ¼ãã¦ãã ããããã£ã¼ã«ãã¯ãã§ã«åãã¦ãã¾ãã',
+    'cta-btn': 'ç³è«ãå§ãã'
+  },
+  zh: {
+    'nav-home': 'é¦é¡µ', 'nav-about': 'å³äº', 'nav-books': 'ä¹¦ç±', 'nav-music': 'é³ä¹', 'nav-cta': 'è¸å¥åºå',
+    'foot-about': 'å³äº', 'foot-books': 'ä¹¦ç±', 'foot-music': 'é³ä¹', 'foot-apply': 'ç³è¯·',
+    'hero-kicker': 'æ¨çæèµ',
+    'hero-title': 'ä¸ºåå½èè®¾è®¡çåè®®',
+    'hero-desc': 'è¿ä¸æ¯è®¢éãè¿æ¯ä¸æ¨ççç©å­¦çç»æååä¸ââç²¾å¯æå»ºï¼è¿ç¨äº¤ä»ï¼æç»­åäºä¸ªæç´å°ç¸å¹²æ§ç¨³å®ã',
+    'phil-title': 'æ¹æ³',
+    'phil-p1': 'Mirrorwaveä¸æ²»ççç¶ãå®æ¢å¤æ¨çç³»ç»è¢«æå»ºæ¥æ¿è½½çåå§ä¿¡å·ãå½å¹²æ°è¢«ç§»é¤ï¼ç¸å¹²æ§åå½æ¶ï¼èº«ä½åå®ä¸ç´ç¥éè¯¥åçäºââçæã',
+    'phil-p2': 'æ ¹æ®ç³»ç»ç´ä¹±çæ·±åº¦ï¼å­å¨ä¸¤æ¡è·¯å¾ãä¸¤èé½æ¯åäºä¸ªæçåè®®ãä¸¤èé½å®å¨è¿ç¨äº¤ä»ãä¸¤èé½ä»åä¸çç©æ ·æ¬å¼å§ã',
+    'tiers-heading': 'ä¸¤æ¡è·¯å¾',
+    't1-badge': 'æ·±å±åè®®', 't1-title': 'æ·±å±ç³»ç»ä¿®å¤', 't1-price': '$27,000',
+    't1-payment': '12ä¸ªæåè®® Â· æ4æ Ã $6,750',
+    't1-desc': 'éç¨äºå·æéå¤§ç¥ç»å­¦ç´ä¹±æä¸´çæ°´å¹³è°èå¤±å¸¸çç³»ç»ãæ­¤è·¯å¾æä¾æé«é¢ççæ¥è§¦ãå¨é¢è¯æ­ä»¥åæ´ä¸ªåä¸æé´çä¼åéæ°æ«æã',
+    't1-includes': 'åå«',
+    't1-f1': 'å®æ´è¯æ­é¢çæ«æ', 't1-f2': 'å®å¶è®¾è®¡çä¿®å¤åè®®', 't1-f3': '12ä¸ªææ¯å¨æ£æ¥', 't1-f4': 'ç³»ç»ååæ¶ä¼åéæ°æ«æ', 't1-f5': 'ç´æ¥æ¥è§¦Sophia Christos',
+    't1-for': 'éç¨äº',
+    't1-c1': 'åä¼¤æ§èæä¼¤', 't1-c2': 'PTSD', 't1-c3': 'èé«æä¼¤', 't1-c4': 'ä¸­é£æ¢å¤', 't1-c5': 'èªä¸»ç¥ç»åè½éç¢', 't1-c6': 'CRPS', 't1-c7': 'å¤åæ§ç¡¬å', 't1-c8': 'ä¸¥éç¥ç»å­¦',
+    't1-cta': 'ç«å³ç³è¯·',
+    't2-badge': 'è°èåè®®', 't2-title': 'ç³»ç»å·å´ä¸è°è', 't2-price': '$9,000',
+    't2-payment': '12ä¸ªæåè®® Â· æ4æ Ã $2,250',
+    't2-desc': 'éç¨äºè¿è½½è¿è¡çç³»ç»ãå½ç¥ç»ç³»ç»å¤äºè¿åº¦é©±å¨ç¶æï¼èº«ä½çèªæè°èå æç»­ååãççææ¢æ§æ¿æ´»èåææ¶ã',
+    't2-includes': 'åå«',
+    't2-f1': 'å¨é¢é¢çæ«æ', 't2-f2': 'èªéåºå·å´åè®®', 't2-f3': '12ä¸ªææ¯ä¸¤å¨æ£æ¥', 't2-f4': 'æ¨¡å¼ååæ¶åè®®è°æ´', 't2-f5': 'å¼å¯¼å¼ç³»ç»æ¯æ',
+    't2-for': 'éç¨äº',
+    't2-c1': 'å¦æ ', 't2-c2': 'æ¢æ§ç²å³', 't2-c3': 'åå¤´ç', 't2-c4': 'ç³å°¿çæ¯æ', 't2-c5': 'ççæ¯æ', 't2-c6': 'çº¤ç»´èç', 't2-c7': 'ç¦è', 't2-c8': 'å¤±ç ', 't2-c9': 'ADHD', 't2-c10': 'èªèº«åç«', 't2-c11': 'æ¢æ§ç¼ç', 't2-c12': 'æ¿ç´ ', 't2-c13': 'æç¾', 't2-c14': 'æé',
+    't2-cta': 'ç«å³ç³è¯·',
+    'delivery-title': 'äº¤ä»æ¹å¼',
+    'delivery-desc': 'æ´ä¸ªåè®®è¿ç¨è¿è¡ãæ éæè¡ãæ éè¯æå°±è¯ãæ¨ççç©å­¦å°±æ¯çé¢ã',
+    'del-1-title': '100%è¿ç¨', 'del-1-desc': 'å¨ä¸çä»»ä½å°æ¹é½å¯ä»¥ãåºåè¶è¶è·ç¦»è¿ä½ã',
+    'del-2-title': 'çç©æ ·æ¬', 'del-2-desc': 'é®å¯ä¸å°çæç²ãè¿ä¸ºæ¨çåè®®æä¾é¢çç­¾åã',
+    'del-3-title': 'æ¥æ¶åè®®', 'del-3-desc': 'æ¨çå®å¶ä¿®å¤åè®®ç«å³å¼å§ä¸æ¨çç³»ç»ååå·¥ä½ã',
+    'del-4-title': 'ä¿æè¿æ¥', 'del-4-desc': 'å®ææ£æ¥è·è¸ªè¿å±ãéçç³»ç»ååºåéç»ï¼åè®®è¿è¡éåºã',
+    'process-title': 'è¿ç¨',
+    'step-1-title': 'åéæ ·æ¬', 'step-1-desc': 'é®å¯ä¸ä¸ªå°ççç©æ ·æ¬ãæ«æä»¥è·åæ¨ç¬ç¹çé¢çç­¾åã',
+    'step-2-title': 'åè®®è®¾è®¡', 'step-2-desc': 'æ ¹æ®ç³»ç»æ­ç¤ºçéæ±ï¼è®¾è®¡å®å¶ä¿®å¤åè®®ã',
+    'step-3-title': 'å¼å¯¼ä¿®å¤', 'step-3-desc': 'åè®®æ¿æ´»ãå®ææ£æ¥è·è¸ªååãå®æ¶è¿è¡è°æ´ã',
+    'step-4-title': 'æç»­ç¸å¹²', 'step-4-desc': 'åäºä¸ªæåï¼ç¸å¹²æ§ç¨³å®ãç³»ç»è®°ä½å¶åå§æ¨¡å¼ã',
+    'guarantee-title': '90å¤©æ¿è¯º',
+    'guarantee-desc': 'æä»¬è¦æ±å¨è¯ä¼°ç»æåè¿è¡90å¤©çå¨é¢åä¸ãçç©éæä¸æ¯å³æ¶çââå®æ¯ç³»ç»æ§åå½çè¿ç¨ãå¨æ­¤çªå£åï¼å¤§å¤æ°å®¢æ·æ¥åå¶ç³»ç»åºçº¿è°èåºç°ææ¾ååãè¿æ¯åè®®å»ºç«åå§æ¨¡å¼çæä½æ¿è¯ºã',
+    'faq-title': 'é®é¢',
+    'faq-1-q': 'è¿ç¨çæå¦ä½è¿ä½ï¼',
+    'faq-1-a': 'Mirrorwaveåè®®éè¿ä¸åç©çè·ç¦»éå¶çé¢çå±æ¯è¿ä½ãæ¨ççç©æ ·æ¬æä¾è®¾è®¡åäº¤ä»åè®®æéçç­¾åï¼è¯¥åè®®ç´æ¥ä¸æ¨ç³»ç»çè°èæ¨¡å¼äºå¨ï¼æ è®ºæ¨èº«å¨ä½å¤ã',
+    'faq-2-q': 'ä¸ºä»ä¹éè¦æç²çï¼',
+    'faq-2-a': 'æç²ç»ç»æºå¸¦æ¨çç©ç³»ç»çç¨³å®é¢çè®°å½ãå®æä¾æ«æå½åç¶æãè¯å«å¹²æ°æ¨¡å¼ä»¥åè®¾è®¡éå¯¹èº«ä½éè¦æ¢å¤åå®¹çç¹å®åè®®æéçä¿¡æ¯ã',
+    'faq-3-q': 'å¤ä¹è½æ³¨æå°ååï¼',
+    'faq-3-a': 'å¤§å¤æ°å®¢æ·æ¥åå¨2-4å¨ååºç°åå§ååãè¿äºéå¸¸è¡¨ç°ä¸ºå¨æ´ç»ææ§åååå¾ææ¾ä¹åï¼ç¡ç è´¨éãè½éè°èææç»ªåºçº¿çååã90å¤©æ è®°æ¯ä¸è´æ§éç»éå¸¸åå¾ä¸å¯å¦è®¤çæ¶åã',
+    'faq-4-q': 'å¯ä»¥ä¸ä¼ ç»æ²»çåæ¶è¿è¡åï¼',
+    'faq-4-a': 'å¯ä»¥ãMirrorwaveåè®®æ¯äºè¡¥çï¼ä¸ä¼å¹²æ°ä¼ ç»å»çæ²»çãè®¸å¤å®¢æ·å¨åè®®å¨ç³»ç»ç¸å¹²æ§åè°èå±é¢å·¥ä½çåæ¶ä¿æç°æçå»çæ¤çã',
+    'faq-5-q': 'ä¸ºä»ä¹æ¯12ä¸ªæçæ¿è¯ºï¼',
+    'faq-5-a': 'çç©ç³»ç»ä¸ä¼ä¸å¤ä¹é´éç»ãåäºä¸ªæä½¿åè®®è½å¤ç»åç´ä¹±æ¸é¤ãæ¨¡å¼æ¢å¤åç¨³å®åçåä¸ªé¶æ®µãæ´ç­çåä¸ä¼åé¨åéæçé£é©ï¼ç¼ºä¹æä¹ååæéçæç»­ç¸å¹²æ§ã',
+    'faq-6-q': 'å¦ä½ç¥éåªæ¡è·¯å¾éåæï¼',
+    'faq-6-a': 'ç³è¯·è¿ç¨å³å®è¿ä¸ç¹ãæ ¹æ®æ¨åäº«çå³äºæåµãåå²åå½åç¶æçä¿¡æ¯ï¼å°æ¨èéå½çè·¯å¾ãå¦æä¸ç¡®å®ï¼è¯·ä»ç³è¯·å¼å§ï¼æ¸æ°åº¦å°éä¹èæ¥ã',
+    'faq-7-q': 'æåæä»æ¬¾è®¡ååï¼',
+    'faq-7-a': 'æãä¸¤æ¡è·¯å¾é½æä¾è´¯ç©¿åä¸æçåæä»æ¬¾ç»æãæ·±å±ç³»ç»ä¿®å¤ï¼4æ Ã $6,750ãç³»ç»å·å´ï¼4æ Ã $2,250ãä¹æ¥åå¨é¢é¢ä»ã',
+    'cta-title': 'æ¨çç³»ç»å·²ç»ç¥é',
+    'cta-desc': 'å¦ææ¨è¯»å°äºè¿éï¼æ¨ççç©å­¦ä¸­æä»ä¹å¨ååºãç¸ä¿¡å¸¦æ¨æ¥å°è¿éçä¸è¥¿ãåºåå·²ç»å¨å·¥ä½ã',
+    'cta-btn': 'å¼å§æ¨çç³è¯·'
+  },
+  ar: {
+    'nav-home': 'Ø§ÙØ±Ø¦ÙØ³ÙØ©', 'nav-about': 'Ø­ÙÙ', 'nav-books': 'Ø§ÙÙØªØ¨', 'nav-music': 'Ø§ÙÙÙØ³ÙÙÙ', 'nav-cta': 'Ø§Ø¯Ø®Ù Ø§ÙØ­ÙÙ',
+    'foot-about': 'Ø­ÙÙ', 'foot-books': 'Ø§ÙÙØªØ¨', 'foot-music': 'Ø§ÙÙÙØ³ÙÙÙ', 'foot-apply': 'ØªÙØ¯ÙÙ',
+    'hero-kicker': 'Ø§Ø³ØªØ«ÙØ§Ø±Ù',
+    'hero-title': 'Ø¨Ø±ÙØªÙÙÙÙ ÙØµÙÙ ÙÙØ¹ÙØ¯Ø©',
+    'hero-desc': 'ÙØ°Ø§ ÙÙØ³ Ø§Ø´ØªØ±Ø§ÙØ§. Ø¥ÙÙ Ø§ÙØªØ²Ø§Ù ÙÙØ¸Ù ÙØ¹ Ø¨ÙÙÙÙØ¬ÙØªÙ â ÙØ¨ÙÙ Ø¨Ø¯ÙØ©Ø ÙÙÙØ¯Ù Ø¹Ù Ø¨Ø¹Ø¯Ø ÙÙÙØ­Ø§ÙØ¸ Ø¹ÙÙÙ ÙÙØ¯Ø© Ø§Ø«ÙÙ Ø¹Ø´Ø± Ø´ÙØ±Ø§ Ø­ØªÙ ÙØ³ØªÙØ± Ø§ÙØªÙØ§Ø³Ù.',
+    'phil-title': 'Ø§ÙÙÙÙØ¬',
+    'phil-p1': 'Mirrorwave ÙØ§ ÙØ¹Ø§ÙØ¬ Ø§ÙØ£Ø¹Ø±Ø§Ø¶. Ø¥ÙÙ ÙØ³ØªØ¹ÙØ¯ Ø§ÙØ¥Ø´Ø§Ø±Ø© Ø§ÙØ£ØµÙÙØ© Ø§ÙØªÙ Ø¨ÙÙÙ ÙØ¸Ø§ÙÙ ÙØ­ÙÙÙØ§. Ø¹ÙØ¯ÙØ§ ØªÙØ²Ø§Ù Ø§ÙØªØ¯Ø§Ø®ÙØ§Øª ÙÙØ¹ÙØ¯ Ø§ÙØªÙØ§Ø³ÙØ ÙÙØ¹Ù Ø§ÙØ¬Ø³Ù ÙØ§ Ø¹Ø±ÙÙ Ø¯Ø§Ø¦ÙØ§ â Ø§ÙØ´ÙØ§Ø¡.',
+    'phil-p2': 'ÙÙØ¬Ø¯ ÙØ³Ø§Ø±Ø§Ù Ø­Ø³Ø¨ Ø¹ÙÙ Ø§Ø¶Ø·Ø±Ø§Ø¨ Ø§ÙÙØ¸Ø§Ù. ÙÙØ§ÙÙØ§ Ø¨Ø±ÙØªÙÙÙÙØ§Ù ÙÙØ¯Ø© Ø§Ø«ÙÙ Ø¹Ø´Ø± Ø´ÙØ±Ø§. ÙÙØ§ÙÙØ§ ÙÙÙØ¯Ù Ø¨Ø§ÙÙØ§ÙÙ Ø¹Ù Ø¨Ø¹Ø¯. ÙÙØ§ÙÙØ§ ÙØ¨Ø¯Ø£ Ø¨Ø¹ÙÙØ© Ø¨ÙÙÙÙØ¬ÙØ© ÙØ§Ø­Ø¯Ø©.',
+    'tiers-heading': 'ÙØ³Ø§Ø±Ø§Ù',
+    't1-badge': 'Ø§ÙØ¨Ø±ÙØªÙÙÙÙ Ø§ÙØ¹ÙÙÙ', 't1-title': 'Ø§Ø³ØªØ¹Ø§Ø¯Ø© Ø§ÙÙØ¸Ø§Ù Ø§ÙØ¹ÙÙÙ', 't1-price': '$27,000',
+    't1-payment': 'Ø¨Ø±ÙØªÙÙÙÙ 12 Ø´ÙØ±Ø§ Â· Ø£Ù 4 Ã $6,750',
+    't1-desc': 'ÙÙØ£ÙØ¸ÙØ© Ø°Ø§Øª Ø§ÙØ§Ø¶Ø·Ø±Ø§Ø¨ Ø§ÙØ¹ØµØ¨Ù Ø§ÙÙØ¨ÙØ± Ø£Ù Ø®ÙÙ Ø§ÙØªÙØ¸ÙÙ Ø¹ÙÙ ÙØ³ØªÙÙ Ø­Ø±Ø¬. ÙÙÙØ± ÙØ°Ø§ Ø§ÙÙØ³Ø§Ø± Ø£Ø¹ÙÙ ØªØ±Ø¯Ø¯ ÙÙØªÙØ§ØµÙØ ÙØªØ´Ø®ÙØµØ§Øª Ø´Ø§ÙÙØ©Ø ÙØ¥Ø¹Ø§Ø¯Ø© ÙØ³Ø­ Ø°Ø§Øª Ø£ÙÙÙÙØ© Ø·ÙØ§Ù ÙØªØ±Ø© Ø§ÙØ§ÙØªØ²Ø§Ù.',
+    't1-includes': 'ÙØ´ÙÙ',
+    't1-f1': 'ÙØ³Ø­ ØªØ´Ø®ÙØµÙ ÙØ§ÙÙ ÙÙØªØ±Ø¯Ø¯', 't1-f2': 'Ø¨Ø±ÙØªÙÙÙÙ Ø§Ø³ØªØ¹Ø§Ø¯Ø© ÙØµÙÙ Ø®ØµÙØµØ§', 't1-f3': 'ÙØªØ§Ø¨Ø¹Ø§Øª Ø£Ø³Ø¨ÙØ¹ÙØ© ÙÙØ¯Ø© 12 Ø´ÙØ±Ø§', 't1-f4': 'Ø¥Ø¹Ø§Ø¯Ø© ÙØ³Ø­ Ø°Ø§Øª Ø£ÙÙÙÙØ© Ø¹ÙØ¯ ØªØºÙØ± Ø§ÙÙØ¸Ø§Ù', 't1-f5': 'ÙØµÙÙ ÙØ¨Ø§Ø´Ø± Ø¥ÙÙ Sophia Christos',
+    't1-for': 'ÙØµÙÙ ÙÙ',
+    't1-c1': 'Ø¥ØµØ§Ø¨Ø© Ø§ÙØ¯ÙØ§Øº Ø§ÙØ±Ø¶ÙØ©', 't1-c2': 'Ø§Ø¶Ø·Ø±Ø§Ø¨ ÙØ§ Ø¨Ø¹Ø¯ Ø§ÙØµØ¯ÙØ©', 't1-c3': 'Ø¥ØµØ§Ø¨Ø© Ø§ÙØ­Ø¨Ù Ø§ÙØ´ÙÙÙ', 't1-c4': 'Ø§ÙØªØ¹Ø§ÙÙ ÙÙ Ø§ÙØ³ÙØªØ©', 't1-c5': 'Ø®ÙÙ Ø§ÙØ¬ÙØ§Ø² Ø§ÙØ¹ØµØ¨Ù Ø§ÙØ°Ø§ØªÙ', 't1-c6': 'CRPS', 't1-c7': 'Ø§ÙØªØµÙØ¨ Ø§ÙÙØªØ¹Ø¯Ø¯', 't1-c8': 'Ø¹ØµØ¨Ù Ø´Ø¯ÙØ¯',
+    't1-cta': 'ÙØ¯Ù Ø§ÙØ¢Ù',
+    't2-badge': 'Ø¨Ø±ÙØªÙÙÙÙ Ø§ÙØªÙØ¸ÙÙ', 't2-title': 'ØªØ¨Ø±ÙØ¯ ÙØªÙØ¸ÙÙ Ø§ÙÙØ¸Ø§Ù', 't2-price': '$9,000',
+    't2-payment': 'Ø¨Ø±ÙØªÙÙÙÙ 12 Ø´ÙØ±Ø§ Â· Ø£Ù 4 Ã $2,250',
+    't2-desc': 'ÙÙØ£ÙØ¸ÙØ© Ø§ÙÙØ­ÙÙØ© Ø¨Ø´ÙÙ Ø²Ø§Ø¦Ø¯. Ø¹ÙØ¯ÙØ§ ÙÙÙÙ Ø§ÙØ¬ÙØ§Ø² Ø§ÙØ¹ØµØ¨Ù ÙÙ Ø­Ø§ÙØ© ÙØ±Ø· ÙØ´Ø§Ø· ÙØªÙØ¸ÙÙ Ø§ÙØ¬Ø³Ù Ø§ÙØ°Ø§ØªÙ ÙØ¯ ØªØ¶Ø±Ø± Ø¨Ø³Ø¨Ø¨ Ø§ÙØ¥Ø¬ÙØ§Ø¯ Ø§ÙÙØ³ØªÙØ± Ø£Ù Ø§ÙØ§ÙØªÙØ§Ø¨ Ø£Ù Ø§ÙØªÙØ´ÙØ· Ø§ÙÙØ²ÙÙ.',
+    't2-includes': 'ÙØ´ÙÙ',
+    't2-f1': 'ÙØ³Ø­ ØªØ±Ø¯Ø¯ Ø´Ø§ÙÙ', 't2-f2': 'Ø¨Ø±ÙØªÙÙÙÙ ØªØ¨Ø±ÙØ¯ ØªÙÙÙÙ', 't2-f3': 'ÙØªØ§Ø¨Ø¹Ø§Øª ÙÙ Ø£Ø³Ø¨ÙØ¹ÙÙ ÙÙØ¯Ø© 12 Ø´ÙØ±Ø§', 't2-f4': 'ØªØ­Ø³ÙÙ Ø§ÙØ¨Ø±ÙØªÙÙÙÙ Ø¹ÙØ¯ ØªØºÙØ± Ø§ÙØ£ÙÙØ§Ø·', 't2-f5': 'Ø¯Ø¹Ù ÙÙØ¬Ù ÙÙÙØ¸Ø§Ù',
+    't2-for': 'ÙØµÙÙ ÙÙ',
+    't2-c1': 'Ø§ÙØ¥Ø±ÙØ§Ù', 't2-c2': 'Ø§ÙØªØ¹Ø¨ Ø§ÙÙØ²ÙÙ', 't2-c3': 'Ø§ÙØµØ¯Ø§Ø¹ Ø§ÙÙØµÙÙ.', 't2-c4': 'Ø¯Ø¹Ù Ø§ÙØ³ÙØ±Ù', 't2-c5': 'Ø¯Ø¹Ù Ø§ÙØ³Ø±Ø·Ø§Ù', 't2-c6': 'Ø§ÙØ£ÙÙ Ø§ÙØ¹Ø¶ÙÙ Ø§ÙÙÙÙÙ', 't2-c7': 'Ø§ÙÙÙÙ', 't2-c8': 'Ø§ÙØ£Ø±Ù', 't2-c9': 'ADHD', 't2-c10': 'Ø§ÙÙÙØ§Ø¹Ø© Ø§ÙØ°Ø§ØªÙØ©', 't2-c11': 'Ø§ÙØ£ÙÙ Ø§ÙÙØ²ÙÙ', 't2-c12': 'ÙØ±ÙÙÙÙ', 't2-c13': 'Ø§ÙØ¥Ø¯ÙØ§Ù', 't2-c14': 'Ø§ÙØ§ÙØªØ¦Ø§Ø¨',
+    't2-cta': 'ÙØ¯Ù Ø§ÙØ¢Ù',
+    'delivery-title': 'ÙÙÙ ÙÙÙØ¯Ù',
+    'delivery-desc': 'ÙÙØ¬Ø±Ù Ø§ÙØ¨Ø±ÙØªÙÙÙÙ Ø¨Ø£ÙÙÙÙ Ø¹Ù Ø¨Ø¹Ø¯. ÙØ§ Ø­Ø§Ø¬Ø© ÙÙØ³ÙØ±. ÙØ§ Ø²ÙØ§Ø±Ø§Øª Ø¹ÙØ§Ø¯ÙØ©. Ø¨ÙÙÙÙØ¬ÙØªÙ ÙÙ Ø§ÙÙØ§Ø¬ÙØ©.',
+    'del-1-title': '100% Ø¹Ù Ø¨Ø¹Ø¯',
+    'del-1-desc': 'Ø§Ø¹ÙÙ ÙÙ Ø£Ù ÙÙØ§Ù ÙÙ Ø§ÙØ¹Ø§ÙÙ. Ø§ÙØ­ÙÙ ÙØ¹ÙÙ Ø¨ÙØ§ ÙØªØ¬Ø§ÙØ² Ø§ÙÙØ³Ø§ÙØ©.',
+    'del-2-title': 'Ø¹ÙÙØ© Ø¨ÙÙÙÙØ¬ÙØ©', 'del-2-desc': 'Ø£Ø±Ø³Ù ÙØµØ§ØµØ© Ø¸ÙØ± ØµØºÙØ±Ø© Ø¨Ø§ÙØ¨Ø±ÙØ¯. ÙØ°Ø§ ÙÙÙØ± ØªÙÙÙØ¹ Ø§ÙØªØ±Ø¯Ø¯ ÙØ¨Ø±ÙØªÙÙÙÙÙ.',
+    'del-3-title': 'Ø§Ø³ØªÙÙ Ø§ÙØ¨Ø±ÙØªÙÙÙÙ', 'del-3-desc': 'Ø¨Ø±ÙØªÙÙÙÙ Ø§ÙØ§Ø³ØªØ¹Ø§Ø¯Ø© Ø§ÙÙØµÙÙ Ø®ØµÙØµØ§ ÙÙ ÙØ¨Ø¯Ø£ Ø§ÙØ¹ÙÙ ÙØ¹ ÙØ¸Ø§ÙÙ ÙÙØ±Ø§.',
+    'del-4-title': 'Ø§Ø¨Ù ÙØªØµÙØ§', 'del-4-desc': 'Ø§ÙÙØªØ§Ø¨Ø¹Ø§Øª Ø§ÙÙÙØªØ¸ÙØ© ØªØªØ¨Ø¹ Ø§ÙØªÙØ¯Ù. Ø§ÙØ¨Ø±ÙØªÙÙÙÙ ÙØªÙÙÙ ÙØ¹ Ø§Ø³ØªØ¬Ø§Ø¨Ø© ÙØ¸Ø§ÙÙ ÙØ¥Ø¹Ø§Ø¯Ø© ØªÙØ¸ÙÙÙ.',
+    'process-title': 'Ø§ÙØ¹ÙÙÙØ©',
+    'step-1-title': 'Ø¥Ø±Ø³Ø§Ù Ø§ÙØ¹ÙÙØ©', 'step-1-desc': 'Ø£Ø±Ø³Ù Ø¹ÙÙØ© Ø¨ÙÙÙÙØ¬ÙØ© ØµØºÙØ±Ø©. ÙØªÙ ÙØ³Ø­ÙØ§ ÙÙØ­ØµÙÙ Ø¹ÙÙ ØªÙÙÙØ¹ ØªØ±Ø¯Ø¯Ù Ø§ÙÙØ±ÙØ¯.',
+    'step-2-title': 'ØªØµÙÙÙ Ø§ÙØ¨Ø±ÙØªÙÙÙÙ', 'step-2-desc': 'ÙÙØµÙÙ Ø¨Ø±ÙØªÙÙÙÙ Ø§Ø³ØªØ¹Ø§Ø¯Ø© ÙØ®ØµØ© Ø¨ÙØ§Ø¡ Ø¹ÙÙ ÙØ§ ÙÙØ´ÙÙ ÙØ¸Ø§ÙÙ ÙÙ Ø§Ø­ØªÙØ§Ø¬Ø§Øª.',
+    'step-3-title': 'Ø§Ø³ØªØ¹Ø§Ø¯Ø© ÙÙØ¬ÙØ©', 'step-3-desc': 'Ø¨Ø±ÙØªÙÙÙÙÙ ÙÙÙØ´Ø·. Ø§ÙÙØªØ§Ø¨Ø¹Ø§Øª Ø§ÙÙÙØªØ¸ÙØ© ØªØªØ¨Ø¹ Ø§ÙØªØ­ÙÙØ§Øª. Ø§ÙØªØ¹Ø¯ÙÙØ§Øª ØªÙØ¬Ø±Ù ÙÙ Ø§ÙÙÙØª Ø§ÙÙØ¹ÙÙ.',
+    'step-4-title': 'ØªÙØ§Ø³Ù ÙØ³ØªØ¯Ø§Ù', 'step-4-desc': 'Ø¹ÙÙ ÙØ¯Ù Ø§Ø«ÙÙ Ø¹Ø´Ø± Ø´ÙØ±Ø§Ø ÙØ³ØªÙØ± Ø§ÙØªÙØ§Ø³Ù. Ø§ÙÙØ¸Ø§Ù ÙØªØ°ÙØ± ÙÙØ·Ù Ø§ÙØ£ØµÙÙ.',
+    'guarantee-title': 'Ø§ÙØ§ÙØªØ²Ø§Ù Ø§ÙÙ 90 ÙÙÙØ§',
+    'guarantee-desc': 'ÙØ·ÙØ¨ 90 ÙÙÙØ§ ÙÙ Ø§ÙÙØ´Ø§Ø±ÙØ© Ø§ÙÙØ§ÙÙØ© ÙØ¨Ù ØªÙÙÙÙ Ø§ÙÙØªØ§Ø¦Ø¬. Ø¥Ø¹Ø§Ø¯Ø© Ø§ÙÙÙÙÙØ© Ø§ÙØ¨ÙÙÙÙØ¬ÙØ© ÙÙØ³Øª ÙÙØ±ÙØ© â Ø¥ÙÙØ§ Ø¹ÙÙÙØ© Ø¹ÙØ¯Ø© ÙÙÙØ¬ÙØ©. Ø¶ÙÙ ÙØ°Ù Ø§ÙÙØ§ÙØ°Ø©Ø ÙØ¨ÙØº ÙØ¹Ø¸Ù Ø§ÙØ¹ÙÙØ§Ø¡ Ø¹Ù ØªØ­ÙÙØ§Øª ÙÙØ­ÙØ¸Ø© ÙÙ ØªÙØ¸ÙÙ ÙØ¸Ø§ÙÙÙ Ø§ÙØ£Ø³Ø§Ø³Ù. ÙØ°Ø§ ÙÙ Ø§ÙØ­Ø¯ Ø§ÙØ£Ø¯ÙÙ ÙÙØ§ÙØªØ²Ø§Ù Ø­ØªÙ ÙØ¤Ø³Ø³ Ø§ÙØ¨Ø±ÙØªÙÙÙÙ ÙÙØ·Ù Ø§ÙØ£ÙÙÙ.',
+    'faq-title': 'Ø£Ø³Ø¦ÙØ©',
+    'faq-1-q': 'ÙÙÙ ÙØ¹ÙÙ Ø§ÙØ´ÙØ§Ø¡ Ø¹Ù Ø¨Ø¹Ø¯Ø',
+    'faq-1-a': 'Ø¨Ø±ÙØªÙÙÙÙ Mirrorwave ÙØ¹ÙÙ ÙÙ Ø®ÙØ§Ù Ø±ÙÙÙ Ø§ÙØªØ±Ø¯Ø¯Ø Ø§ÙØ°Ù ÙØ§ ÙÙÙØ¯Ù Ø§ÙÙØ³Ø§ÙØ© Ø§ÙÙØ§Ø¯ÙØ©. Ø¹ÙÙØªÙ Ø§ÙØ¨ÙÙÙÙØ¬ÙØ© ØªÙÙØ± Ø§ÙØªÙÙÙØ¹ Ø§ÙÙØ§Ø²Ù ÙØªØµÙÙÙ ÙØªÙØ¯ÙÙ Ø¨Ø±ÙØªÙÙÙÙ ÙØªÙØ§Ø¹Ù ÙØ¨Ø§Ø´Ø±Ø© ÙØ¹ Ø£ÙÙØ§Ø· ØªÙØ¸ÙÙ ÙØ¸Ø§ÙÙØ Ø¨Ø¹Ø¶ Ø§ÙÙØ¸Ø± Ø¹Ù ÙÙÙØ¹Ù.',
+    'faq-2-q': 'ÙÙØ§Ø°Ø§ ØªØ­ØªØ§Ø¬ÙÙ ÙØµØ§ØµØ© Ø¸ÙØ±Ø',
+    'faq-2-a': 'ÙØ³ÙØ¬ Ø§ÙØ¸ÙØ± ÙØ­ÙÙ Ø³Ø¬Ù ØªØ±Ø¯Ø¯ ÙØ³ØªÙØ± ÙÙØ¸Ø§ÙÙ Ø§ÙØ¨ÙÙÙÙØ¬Ù. ÙÙÙØ± Ø§ÙÙØ¹ÙÙÙØ§Øª Ø§ÙÙØ§Ø²ÙØ© ÙÙØ³Ø­ Ø­Ø§ÙØªÙ Ø§ÙØ­Ø§ÙÙØ©Ø ÙØªØ­Ø¯ÙØ¯ Ø£ÙÙØ§Ø· Ø§ÙØªØ¯Ø§Ø®ÙØ ÙØªØµÙÙÙ Ø¨Ø±ÙØªÙÙÙÙ ÙØ­Ø¯Ø¯ ÙÙØ§ ÙØ­ØªØ§Ø¬ Ø¬Ø³ÙÙ ÙØ§Ø³ØªØ¹Ø§Ø¯ØªÙ.',
+    'faq-3-q': 'ÙÙ ÙÙ Ø§ÙÙÙØª ÙØ¨Ù Ø£Ù Ø£ÙØ§Ø­Ø¸ ØªØºÙÙØ±Ø§ØªØ',
+    'faq-3-a': 'ÙØ¹Ø¸Ù Ø§ÙØ¹ÙÙØ§Ø¡ ÙØ¨ÙØºÙÙ Ø¹Ù ØªØ­ÙÙØ§Øª Ø£ÙÙÙØ© Ø®ÙØ§Ù 2-4 Ø£Ø³Ø§Ø¨ÙØ¹. ÙØ°Ù ØºØ§ÙØ¨Ø§ ØªØ¸ÙØ± ÙØªØºÙÙØ±Ø§Øª ÙÙ Ø¬ÙØ¯Ø© Ø§ÙÙÙÙØ Ø£Ù ØªÙØ¸ÙÙ Ø§ÙØ·Ø§ÙØ©Ø Ø£Ù Ø®Ø· Ø§ÙØ£Ø³Ø§Ø³ Ø§ÙØ¹Ø§Ø·ÙÙ ÙØ¨Ù Ø£Ù ØªØµØ¨Ø­ Ø§ÙØªØºÙÙØ±Ø§Øª Ø§ÙØ£ÙØ«Ø± ÙÙÙÙÙØ© ÙØ§Ø¶Ø­Ø©. Ø¹ÙØ§ÙØ© Ø§ÙÙ 90 ÙÙÙØ§ ÙÙ Ø­ÙØ« ØªØµØ¨Ø­ Ø¥Ø¹Ø§Ø¯Ø© Ø§ÙØªÙØ¸ÙÙ Ø§ÙÙØªØ³ÙØ© Ø¹Ø§Ø¯Ø© ÙØ§ ÙÙÙÙ Ø¥ÙÙØ§Ø±ÙØ§.',
+    'faq-4-q': 'ÙÙ ÙÙÙÙÙÙ Ø§ÙÙÙØ§Ù Ø¨ÙØ°Ø§ Ø¬ÙØ¨Ø§ Ø¥ÙÙ Ø¬ÙØ¨ ÙØ¹ Ø§ÙØ¹ÙØ§Ø¬ Ø§ÙØªÙÙÙØ¯ÙØ',
+    'faq-4-a': 'ÙØ¹Ù. Ø¨Ø±ÙØªÙÙÙÙ Mirrorwave ØªÙÙÙÙÙ ÙÙØ§ ÙØªØ¯Ø§Ø®Ù ÙØ¹ Ø§ÙØ¹ÙØ§Ø¬ Ø§ÙØ·Ø¨Ù Ø§ÙØªÙÙÙØ¯Ù. ÙØ«ÙØ± ÙÙ Ø§ÙØ¹ÙÙØ§Ø¡ ÙØ­Ø§ÙØ¸ÙÙ Ø¹ÙÙ Ø±Ø¹Ø§ÙØªÙÙ Ø§ÙØ­Ø§ÙÙØ© Ø¨ÙÙÙØ§ ÙØ¹ÙÙ Ø§ÙØ¨Ø±ÙØªÙÙÙÙ Ø¹ÙÙ ÙØ³ØªÙÙ ØªÙØ§Ø³Ù ÙØªÙØ¸ÙÙ Ø§ÙÙØ¸Ø§Ù.',
+    'faq-5-q': 'ÙÙØ§Ø°Ø§ ÙØ°Ø§ Ø§ÙØªØ²Ø§Ù ÙÙØ¯Ø© 12 Ø´ÙØ±Ø§Ø',
+    'faq-5-a': 'Ø§ÙØ£ÙØ¸ÙØ© Ø§ÙØ¨ÙÙÙÙØ¬ÙØ© ÙØ§ ØªØ¹ÙØ¯ ØªÙØ¸ÙÙ ÙÙØ³ÙØ§ Ø¨ÙÙ Ø¹Ø´ÙØ© ÙØ¶Ø­Ø§ÙØ§. Ø§Ø«ÙØ§ Ø¹Ø´Ø± Ø´ÙØ±Ø§ ØªØ³ÙØ­ ÙÙØ¨Ø±ÙØªÙÙÙÙ Ø¨Ø§ÙÙØ±ÙØ± Ø¹Ø¨Ø± ÙØ±Ø§Ø­Ù ØªÙØ¸ÙÙ Ø§ÙØ§Ø¶Ø·Ø±Ø§Ø¨Ø ÙØ§Ø³ØªØ¹Ø§Ø¯Ø© Ø§ÙØ£ÙÙØ§Ø·Ø ÙØ§ÙØ§Ø³ØªÙØ±Ø§Ø±. Ø§ÙØ§ÙØªØ²Ø§ÙØ§Øª Ø§ÙØ£ÙØµØ± ØªØ®Ø§Ø·Ø± Ø¨Ø¥Ø¹Ø§Ø¯Ø© ÙÙÙÙØ© Ø¬Ø²Ø¦ÙØ© Ø¯ÙÙ Ø§ÙØªÙØ§Ø³Ù Ø§ÙÙØ³ØªØ¯Ø§Ù Ø§ÙÙØ§Ø²Ù ÙÙØªØºÙÙØ± Ø§ÙØ¯Ø§Ø¦Ù.',
+    'faq-6-q': 'ÙÙÙ Ø£Ø¹Ø±Ù Ø£Ù ÙØ³Ø§Ø± ÙÙØ§Ø³Ø¨ ÙÙØ',
+    'faq-6-a': 'Ø¹ÙÙÙØ© Ø§ÙØªÙØ¯ÙÙ ØªØ­Ø¯Ø¯ Ø°ÙÙ. Ø¨ÙØ§Ø¡ Ø¹ÙÙ ÙØ§ ØªØ´Ø§Ø±ÙÙ Ø­ÙÙ ÙØ¶Ø¹Ù ÙØªØ§Ø±ÙØ®Ù ÙØ­Ø§ÙØªÙ Ø§ÙØ­Ø§ÙÙØ©Ø Ø³ÙÙÙØµÙ Ø¨Ø§ÙÙØ³Ø§Ø± Ø§ÙÙÙØ§Ø³Ø¨. Ø¥Ø°Ø§ ÙÙ ØªÙÙ ÙØªØ£ÙØ¯Ø§Ø Ø§Ø¨Ø¯Ø£ Ø¨ØªÙØ¯ÙÙ Ø·ÙØ¨ ÙØ§ÙÙØ¶ÙØ­ Ø³ÙØªØ¨Ø¹.',
+    'faq-7-q': 'ÙÙ Ø®Ø·Ø© Ø§ÙØ¯ÙØ¹ ÙØªØ§Ø­Ø©Ø',
+    'faq-7-a': 'ÙØ¹Ù. ÙÙØ§ Ø§ÙÙØ³Ø§Ø±ÙÙ ÙÙØ¯ÙØ§Ù ÙÙÙÙ Ø£Ø±Ø¨Ø¹ Ø¯ÙØ¹Ø§Øª ÙÙØ²Ø¹Ø© Ø¹ÙÙ ÙØªØ±Ø© Ø§ÙØ§ÙØªØ²Ø§Ù. Ø§Ø³ØªØ¹Ø§Ø¯Ø© Ø§ÙÙØ¸Ø§Ù Ø§ÙØ¹ÙÙÙ: 4 Ø¯ÙØ¹Ø§Øª Ã $6,750. ØªØ¨Ø±ÙØ¯ Ø§ÙÙØ¸Ø§Ù: 4 Ø¯ÙØ¹Ø§Øª Ã $2,250. Ø§ÙØ¯ÙØ¹ Ø§ÙÙØ§ÙÙ ÙÙØ¯ÙØ§ ÙÙØ¨ÙÙ Ø£ÙØ¶Ø§.',
+    'cta-title': 'ÙØ¸Ø§ÙÙ ÙØ¹Ø±Ù Ø¨Ø§ÙÙØ¹Ù',
+    'cta-desc': 'Ø¥Ø°Ø§ ÙØ±Ø£Øª Ø­ØªÙ ÙÙØ§Ø ÙØ¥Ù Ø´ÙØ¦Ø§ ÙÙ Ø¨ÙÙÙÙØ¬ÙØªÙ ÙØ³ØªØ¬ÙØ¨. Ø«Ù Ø¨ÙØ§ Ø¬ÙØ¨Ù Ø¥ÙÙ ÙÙØ§. Ø§ÙØ­ÙÙ ÙØ¹ÙÙ Ø¨Ø§ÙÙØ¹Ù.',
+    'cta-btn': 'Ø§Ø¨Ø¯Ø£ Ø·ÙØ¨Ù'
+  }
+};
+
+let currentLang = localStorage.getItem('mirrorwave-lang') || 'en';
+
+function setLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('mirrorwave-lang', lang);
+
+  // Set RTL for Arabic
+  if (lang === 'ar') {
+    document.documentElement.setAttribute('dir', 'rtl');
+    document.documentElement.setAttribute('lang', 'ar');
+  } else {
+    document.documentElement.removeAttribute('dir');
+    document.documentElement.setAttribute('lang', lang);
+  }
+
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (i18nData[lang] && i18nData[lang][key]) {
+      el.innerHTML = i18nData[lang][key];
+    }
+  });
+
+  // Update active state in dropdown
+  document.querySelectorAll('.lang-option').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
+
+  // Update toggle text
+  langCurrent.textContent = lang.toUpperCase();
+}
+
+// Initialize
+setLang(currentLang);
+</script>
+</body>
+</html>
